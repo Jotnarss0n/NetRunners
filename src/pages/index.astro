@@ -9,6 +9,9 @@ import type { CommandData } from "../types/commands";
 
 const commands: CommandData = commandsData;
 const tabs = Object.keys(commands);
+const categories = Array.from(
+	new Set(Object.values(commands).flatMap((section) => Object.keys(section))),
+);
 ---
 
 <Layout>
@@ -31,7 +34,7 @@ const tabs = Object.keys(commands);
 
 			<div class="grid grid-cols-3 gap-4 flex-grow overflow-hidden">
 				<!-- Left Form Inputs -->
-				<div class="space-y-4 bg-gree" id="input-form">
+				<div class="space-y-4" id="input-form">
 					<InputBox label="IP" />
 					<InputBox label="PUERTO" />
 					<InputBox label="USUARIO" />
@@ -54,6 +57,30 @@ const tabs = Object.keys(commands);
 						}
 					</div>
 
+					<!-- Category Filter Checkboxes -->
+					<div class="mb-4">
+						<p class="text-sm text-gray-400 mb-2">
+							Filtrar Categorías:
+						</p>
+						<div class="flex flex-wrap gap-2">
+							{
+								categories.map((cat) => (
+									<label class="flex items-center space-x-1">
+										<input
+											type="checkbox"
+											value={cat}
+											class="category-filter"
+											checked
+										/>
+										<span class="capitalize text-sm">
+											{cat}
+										</span>
+									</label>
+								))
+							}
+						</div>
+					</div>
+
 					<div
 						id="tab-content"
 						class="space-y-2 flex-grow overflow-y-auto pr-2"
@@ -64,11 +91,14 @@ const tabs = Object.keys(commands);
 									data-tab-content={tab}
 									class={`${index !== 0 ? "hidden" : ""} space-y-2`}
 								>
-									{Object.values(commands[tab])
-										.flat()
-										.map((cmd) => (
-											<CommandBox command={cmd} />
-										))}
+									{Object.entries(commands[tab]).flatMap(
+										([category, cmds]) =>
+											cmds.map((cmd) => (
+												<div data-category={category}>
+													<CommandBox command={cmd} />
+												</div>
+											)),
+									)}
 								</div>
 							))
 						}
@@ -77,12 +107,10 @@ const tabs = Object.keys(commands);
 			</div>
 		</div>
 
-		<!-- Script para tab-switching y sustitucion de variables -->
+		<!-- Script para tabs, inputs y filtros -->
 		<script>
 			const tabButtons = document.querySelectorAll(".tab-btn");
 			const tabContents = document.querySelectorAll("[data-tab-content]");
-
-			// FIX: Narrow 'btn' to HTMLButtonElement to access dataset
 
 			tabButtons.forEach((btn) => {
 				btn.addEventListener("click", () => {
@@ -93,7 +121,7 @@ const tabs = Object.keys(commands);
 					btn.classList.add("bg-white", "text-black");
 					btn.classList.remove("text-white");
 
-					const target = (btn as HTMLButtonElement).dataset.tab;
+					const target = (btn as HTMLElement).dataset.tab;
 					tabContents.forEach((content) => {
 						content.classList.toggle(
 							"hidden",
@@ -101,6 +129,7 @@ const tabs = Object.keys(commands);
 								target,
 						);
 					});
+					applyCategoryFilter();
 				});
 			});
 
@@ -108,17 +137,18 @@ const tabs = Object.keys(commands);
 			const updateCommands = () => {
 				const values: Record<string, string> = {};
 				inputs.forEach((input) => {
-					const label = input.previousElementSibling?.textContent
+					const htmlInput = input as HTMLInputElement;
+					const label = htmlInput.previousElementSibling?.textContent
 						?.trim()
 						.toUpperCase();
-					if (label) {
-						values[label] = (input as HTMLInputElement).value;
-					}
+					if (label) values[label] = htmlInput.value;
 				});
+
 				document
 					.querySelectorAll("[data-tab-content] span")
 					.forEach((span) => {
 						const el = span as HTMLSpanElement;
+
 						let raw = el.dataset.raw || el.textContent || "";
 						el.dataset.raw = raw;
 						Object.entries(values).forEach(([key, value]) => {
@@ -131,32 +161,52 @@ const tabs = Object.keys(commands);
 			inputs.forEach((input) =>
 				input.addEventListener("input", updateCommands),
 			);
+
 			document.querySelectorAll("button").forEach((button) => {
 				if (button.textContent?.trim() === "COPY") {
 					button.addEventListener("click", () => {
 						const span =
 							button.parentElement?.querySelector("span");
 						if (!span) return;
-
 						const command = span.textContent;
 						if (!command) return;
-
 						navigator.clipboard.writeText(command).then(() => {
 							button.textContent = "COPIED!";
-
-							// BG color button
 							button.classList.remove("bg-white");
 							button.classList.add("bg-green-600");
 							setTimeout(() => {
-								if (button) {
-									button.textContent = "COPY";
-									button.classList.add("bg-white");
-									button.classList.remove("bg-green-600");
-								}
+								button.textContent = "COPY";
+								button.classList.add("bg-white");
+								button.classList.remove("bg-green-600");
 							}, 1000);
 						});
 					});
 				}
+			});
+
+			const applyCategoryFilter = () => {
+				const checked = Array.from(
+					document.querySelectorAll(".category-filter:checked"),
+				).map((i) => (i as HTMLInputElement).value);
+
+				document
+					.querySelectorAll("[data-tab-content]")
+					.forEach((tabContent) => {
+						tabContent
+							.querySelectorAll("[data-category]")
+							.forEach((el) => {
+								const category = (el as HTMLElement).dataset
+									.category;
+								el.classList.toggle(
+									"hidden",
+									!checked.includes(category || ""),
+								);
+							});
+					});
+			};
+
+			document.querySelectorAll(".category-filter").forEach((cb) => {
+				cb.addEventListener("change", applyCategoryFilter);
 			});
 		</script>
 	</main>

