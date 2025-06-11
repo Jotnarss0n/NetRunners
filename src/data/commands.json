@@ -1,5 +1,5 @@
 {
-  "AD": {
+  "Active Directory": {
     "enumeracion": [
       "smbclient -L //{{IP}} -U {{USUARIO}}",
       "smbclient -L //{{IP}} -U {{USUARIO}}",

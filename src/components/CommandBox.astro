@@ -13,31 +13,3 @@ const { command } = Astro.props;
         COPY
     </button>
 </div>
-
-<script is:inline>
-    const btn =
-        document.currentScript?.previousElementSibling?.querySelector(
-            ".copy-btn",
-        );
-    const span =
-        document.currentScript?.previousElementSibling?.querySelector("span");
-
-    btn?.addEventListener("click", async () => {
-        if (!span || !btn) return;
-        try {
-            await navigator.clipboard.writeText(span.textContent || "");
-            const originalText = btn.textContent;
-            btn.textContent = "Copied!";
-            btn.classList.remove("bg-white", "text-black");
-            btn.classList.add("bg-green-500", "text-white");
-            setTimeout(() => {
-                btn.textContent = originalText;
-                btn.classList.remove("bg-green-500", "text-white");
-                btn.classList.add("bg-white", "text-black");
-                btn.textContent = "Copy";
-            }, 500);
-        } catch (err) {
-            console.error("Error copying to clipboard", err);
-        }
-    });
-</script>

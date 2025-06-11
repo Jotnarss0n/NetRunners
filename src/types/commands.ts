@@ -11,7 +11,7 @@ export interface CommandCategory {
     [section: string]: string[];
   }
   
-  export interface CommandData {
+export interface CommandData {
     [category: string]: CommandCategory;
   }
   
