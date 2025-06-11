@@ -31,7 +31,7 @@ const tabs = Object.keys(commands);
 
 			<div class="grid grid-cols-3 gap-4 flex-grow overflow-hidden">
 				<!-- Left Form Inputs -->
-				<div class="space-y-4" id="input-form">
+				<div class="space-y-4 bg-gree" id="input-form">
 					<InputBox label="IP" />
 					<InputBox label="PUERTO" />
 					<InputBox label="USUARIO" />
@@ -131,6 +131,33 @@ const tabs = Object.keys(commands);
 			inputs.forEach((input) =>
 				input.addEventListener("input", updateCommands),
 			);
+			document.querySelectorAll("button").forEach((button) => {
+				if (button.textContent?.trim() === "COPY") {
+					button.addEventListener("click", () => {
+						const span =
+							button.parentElement?.querySelector("span");
+						if (!span) return;
+
+						const command = span.textContent;
+						if (!command) return;
+
+						navigator.clipboard.writeText(command).then(() => {
+							button.textContent = "COPIED!";
+
+							// BG color button
+							button.classList.remove("bg-white");
+							button.classList.add("bg-green-600");
+							setTimeout(() => {
+								if (button) {
+									button.textContent = "COPY";
+									button.classList.add("bg-white");
+									button.classList.remove("bg-green-600");
+								}
+							}, 1000);
+						});
+					});
+				}
+			});
 		</script>
 	</main>
 </Layout>
