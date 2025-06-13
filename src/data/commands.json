@@ -10,7 +10,6 @@
       "smbclient -L //{{IP}} -U {{USER}}",
       "smbclient -L //{{IP}} -U {{USER}}",
       "smbclient -L //{{IP}} -U {{USER}}",
-      "smbclient -L //{{IP}} -U {{USER}}",
       "rpcclient -U {{USUARIO}} -P '{{CONTRASEÑA}}' -N {{IP}}"
     ],
     "exploitation":[
