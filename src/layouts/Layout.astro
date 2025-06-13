@@ -1,10 +1,86 @@
+---
+import themes from "../themes/themes.json";
+import type { ThemeData } from "../types/types.ts";
+
+const themeList: ThemeData = themes;
+const themeNames = Object.keys(themeList);
+---
+
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>NetRunners</title>
 	</head>
-	<body class="bg-black text-white">
-		<slot />
+	<body data-theme="default">
+		<div class="fixed top-2 right-2 z-50">
+			<select
+				id="theme-selector"
+				class="px-2 py-1 rounded transition-colors duration-300"
+			>
+				{
+					themeNames.map((name) => (
+						<option value={name}>{name.toUpperCase()}</option>
+					))
+				}
+			</select>
+		</div>
+		<div
+			id="theme-wrapper"
+			class="min-h-screen transition-colors duration-300"
+		>
+			<slot />
+		</div>
+		<script type="module">
+			const selector = document.getElementById("theme-selector");
+			const wrapper = document.getElementById("theme-wrapper");
+
+			fetch("themes.json")
+				.then((response) => response.json())
+				.then((themeData) => {
+					const applyTheme = (themeName) => {
+						const theme = themeData[themeName] || themeData.default;
+
+						Object.values(themeData).forEach((t) => {
+							wrapper.classList.remove(
+								t.bg,
+								t.text,
+								...t.border.split(" "),
+							);
+							selector.classList.remove(
+								t.bg,
+								t.text,
+								...t.border.split(" "),
+							);
+						});
+
+						wrapper.classList.add(
+							theme.bg,
+							theme.text,
+							...theme.border.split(" "),
+						);
+						selector.classList.add(
+							theme.bg,
+							theme.text,
+							...theme.border.split(" "),
+						);
+
+						localStorage.setItem("selectedTheme", themeName);
+					};
+
+					selector.addEventListener("change", (e) => {
+						const themeName = e.target.value;
+						applyTheme(themeName);
+					});
+
+					const savedTheme =
+						localStorage.getItem("selectedTheme") || "default";
+					selector.value = savedTheme;
+					applyTheme(savedTheme);
+				})
+				.catch((err) => {
+					console.error("Error loading themes.json:", err);
+				});
+		</script>
 	</body>
 </html>

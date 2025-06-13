@@ -1,7 +1,27 @@
-<div>
-    <label class="block text-sm text-gray-300 mb-1">{Astro.props.label}</label>
+---
+// Astro component: src/components/InputBox.astro
+const labelText = Astro.props.label;
+const inputId = labelText.toLowerCase().replace(/\s+/g, "-");
+---
+
+<div class="relative w-full">
     <input
         type="text"
-        class="w-full px-2 py-1 bg-transparent border border-white rounded-md text-white"
+        id={inputId}
+        placeholder=" "
+        class="peer w-full border rounded-md pt-3 pb-0.5 px-3 placeholder-transparent focus:outline-none focus:border-blue-600 bg-inherit text-inherit border-inherit"
     />
+    <label
+        for={inputId}
+        class="absolute right-0 text-sm transition-all duration-200 ease-in-out
+           peer-placeholder-shown:top-3.5
+           peer-placeholder-shown:text-base
+           peer-placeholder-shown:text-gray-400
+           peer-focus:top-2
+           peer-focus:text-sm
+           peer-focus:text-blue-600
+           border rounded-sm px-1 bg-inherit text-inherit border-inherit"
+    >
+        {labelText}
+    </label>
 </div>

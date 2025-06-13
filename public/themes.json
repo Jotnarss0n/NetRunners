@@ -1,0 +1,52 @@
+{
+  "default": {
+    "bg": "bg-gray-950",
+    "text": "text-white",
+    "border": "border-white"
+  },
+  "hacker": {
+    "bg": "bg-black",
+    "text": "text-green-500",
+    "border": "border-green-700"
+  },
+  "solarized": {
+    "bg": "bg-[#002b36]",
+    "text": "text-[#839496]",
+    "border": "border-[#586e75]"
+  },
+  "cyberpunk": {
+    "bg": "bg-[#0f0c29]",
+    "text": "text-[#ff6ec7]",
+    "border": "border-[#f72585]"
+  },
+  "matrix": {
+    "bg": "bg-black",
+    "text": "text-[#00ff00]",
+    "border": "border-[#00cc00]"
+  },
+  "terminal": {
+    "bg": "bg-[#1e1e1e]",
+    "text": "text-[#d4d4d4]",
+    "border": "border-[#3c3c3c]"
+  },
+  "midnight": {
+    "bg": "bg-[#121826]",
+    "text": "text-[#dbeafe]",
+    "border": "border-[#1e293b]"
+  },
+  "aqua": {
+    "bg": "bg-[#e0f7fa]",
+    "text": "text-[#006064]",
+    "border": "border-[#4dd0e1]"
+  },
+  "nord": {
+    "bg": "bg-[#2e3440]",
+    "text": "text-[#d8dee9]",
+    "border": "border-[#81a1c1]"
+  },
+  "dracula": {
+    "bg": "bg-[#282a36]",
+    "text": "text-[#f8f8f2]",
+    "border": "border-[#bd93f9]"
+  }
+}
