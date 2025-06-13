@@ -1,5 +1,5 @@
 /* 
-Creamos los tipos para porder usar
+We create the types to be able to use them
 
 {Object.values(commands[tab]).flat().map((cmd) => (
   <CommandBox command={cmd} />

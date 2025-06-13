@@ -40,12 +40,12 @@ const categories = Array.from(
 			<!-- 3-column grid: input form and command section -->
 			<div class="grid grid-cols-3 gap-4 flex-grow overflow-hidden">
 				<!-- Left column: input form -->
-				<div class="space-y-4" id="input-form">
+				<div class="space-y-7 pt-3" id="input-form">
 					<InputBox label="IP" />
-					<InputBox label="PUERTO" />
-					<InputBox label="USUARIO" />
-					<InputBox label="CONTRASEÑA" />
-					<InputBox label="DOMINIO" />
+					<InputBox label="PORT" />
+					<InputBox label="USER" />
+					<InputBox label="PASSWORD" />
+					<InputBox label="DOMAIN" />
 				</div>
 
 				<!-- Right columns: command section -->
@@ -65,10 +65,7 @@ const categories = Array.from(
 					</div>
 
 					<!-- Category filter checkboxes -->
-					<div class="mb-4">
-						<p class="text-sm text-gray-400 mb-2">
-							Filter by Categories:
-						</p>
+					<div class="mb-3">
 						<div class="flex flex-wrap gap-2">
 							{
 								categories.map((cat) => (
@@ -89,24 +86,35 @@ const categories = Array.from(
 					</div>
 
 					<!-- Command display area (tabs and filters apply) -->
-					<div id="tab-content" class="space-y-2 flex-grow">
-						{
-							tabs.map((tab, index) => (
-								<div
-									data-tab-content={tab}
-									class={`${index !== 0 ? "hidden" : ""} space-y-2`}
-								>
-									{Object.entries(commands[tab]).flatMap(
-										([category, cmds]) =>
-											cmds.map((cmd) => (
-												<div data-category={category}>
-													<CommandBox command={cmd} />
-												</div>
-											)),
-									)}
-								</div>
-							))
-						}
+					<div
+						class="space-y-2 border-2 overflow-hidden border-white p-1 rounded-xl"
+					>
+						<div
+							id="tab-content"
+							class="scroll-hover overflow-y-auto flex-grow h-full p-1"
+						>
+							{
+								tabs.map((tab, index) => (
+									<div
+										data-tab-content={tab}
+										class={`${index !== 0 ? "hidden" : ""} space-y-2`}
+									>
+										{Object.entries(commands[tab]).flatMap(
+											([category, cmds]) =>
+												cmds.map((cmd) => (
+													<div
+														data-category={category}
+													>
+														<CommandBox
+															command={cmd}
+														/>
+													</div>
+												)),
+										)}
+									</div>
+								))
+							}
+						</div>
 					</div>
 				</div>
 			</div>
@@ -139,31 +147,51 @@ const categories = Array.from(
 				});
 			});
 
-			// Input field substitution logic
+			// Select all input elements inside the container with ID "input-form"
 			const inputs = document.querySelectorAll("#input-form input");
+
+			// Function to update placeholders (like {{IP}}, {{PORT}}, etc.) in command spans
 			const updateCommands = () => {
+				// Create an object to store input values keyed by label text (e.g., { IP: "127.0.0.1" })
 				const values: Record<string, string> = {};
+
 				inputs.forEach((input) => {
 					const htmlInput = input as HTMLInputElement;
-					const label = htmlInput.previousElementSibling?.textContent
-						?.trim()
-						.toUpperCase();
-					if (label) values[label] = htmlInput.value;
+
+					// Find the associated <label> using the input's ID
+					const label = document.querySelector(
+						`label[for="${htmlInput.id}"]`,
+					);
+					// Get the label text, trim whitespace, and convert to uppercase (e.g., "IP")
+					const labelText = label?.textContent?.trim().toUpperCase();
+
+					// Store the value if a matching label is found
+					if (labelText) values[labelText] = htmlInput.value;
 				});
 
+				// Find all spans inside elements that have the "data-tab-content" attribute
 				document
 					.querySelectorAll("[data-tab-content] span")
 					.forEach((span) => {
 						const el = span as HTMLSpanElement;
+
+						// Use the original text content (or a stored raw version) for replacement
 						let raw = el.dataset.raw || el.textContent || "";
+
+						// Save the original text to the dataset (so we don't lose it after replacements)
 						el.dataset.raw = raw;
+
+						// Replace placeholders like {{IP}}, {{PORT}}, etc. with the corresponding input values
 						Object.entries(values).forEach(([key, value]) => {
 							raw = raw.replaceAll(`{{${key}}}`, value);
 						});
+
+						// Update the text content of the span with the replaced version
 						el.textContent = raw;
 					});
 			};
 
+			// Attach the update function to each input's "input" event (fires on every keystroke)
 			inputs.forEach((input) =>
 				input.addEventListener("input", updateCommands),
 			);
