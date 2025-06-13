@@ -5,7 +5,9 @@ export interface Props {
 const { command } = Astro.props;
 ---
 
-<div class="bg-gray-800 p-3 rounded flex justify-between items-center">
+<div
+    class="p-3 rounded flex justify-between items-center bg-inherit text-inherit border border-inherit"
+>
     <span class="truncate" data-raw={command}>{command}</span>
     <button
         class="copy-btn ml-4 text-xs px-2 py-1 border rounded bg-white text-black"

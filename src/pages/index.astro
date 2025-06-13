@@ -7,7 +7,7 @@ import InputBox from "../components/InputBox.astro";
 
 // Import commands data and types
 import commandsData from "../data/commands.json";
-import type { CommandData } from "../types/commands";
+import type { CommandData } from "../types/types.ts";
 
 // Parse commands into useful structures
 const commands: CommandData = commandsData;
@@ -18,28 +18,24 @@ const categories = Array.from(
 ---
 
 <Layout>
-	<!-- Main container with dark theme and monospace font -->
-	<main class="h-screen bg-gray-950 text-white font-mono p-4 overflow-hidden">
-		<!-- Bordered panel centered on screen -->
+	<main class="h-screen font-mono p-4 overflow-hidden">
 		<div
-			class="h-full max-w-screen-lg mx-auto border-2 border-white p-4 rounded-xl flex flex-col"
+			class="h-full max-w-screen-lg mx-auto border-2 p-4 rounded-xl flex flex-col"
+			id="theme-panel"
 		>
-			<!-- Header with title and navigation buttons -->
 			<div
-				class="flex justify-between items-center mb-4 border-b border-white pb-2"
+				class="flex justify-between items-center mb-4 border-b pb-2"
+				id="theme-header"
 			>
 				<div class="text-xl font-bold tracking-wider">NetRunners</div>
 				<nav class="space-x-4">
-					<button class="text-white hover:underline">COMMANDS</button>
-					<button class="text-white hover:underline">WRITEUPS</button>
-					<button class="text-white hover:underline">SUPPORT</button>
-					<button class="text-white hover:underline">About</button>
+					<button class="hover:underline">COMMANDS</button>
+					<button class="hover:underline">WRITEUPS</button>
+					<button class="hover:underline">SUPPORT</button>
+					<button class="hover:underline">About</button>
 				</nav>
 			</div>
-
-			<!-- 3-column grid: input form and command section -->
 			<div class="grid grid-cols-3 gap-4 flex-grow overflow-hidden">
-				<!-- Left column: input form -->
 				<div class="space-y-7 pt-3" id="input-form">
 					<InputBox label="IP" />
 					<InputBox label="PORT" />
@@ -47,15 +43,12 @@ const categories = Array.from(
 					<InputBox label="PASSWORD" />
 					<InputBox label="DOMAIN" />
 				</div>
-
-				<!-- Right columns: command section -->
 				<div class="col-span-2 flex flex-col overflow-hidden">
-					<!-- Tab navigation buttons -->
-					<div class="flex space-x-2 border-b border-white pb-2 mb-2">
+					<div class="flex space-x-2 border-b pb-2 mb-2">
 						{
 							tabs.map((tab, index) => (
 								<button
-									class={`tab-btn px-4 py-1 border border-white rounded-md ${index === 0 ? "bg-white text-black" : "text-white"}`}
+									class={`tab-btn px-4 py-1 border rounded-md ${index === 0 ? "bg-white text-black" : ""}`}
 									data-tab={tab}
 								>
 									{tab.toUpperCase()}
@@ -63,8 +56,6 @@ const categories = Array.from(
 							))
 						}
 					</div>
-
-					<!-- Category filter checkboxes -->
 					<div class="mb-3">
 						<div class="flex flex-wrap gap-2">
 							{
@@ -84,10 +75,8 @@ const categories = Array.from(
 							}
 						</div>
 					</div>
-
-					<!-- Command display area (tabs and filters apply) -->
 					<div
-						class="space-y-2 border-2 overflow-hidden border-white p-1 rounded-xl"
+						class="space-y-2 border-2 overflow-hidden p-1 rounded-xl"
 					>
 						<div
 							id="tab-content"
