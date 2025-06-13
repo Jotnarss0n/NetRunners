@@ -1,12 +1,15 @@
 ---
+// Import global styles and components
 import "../styles/global.css";
 import Layout from "../layouts/Layout.astro";
 import CommandBox from "../components/CommandBox.astro";
 import InputBox from "../components/InputBox.astro";
 
+// Import commands data and types
 import commandsData from "../data/commands.json";
 import type { CommandData } from "../types/commands";
 
+// Parse commands into useful structures
 const commands: CommandData = commandsData;
 const tabs = Object.keys(commands);
 const categories = Array.from(
@@ -15,11 +18,13 @@ const categories = Array.from(
 ---
 
 <Layout>
+	<!-- Main container with dark theme and monospace font -->
 	<main class="h-screen bg-gray-950 text-white font-mono p-4 overflow-hidden">
+		<!-- Bordered panel centered on screen -->
 		<div
 			class="h-full max-w-screen-lg mx-auto border-2 border-white p-4 rounded-xl flex flex-col"
 		>
-			<!-- Header -->
+			<!-- Header with title and navigation buttons -->
 			<div
 				class="flex justify-between items-center mb-4 border-b border-white pb-2"
 			>
@@ -32,8 +37,9 @@ const categories = Array.from(
 				</nav>
 			</div>
 
+			<!-- 3-column grid: input form and command section -->
 			<div class="grid grid-cols-3 gap-4 flex-grow overflow-hidden">
-				<!-- Left Form Inputs -->
+				<!-- Left column: input form -->
 				<div class="space-y-4" id="input-form">
 					<InputBox label="IP" />
 					<InputBox label="PUERTO" />
@@ -42,8 +48,9 @@ const categories = Array.from(
 					<InputBox label="DOMINIO" />
 				</div>
 
-				<!-- Command Section -->
+				<!-- Right columns: command section -->
 				<div class="col-span-2 flex flex-col overflow-hidden">
+					<!-- Tab navigation buttons -->
 					<div class="flex space-x-2 border-b border-white pb-2 mb-2">
 						{
 							tabs.map((tab, index) => (
@@ -57,10 +64,10 @@ const categories = Array.from(
 						}
 					</div>
 
-					<!-- Category Filter Checkboxes -->
+					<!-- Category filter checkboxes -->
 					<div class="mb-4">
 						<p class="text-sm text-gray-400 mb-2">
-							Filtrar Categorías:
+							Filter by Categories:
 						</p>
 						<div class="flex flex-wrap gap-2">
 							{
@@ -81,10 +88,8 @@ const categories = Array.from(
 						</div>
 					</div>
 
-					<div
-						id="tab-content"
-						class="space-y-2 flex-grow overflow-y-auto pr-2"
-					>
+					<!-- Command display area (tabs and filters apply) -->
+					<div id="tab-content" class="space-y-2 flex-grow">
 						{
 							tabs.map((tab, index) => (
 								<div
@@ -107,8 +112,9 @@ const categories = Array.from(
 			</div>
 		</div>
 
-		<!-- Script para tabs, inputs y filtros -->
+		<!-- Interactive scripts for tabs, inputs, and filters -->
 		<script>
+			// Tab switching logic
 			const tabButtons = document.querySelectorAll(".tab-btn");
 			const tabContents = document.querySelectorAll("[data-tab-content]");
 
@@ -133,6 +139,7 @@ const categories = Array.from(
 				});
 			});
 
+			// Input field substitution logic
 			const inputs = document.querySelectorAll("#input-form input");
 			const updateCommands = () => {
 				const values: Record<string, string> = {};
@@ -148,7 +155,6 @@ const categories = Array.from(
 					.querySelectorAll("[data-tab-content] span")
 					.forEach((span) => {
 						const el = span as HTMLSpanElement;
-
 						let raw = el.dataset.raw || el.textContent || "";
 						el.dataset.raw = raw;
 						Object.entries(values).forEach(([key, value]) => {
@@ -162,6 +168,7 @@ const categories = Array.from(
 				input.addEventListener("input", updateCommands),
 			);
 
+			// Clipboard copy functionality
 			document.querySelectorAll("button").forEach((button) => {
 				if (button.textContent?.trim() === "COPY") {
 					button.addEventListener("click", () => {
@@ -184,11 +191,11 @@ const categories = Array.from(
 				}
 			});
 
+			// Category filter logic
 			const applyCategoryFilter = () => {
 				const checked = Array.from(
 					document.querySelectorAll(".category-filter:checked"),
 				).map((i) => (i as HTMLInputElement).value);
-
 				document
 					.querySelectorAll("[data-tab-content]")
 					.forEach((tabContent) => {
