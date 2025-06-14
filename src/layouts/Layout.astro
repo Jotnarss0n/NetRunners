@@ -1,7 +1,9 @@
 ---
+// Import the list of themes from a JSON file and type it using a custom TypeScript type
 import themes from "../../public/themes.json";
 import type { ThemeData } from "../types/types.ts";
 
+// Assign the imported data to a constant and extract the keys (theme names)
 const themeList: ThemeData = themes;
 const themeNames = Object.keys(themeList);
 ---
@@ -13,6 +15,7 @@ const themeNames = Object.keys(themeList);
 		<title>NetRunners</title>
 	</head>
 	<body data-theme="default">
+		<!-- Dropdown to select a theme -->
 		<div class="fixed top-1 right-1 z-50">
 			<select
 				id="theme-selector"
@@ -26,6 +29,7 @@ const themeNames = Object.keys(themeList);
 			</select>
 		</div>
 
+		<!-- Main content area where the theme is applied -->
 		<div
 			id="theme-wrapper"
 			class="min-h-screen transition-colors duration-300"
@@ -34,18 +38,23 @@ const themeNames = Object.keys(themeList);
 		</div>
 
 		<script type="module">
+			// Get references to HTML elements
 			const selector = document.getElementById("theme-selector");
 			const wrapper = document.getElementById("theme-wrapper");
 			const tabs = document.querySelectorAll(".theme-tab");
 			const commandsBoxes = document.querySelectorAll(".commandsBG");
 			const commandsBoxText =
 				document.querySelectorAll(".commandsTextColor");
+
+			// Fetch theme data from JSON file and handle theme switching
 			fetch("themes.json")
 				.then((response) => response.json())
 				.then((themeData) => {
+					// Function to apply the selected theme
 					const applyTheme = (themeName) => {
 						const theme = themeData[themeName] || themeData.default;
 
+						// Remove all existing theme-related classes
 						Object.values(themeData).forEach((t) => {
 							wrapper.classList.remove(
 								t.bg,
@@ -71,6 +80,7 @@ const themeNames = Object.keys(themeList);
 							);
 						});
 
+						// Add new classes for the selected theme
 						wrapper.classList.add(
 							theme.bg,
 							theme.text,
@@ -89,14 +99,18 @@ const themeNames = Object.keys(themeList);
 						commandsBoxText.forEach((commandsText) =>
 							commandsText.classList.add(theme.commandsTextColor),
 						);
+
+						// Save the selected theme to localStorage
 						localStorage.setItem("selectedTheme", themeName);
 					};
 
+					// Listen for theme change events
 					selector.addEventListener("change", (e) => {
 						const themeName = e.target.value;
 						applyTheme(themeName);
 					});
 
+					// Apply saved theme from localStorage or use default
 					const savedTheme =
 						localStorage.getItem("selectedTheme") || "default";
 					selector.value = savedTheme;
