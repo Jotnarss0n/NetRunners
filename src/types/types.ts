@@ -20,6 +20,10 @@ export interface Theme {
   bg: string;
   text: string;
   border: string;
+  tabBg: string;
+  tabActive: string;
+  commandsBG: string;
+  commandsTextColor: string;
 }
 
 export type ThemeData = Record<string, Theme>;
