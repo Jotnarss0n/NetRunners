@@ -13,10 +13,10 @@ const themeNames = Object.keys(themeList);
 		<title>NetRunners</title>
 	</head>
 	<body data-theme="default">
-		<div class="fixed top-2 right-2 z-50">
+		<div class="fixed top-1 right-1 z-50">
 			<select
 				id="theme-selector"
-				class="px-2 py-1 rounded transition-colors duration-300"
+				class="px-2 py-1 rounded-xl transition-colors duration-300 border-2"
 			>
 				{
 					themeNames.map((name) => (
@@ -25,16 +25,21 @@ const themeNames = Object.keys(themeList);
 				}
 			</select>
 		</div>
+
 		<div
 			id="theme-wrapper"
 			class="min-h-screen transition-colors duration-300"
 		>
 			<slot />
 		</div>
+
 		<script type="module">
 			const selector = document.getElementById("theme-selector");
 			const wrapper = document.getElementById("theme-wrapper");
-
+			const tabs = document.querySelectorAll(".theme-tab");
+			const commandsBoxes = document.querySelectorAll(".commandsBG");
+			const commandsBoxText =
+				document.querySelectorAll(".commandsTextColor");
 			fetch("themes.json")
 				.then((response) => response.json())
 				.then((themeData) => {
@@ -45,12 +50,24 @@ const themeNames = Object.keys(themeList);
 							wrapper.classList.remove(
 								t.bg,
 								t.text,
+								t.tabBg,
 								...t.border.split(" "),
 							);
 							selector.classList.remove(
 								t.bg,
 								t.text,
 								...t.border.split(" "),
+							);
+							tabs.forEach((tab) =>
+								tab.classList.remove(t.tabBg),
+							);
+							commandsBoxes.forEach((commandsBox) =>
+								commandsBox.classList.remove(t.commandsBG),
+							);
+							commandsBoxText.forEach((commandsText) =>
+								commandsText.classList.remove(
+									t.commandsTextColor,
+								),
 							);
 						});
 
@@ -65,6 +82,13 @@ const themeNames = Object.keys(themeList);
 							...theme.border.split(" "),
 						);
 
+						tabs.forEach((tab) => tab.classList.add(theme.tabBg));
+						commandsBoxes.forEach((commandsBox) =>
+							commandsBox.classList.add(theme.commandsBG),
+						);
+						commandsBoxText.forEach((commandsText) =>
+							commandsText.classList.add(theme.commandsTextColor),
+						);
 						localStorage.setItem("selectedTheme", themeName);
 					};
 

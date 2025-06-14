@@ -48,7 +48,7 @@ const categories = Array.from(
 						{
 							tabs.map((tab, index) => (
 								<button
-									class={`tab-btn px-4 py-1 border rounded-md ${index === 0 ? "bg-white text-black" : ""}`}
+									class={`theme-tab tab-btn px-4 py-1 border rounded-md `}
 									data-tab={tab}
 								>
 									{tab.toUpperCase()}
@@ -111,28 +111,33 @@ const categories = Array.from(
 
 		<!-- Interactive scripts for tabs, inputs, and filters -->
 		<script>
-			// Tab switching logic
+			// Tab switching logic compatible with themed styles
 			const tabButtons = document.querySelectorAll(".tab-btn");
 			const tabContents = document.querySelectorAll("[data-tab-content]");
 
-			tabButtons.forEach((btn) => {
-				btn.addEventListener("click", () => {
-					tabButtons.forEach((b) => {
-						b.classList.remove("bg-white", "text-black");
-						b.classList.add("text-white");
-					});
-					btn.classList.add("bg-white", "text-black");
-					btn.classList.remove("text-white");
+			let activeTab = null;
 
-					const target = (btn as HTMLElement).dataset.tab;
+			tabButtons.forEach((btn) => {
+				const button = btn as HTMLElement;
+
+				button.addEventListener("click", () => {
+					const target = button.dataset.tab;
+					activeTab = target;
+
+					tabButtons.forEach((b) => {
+						(b as HTMLElement).classList.remove("tabActive");
+					});
+					button.classList.add("tabActive");
+
 					tabContents.forEach((content) => {
-						content.classList.toggle(
+						const element = content as HTMLElement;
+						element.classList.toggle(
 							"hidden",
-							(content as HTMLElement).dataset.tabContent !==
-								target,
+							element.dataset.tabContent !== target,
 						);
 					});
-					applyCategoryFilter();
+
+					applyCategoryFilter?.();
 				});
 			});
 
