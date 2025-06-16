@@ -20,7 +20,7 @@ const categories = Array.from(
 <Layout>
 	<main class="h-screen font-mono p-4 overflow-hidden">
 		<div
-			class="h-full max-w-screen-lg mx-auto border-2 p-4 rounded-xl flex flex-col"
+			class="h-full max-w-screen-2xl mx-auto border-2 p-4 rounded-xl flex flex-col"
 			id="theme-panel"
 		>
 			<div
@@ -35,7 +35,7 @@ const categories = Array.from(
 					<button class="hover:underline">About</button>
 				</nav>
 			</div>
-			<div class="grid grid-cols-3 gap-4 flex-grow overflow-hidden">
+			<div class="grid grid-cols-4 gap-4 flex-grow overflow-hidden">
 				<div class="space-y-7 pt-3" id="input-form">
 					<InputBox label="URL" />
 					<InputBox label="IP" />
@@ -44,7 +44,7 @@ const categories = Array.from(
 					<InputBox label="PASSWORD" />
 					<InputBox label="DOMAIN" />
 				</div>
-				<div class="col-span-2 flex flex-col overflow-hidden">
+				<div class="col-span-3 flex flex-col overflow-hidden">
 					<div class="flex space-x-2 border-b pb-2 mb-2">
 						{
 							tabs.map((tab, index) => (

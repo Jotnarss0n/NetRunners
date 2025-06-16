@@ -6,9 +6,11 @@ const { command } = Astro.props;
 ---
 
 <div
-    class="commandsBG p-3 rounded flex justify-between items-center commandsTextColor border border-inherit"
+    class="commandsBG p-3 rounded flex justify-between items-center commandsTextColor border border-inherit truncate"
 >
-    <span class="truncate" data-raw={command}>{command}</span>
+    <span class="overflow-y-auto scroll-hover-horizontal" data-raw={command}
+        >{command}</span
+    >
     <button
         class="copy-btn ml-4 text-xs px-2 py-1 border rounded bg-white text-black"
     >
