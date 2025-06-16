@@ -2,6 +2,7 @@
   
 /* Custom scroll bar with hover */
 
+/* vertical */
 .scroll-hover::-webkit-scrollbar {
   width: 0px;
 }
@@ -17,3 +18,19 @@
   height: 7px;
 }
 
+/* horizontal */
+
+.scroll-hover-horizontal::-webkit-scrollbar {
+  height: 0px;
+}
+.scroll-hover-horizontal:hover::-webkit-scrollbar {
+  height: 5px;
+}
+.scroll-hover-horizontal::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+  
+}
+.scroll-hover-horizontal::-webkit-scrollbar-button {
+  width: 0px;
+}
