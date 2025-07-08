@@ -34,7 +34,28 @@ const themeNames = Object.keys(themeList);
 			id="theme-wrapper"
 			class="min-h-screen transition-colors duration-300"
 		>
-			<slot />
+			<main class="h-screen font-mono p-4 overflow-hidden">
+					<div
+						class="h-full max-w-screen-2xl mx-auto border-2 p-4 rounded-xl flex flex-col"
+						id="theme-panel"
+					>
+						<div
+							class="flex justify-between items-center mb-4 border-b pb-2"
+							id="theme-header"
+						>
+							<div class="text-xl font-bold tracking-wider">NETRUNNERS</div>
+							<nav class="space-x-4">
+								<a href="/">
+									<button class="hover:underline">COMMANDS</button>
+								</a>
+								<button class="hover:underline">WRITEUPS</button>
+								<button class="hover:underline">SUPPORT</button>
+								<button class="hover:underline">About</button>
+							</nav>
+						</div>
+					<slot />
+				</div>
+			</main>
 		</div>
 
 		<script type="module">

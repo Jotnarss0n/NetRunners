@@ -18,23 +18,7 @@ const categories = Array.from(
 ---
 
 <Layout>
-	<main class="h-screen font-mono p-4 overflow-hidden">
-		<div
-			class="h-full max-w-screen-2xl mx-auto border-2 p-4 rounded-xl flex flex-col"
-			id="theme-panel"
-		>
-			<div
-				class="flex justify-between items-center mb-4 border-b pb-2"
-				id="theme-header"
-			>
-				<div class="text-xl font-bold tracking-wider">NETRUNNERS</div>
-				<nav class="space-x-4">
-					<button class="hover:underline">COMMANDS</button>
-					<button class="hover:underline">WRITEUPS</button>
-					<button class="hover:underline">SUPPORT</button>
-					<button class="hover:underline">About</button>
-				</nav>
-			</div>
+		
 			<div class="grid grid-cols-4 gap-4 flex-grow overflow-hidden">
 				<div class="space-y-7 pt-3" id="input-form">
 					<InputBox label="URL" />
@@ -108,7 +92,7 @@ const categories = Array.from(
 					</div>
 				</div>
 			</div>
-		</div>
+		
 
 		<!-- Interactive scripts for tabs, inputs, and filters -->
 		<script>
@@ -239,5 +223,5 @@ const categories = Array.from(
 				cb.addEventListener("change", applyCategoryFilter);
 			});
 		</script>
-	</main>
+	
 </Layout>
