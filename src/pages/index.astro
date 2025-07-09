@@ -102,6 +102,9 @@ const categories = Array.from(
 			const tabContents = document.querySelectorAll("[data-tab-content]");
 
 			let activeTab = null;
+			if(tabButtons.length){
+				(tabButtons[0] as HTMLElement).classList.add('tabActive');
+			}
 
 			tabButtons.forEach((btn) => {
 				const button = btn as HTMLElement;
