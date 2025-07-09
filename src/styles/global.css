@@ -34,3 +34,102 @@
 .scroll-hover-horizontal::-webkit-scrollbar-button {
   width: 0px;
 }
+
+/* checkbox */
+input.theme-checkbox{
+  -webkit-appearance:none;
+  appearance:none;
+  width:1rem;height:1rem;
+  border:2px solid var(--theme-border);
+  border-radius:0.15rem;
+  background:var(--theme-card);
+  cursor:pointer;
+  transition:background 0.2s,border-color 0.2s;
+  background-clip: content-box;
+  padding: 2px;
+}
+input.theme-checkbox:checked{
+  background:var(--theme-text);
+  background-clip: content-box;
+  padding: 2px;
+}
+
+ /* themes */
+:root {
+  --theme-bg: #18181b;
+  --theme-text: #f5f5f5;
+  --theme-border: #3f3f46;
+  --theme-card: #23232b;
+  --theme-card-text: #f5f5f5;
+}
+
+.theme-default {
+  --theme-bg: #18181b;
+  --theme-text: #f5f5f5;
+  --theme-border: #3f3f46;
+  --theme-card: #23232b;
+  --theme-card-text: #f5f5f5;
+}
+.theme-matrix {
+  --theme-bg: #0d0208;
+  --theme-text: #00ff41;
+  --theme-border: #003b00;
+  --theme-card: #18181b;
+  --theme-card-text: #00ff41;
+}
+.theme-neon {
+  --theme-bg: #000000;
+  --theme-text: #39ff14;
+  --theme-border: #39ff14;
+  --theme-card: #1a1a1a;
+  --theme-card-text: #39ff14;
+}
+.theme-retro-wave {
+  --theme-bg: #1e003e;
+  --theme-text: #ff77ff;
+  --theme-border: #ff00ff;
+  --theme-card: #2e0066;
+  --theme-card-text: #ff77ff;
+}
+.theme-infrared {
+  --theme-bg: #220000;
+  --theme-text: #ff003c;
+  --theme-border: #ff0000;
+  --theme-card: #330000;
+  --theme-card-text: #ff003c;
+}
+.theme-glitch {
+  --theme-bg: #0c0c1e;
+  --theme-text: #f0f0f0;
+  --theme-border: #ff00ff;
+  --theme-card: #1e1e3f;
+  --theme-card-text: #f0f0f0;
+}
+.theme-quantum {
+  --theme-bg: #001f3f;
+  --theme-text: #7fdbff;
+  --theme-border: #0074d9;
+  --theme-card: #003366;
+  --theme-card-text: #7fdbff;
+}
+.theme-nightcore {
+  --theme-bg: #0e0a14;
+  --theme-text: #e600ff;
+  --theme-border: #a100c0;
+  --theme-card: #1c102a;
+  --theme-card-text: #e600ff;
+}
+.theme-techno {
+  --theme-bg: #121212;
+  --theme-text: #00ffff;
+  --theme-border: #00bcd4;
+  --theme-card: #1f1f1f;
+  --theme-card-text: #00ffff;
+}
+.theme-darknet {
+  --theme-bg: #050505;
+  --theme-text: #ff4444;
+  --theme-border: #880000;
+  --theme-card: #111111;
+  --theme-card-text: #ff4444;
+}

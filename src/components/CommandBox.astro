@@ -6,13 +6,15 @@ const { command } = Astro.props;
 ---
 
 <div
-    class="commandsBG p-3 rounded flex justify-between items-center commandsTextColor border border-inherit truncate"
+    class="p-3 rounded flex justify-between items-center border border-inherit truncate"
+    style="background: var(--theme-card); color: var(--theme-card-text); border-color: var(--theme-border);"
 >
     <span class="overflow-y-auto scroll-hover-horizontal" data-raw={command}
         >{command}</span
     >
     <button
-        class="copy-btn ml-4 text-xs px-2 py-1 border rounded bg-white text-black"
+        class="copy-btn ml-4 text-xs px-2 py-1 border rounded transition-colors"
+        style="background: var(--theme-card); color: var(--theme-card-text); border-color: var(--theme-border);"
     >
         COPY
     </button>

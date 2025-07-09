@@ -1,92 +1,12 @@
 {
-  "default": {
-    "bg": "bg-black",
-    "text": "text-[#f5f5f5]",
-    "border": "border-[#fffff]",
-    "tabBg": "bg-[#1a1a2e]",
-    "tabActive": "bg-[#ff00cc]",
-    "commandsBG": "bg-black",
-    "commandsTextColor": "text-[#fffff]"
-  },
-  "neon": {
-    "bg": "bg-[#000000]",
-    "text": "text-[#39ff14]",
-    "border": "border-[#39ff14]",
-    "tabBg": "bg-[#111111]",
-    "tabActive": "bg-[#39ff14]",
-    "commandsBG": "bg-[#1a1a1a]",
-    "commandsTextColor": "text-[#39ff14]"
-  },
-  "matrix": {
-    "bg": "bg-[#0d0208]",
-    "text": "text-[#00ff41]",
-    "border": "border-[#003b00]",
-    "tabBg": "bg-[#003b00]",
-    "tabActive": "bg-[#00ff41]",
-    "commandsBG": "bg-[#001a00]",
-    "commandsTextColor": "text-[#00ff41]"
-  },
-  "retro-wave": {
-    "bg": "bg-[#1e003e]",
-    "text": "text-[#ff77ff]",
-    "border": "border-[#ff00ff]",
-    "tabBg": "bg-[#2e0066]",
-    "tabActive": "bg-[#ff00ff]",
-    "commandsBG": "bg-[#00ffff]",
-    "commandsTextColor": "text-[#1e003e]"
-  },
-  "infrared": {
-    "bg": "bg-[#220000]",
-    "text": "text-[#ff003c]",
-    "border": "border-[#ff0000]",
-    "tabBg": "bg-[#330000]",
-    "tabActive": "bg-[#ff003c]",
-    "commandsBG": "bg-[#660000]",
-    "commandsTextColor": "text-[#ff9999]"
-  },
-  "glitch": {
-    "bg": "bg-[#0c0c1e]",
-    "text": "text-[#f0f0f0]",
-    "border": "border-[#ff00ff]",
-    "tabBg": "bg-[#1e1e3f]",
-    "tabActive": "bg-[#ff00ff]",
-    "commandsBG": "bg-[#00ffe7]",
-    "commandsTextColor": "text-black"
-  },
-  "quantum": {
-    "bg": "bg-[#001f3f]",
-    "text": "text-[#7fdbff]",
-    "border": "border-[#0074d9]",
-    "tabBg": "bg-[#003366]",
-    "tabActive": "bg-[#7fdbff]",
-    "commandsBG": "bg-[#001a33]",
-    "commandsTextColor": "text-[#7fdbff]"
-  },
-  "nightcore": {
-    "bg": "bg-[#0e0a14]",
-    "text": "text-[#e600ff]",
-    "border": "border-[#a100c0]",
-    "tabBg": "bg-[#1c102a]",
-    "tabActive": "bg-[#e600ff]",
-    "commandsBG": "bg-[#460073]",
-    "commandsTextColor": "text-[#ffffff]"
-  },
-  "techno": {
-    "bg": "bg-[#121212]",
-    "text": "text-[#00ffff]",
-    "border": "border-[#00bcd4]",
-    "tabBg": "bg-[#1f1f1f]",
-    "tabActive": "bg-[#00ffff]",
-    "commandsBG": "bg-[#00bcd4]",
-    "commandsTextColor": "text-black"
-  },
-  "darknet": {
-    "bg": "bg-[#050505]",
-    "text": "text-[#ff4444]",
-    "border": "border-[#880000]",
-    "tabBg": "bg-[#111111]",
-    "tabActive": "bg-[#ff4444]",
-    "commandsBG": "bg-[#330000]",
-    "commandsTextColor": "text-[#ffcccc]"
-  }
+  "default": {},
+  "neon": {},
+  "matrix": {},
+  "retro-wave": {},
+  "infrared": {},
+  "glitch": {},
+  "quantum": {},
+  "nightcore": {},
+  "techno": {},
+  "darknet": {}
 }
