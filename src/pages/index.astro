@@ -18,24 +18,7 @@ const categories = Array.from(
 ---
 
 <Layout>
-	<main class="h-screen font-mono p-4 overflow-hidden">
-		<div
-			class="h-full max-w-screen-2xl mx-auto border-2 p-4 rounded-xl flex flex-col"
-			id="theme-panel"
-		>
-			<div
-				class="flex justify-between items-center mb-4 border-b pb-2"
-				id="theme-header"
-			>
-				<div class="text-xl font-bold tracking-wider">NETRUNNERS</div>
-				<nav class="space-x-4">
-					<button class="hover:underline">COMMANDS</button>
-					<button class="hover:underline">WRITEUPS</button>
-					<button class="hover:underline">SUPPORT</button>
-					<button class="hover:underline">About</button>
-				</nav>
-			</div>
-			<div class="grid grid-cols-4 gap-4 flex-grow overflow-hidden">
+			<div class="grid grid-cols-4 gap-4 flex-grow overflow-hidden" style=" color: var(--theme-text);">
 				<div class="space-y-7 pt-3" id="input-form">
 					<InputBox label="URL" />
 					<InputBox label="IP" />
@@ -46,11 +29,11 @@ const categories = Array.from(
 					<InputBox label="DC.DOMAIN" />
 				</div>
 				<div class="col-span-3 flex flex-col overflow-hidden">
-					<div class="flex space-x-2 border-b pb-2 mb-2">
+					<div class="flex space-x-2 border-b pb-2 mb-2 border-inherit" style="border-color: var(--theme-border);">
 						{
 							tabs.map((tab, index) => (
 								<button
-									class={`theme-tab tab-btn px-4 py-1 border rounded-md `}
+									class={`theme-tab tab-btn px-4 py-1 border rounded-md border-inherit`}
 									data-tab={tab}
 								>
 									{tab.toUpperCase()}
@@ -66,7 +49,7 @@ const categories = Array.from(
 										<input
 											type="checkbox"
 											value={cat}
-											class="category-filter"
+											class="theme-checkbox category-filter"
 											checked
 										/>
 										<span class="capitalize text-sm">
@@ -78,7 +61,8 @@ const categories = Array.from(
 						</div>
 					</div>
 					<div
-						class="space-y-2 border-2 overflow-hidden p-1 rounded-xl"
+						class="space-y-2 border-2 overflow-hidden p-1 rounded-xl border-inherit"
+						style="border-color: var(--theme-border);"
 					>
 						<div
 							id="tab-content"
@@ -109,7 +93,7 @@ const categories = Array.from(
 					</div>
 				</div>
 			</div>
-		</div>
+		
 
 		<!-- Interactive scripts for tabs, inputs, and filters -->
 		<script>
@@ -203,12 +187,10 @@ const categories = Array.from(
 						if (!command) return;
 						navigator.clipboard.writeText(command).then(() => {
 							button.textContent = "COPIED!";
-							button.classList.remove("bg-white");
-							button.classList.add("bg-green-600");
+							// button.classList.add("bg-green-600");
 							setTimeout(() => {
 								button.textContent = "COPY";
-								button.classList.add("bg-white");
-								button.classList.remove("bg-green-600");
+								// button.classList.remove("bg-green-600");
 							}, 1000);
 						});
 					});
@@ -240,5 +222,9 @@ const categories = Array.from(
 				cb.addEventListener("change", applyCategoryFilter);
 			});
 		</script>
-	</main>
+	
 </Layout>
+
+<style is:global>
+
+</style>

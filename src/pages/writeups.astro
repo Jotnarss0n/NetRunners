@@ -1,0 +1,23 @@
+---
+// Import global styles and components
+import "../styles/global.css";
+import Layout from "../layouts/Layout.astro";
+import WriteupCard from "../components/writeupCard.astro";
+import cards from "../data/cards.json";
+---
+
+<Layout>
+  <div class="py-8 h-[80vh] overflow-x-visible overflow-y-auto px-16 scroll-hover" style="color: var(--theme-text);">
+    {cards.map(card => (
+      <WriteupCard
+        id={`modal-${card.title.replace(/\s+/g, '-')}`}
+        title={card.title}
+        description={card.description}
+        date={card.date}
+        type={card.type}
+        image={card.image}
+        links={card.links}
+      />
+    ))}
+  </div>
+</Layout>

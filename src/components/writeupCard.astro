@@ -1,0 +1,78 @@
+---
+const { id, title, description, date, type, image, links = [] } = Astro.props;
+---
+ <!-- Writeup card content -->
+<div
+  class="writeup-card rounded-xl p-4 flex items-center gap-4 hover:scale-105 shadow-md border mb-4 cursor-pointer hover:ring-2 transition"
+  style="background: var(--theme-card); color: var(--theme-card-text); border-color: var(--theme-border);"
+  data-dialog-id={"dialog-" + id}
+>
+  <div class="flex-1">
+    <h2 class="text-lg font-semibold mb-1">{title}</h2>
+    <p class="text-sm mb-2 line-clamp-2 opacity-60">{description}</p>
+    <div class="flex items-center gap-4 text-xs ">
+      <span class="flex items-center gap-1">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+        {new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+      </span>
+      <span class="flex items-center gap-1">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 20h9" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4h9" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h16v16H4z" /></svg>
+        {type.charAt(0).toUpperCase() + type.slice(1)}
+      </span>
+    </div>
+  </div>
+  <div class="w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden border border-zinc-700 bg-zinc-800 flex items-center justify-center">
+    <img src={image} alt={title} class="object-cover w-full h-full" />
+  </div>
+</div>
+
+<!-- Dialog message for the links -->
+<dialog id={"dialog-" + id} class="close-dialog rounded-2xl p-6 min-w-[300px] my-auto mx-auto max-w-[90vw] shadow-2xl transition-all duration-700 border-2" style="background: var(--theme-card); color: var(--theme-card-text); border-color: var(--theme-border);">
+  <h3 class="text-lg font-bold mb-2">Enlaces disponibles</h3>
+  <ul class="flex flex-col gap-3 mb-4">
+    {links.length === 0 && <li class="text-sm opacity-60">No links available</li>}
+    {links.map((link: any) => (
+      <li class="flex items-center gap-2 group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 opacity-70 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        <a href={link.url} target="_blank" rel="noopener" class="underline underline-offset-4 decoration-2 transition-colors group-hover:opacity-100 opacity-80 hover:opacity-100" style="color: var(--theme-card-text);">
+          {link.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+  <form method="dialog">
+    <button class="px-4 py-1 rounded hover:bg-zinc-700" type="submit">Cerrar</button>
+  </form>
+</dialog>
+
+<!-- style for the dialog backdrop -->
+<style>
+dialog::backdrop {
+  background: rgba(0,0,0,0.5);
+}
+</style>
+
+<!-- script to open the dialog when the card is clicked -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.writeup-card').forEach(function(card) {
+    card.addEventListener('click', function() {
+      const dialogId = card.getAttribute('data-dialog-id');
+      if (!dialogId) return;
+      const dialog = document.getElementById(dialogId);
+      if (dialog && typeof (dialog as HTMLDialogElement).showModal === 'function') {
+        (dialog as HTMLDialogElement).showModal();
+      }
+    });
+  });
+  // close the dialog when clicking outside the content
+  document.querySelectorAll('.close-dialog').forEach(function(dialog) {
+    dialog.addEventListener('click', function(event) {
+      if (event.target === dialog) {
+        (dialog as HTMLDialogElement).close();
+      }
+    });
+  });
+});
+</script>
+

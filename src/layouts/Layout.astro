@@ -1,11 +1,9 @@
 ---
 // Import the list of themes from a JSON file and type it using a custom TypeScript type
 import themes from "../../public/themes.json";
-import type { ThemeData } from "../types/types.ts";
 
-// Assign the imported data to a constant and extract the keys (theme names)
-const themeList: ThemeData = themes;
-const themeNames = Object.keys(themeList);
+// Extract theme names for the selector build-time (optional)
+const themeNames = Object.keys(themes);
 ---
 
 <html lang="en">
@@ -13,19 +11,28 @@ const themeNames = Object.keys(themeList);
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>NetRunners</title>
+		<!-- prevent FOUC by applying theme class before paint -->
+		<style>html{visibility:hidden}</style>
+		<script is:inline>
+		(function(){
+		  try{
+		    const saved = localStorage.getItem('selectedTheme') || 'default';
+		    document.documentElement.classList.add(`theme-${saved}`);
+		    document.body.classList.add(`theme-${saved}`);
+		  }catch(_){/* ignore */}
+		  document.documentElement.style.visibility='visible';
+		})();
+		</script>
 	</head>
-	<body data-theme="default">
+	<body style="background: var(--theme-bg); color: var(--theme-text);">
 		<!-- Dropdown to select a theme -->
 		<div class="fixed top-1 right-1 z-50">
 			<select
 				id="theme-selector"
-				class="px-2 py-1 rounded-xl transition-colors duration-300 border-2"
+				class="px-2 py-1 rounded-xl transition-colors duration-300 border-2 border-inherit"
+				style="background: var(--theme-card); color: var(--theme-card-text); border-color: var(--theme-border);"
 			>
-				{
-					themeNames.map((name) => (
-						<option value={name}>{name.toUpperCase()}</option>
-					))
-				}
+
 			</select>
 		</div>
 
@@ -33,84 +40,79 @@ const themeNames = Object.keys(themeList);
 		<div
 			id="theme-wrapper"
 			class="min-h-screen transition-colors duration-300"
+			style="background: var(--theme-bg); color: var(--theme-text);"
 		>
-			<slot />
+			<main class="h-screen font-mono p-4 overflow-hidden">
+					<div
+						class="h-full max-w-screen-2xl mx-auto border-2 p-4 rounded-xl flex flex-col border-inherit"
+						id="theme-panel"
+						style="background: var(--theme-card); color: var(--theme-card-text); border-color: var(--theme-border);"
+					>
+						<div
+							class="flex justify-between items-center mb-4 border-b pb-2 border-inherit"
+							id="theme-header"
+							style="border-color: var(--theme-border);"
+						>
+							<div class="text-xl font-bold tracking-wider">NETRUNNERS</div>
+							<nav class="space-x-4">
+								<a href="/">
+									<button class="hover:underline">COMMANDS</button>
+								</a>
+								<a href="/writeups">
+									<button class="hover:underline">WRITEUPS</button>
+								</a>
+								<a href="/support">
+									<button class="hover:underline">SUPPORT</button>
+								</a>
+								<a href="/about">
+									<button class="hover:underline">About</button>
+								</a>
+							</nav>
+						</div>
+					<slot />
+				</div>
+			</main>
 		</div>
 
 		<script type="module">
-			// Get references to HTML elements
+			// get references to HTML elements
 			const selector = document.getElementById("theme-selector");
-			const wrapper = document.getElementById("theme-wrapper");
+			const body = document.body;
 			const tabs = document.querySelectorAll(".theme-tab");
 			const commandsBoxes = document.querySelectorAll(".commandsBG");
 			const commandsBoxText =
 				document.querySelectorAll(".commandsTextColor");
 
-			// Fetch theme data from JSON file and handle theme switching
+			// fetch theme data from JSON file and handle theme switching
 			fetch("themes.json")
 				.then((response) => response.json())
 				.then((themeData) => {
-					// Function to apply the selected theme
-					const applyTheme = (themeName) => {
-						const theme = themeData[themeName] || themeData.default;
-
-						// Remove all existing theme-related classes
-						Object.values(themeData).forEach((t) => {
-							wrapper.classList.remove(
-								t.bg,
-								t.text,
-								t.tabBg,
-								...t.border.split(" "),
-							);
-							selector.classList.remove(
-								t.bg,
-								t.text,
-								...t.border.split(" "),
-							);
-							tabs.forEach((tab) =>
-								tab.classList.remove(t.tabBg),
-							);
-							commandsBoxes.forEach((commandsBox) =>
-								commandsBox.classList.remove(t.commandsBG),
-							);
-							commandsBoxText.forEach((commandsText) =>
-								commandsText.classList.remove(
-									t.commandsTextColor,
-								),
-							);
+					const themeNames = Object.keys(themeData);
+					// Poblar el selector si no se hace en el template
+					if (selector.options.length === 0) {
+						themeNames.forEach((name) => {
+							const option = document.createElement('option');
+							option.value = name;
+							option.textContent = name.toUpperCase();
+							selector.appendChild(option);
 						});
-
-						// Add new classes for the selected theme
-						wrapper.classList.add(
-							theme.bg,
-							theme.text,
-							...theme.border.split(" "),
-						);
-						selector.classList.add(
-							theme.bg,
-							theme.text,
-							...theme.border.split(" "),
-						);
-
-						tabs.forEach((tab) => tab.classList.add(theme.tabBg));
-						commandsBoxes.forEach((commandsBox) =>
-							commandsBox.classList.add(theme.commandsBG),
-						);
-						commandsBoxText.forEach((commandsText) =>
-							commandsText.classList.add(theme.commandsTextColor),
-						);
-
-						// Save the selected theme to localStorage
+					}
+					// function to apply the selected theme
+					const applyTheme = (themeName) => {
+						themeNames.forEach((name) => {
+							body.classList.remove(`theme-${name}`);
+						});
+						body.classList.add(`theme-${themeName}`);
 						localStorage.setItem("selectedTheme", themeName);
 					};
 
-					// Listen for theme change events
+					// listen for theme change events
 					selector.addEventListener("change", (e) => {
 						const themeName = e.target.value;
 						applyTheme(themeName);
 					});
 
-					// Apply saved theme from localStorage or use default
+					// apply saved theme from localStorage or use default
 					const savedTheme =
 						localStorage.getItem("selectedTheme") || "default";
 					selector.value = savedTheme;
