@@ -6,8 +6,14 @@
     "type": "writeup",
     "image": "/src/assets/writeupImages/image.png",
     "links": [
-      { "label": "HTB Challenge", "url": "https://www.hackthebox.com/challenge/ebs" },
-      { "label": "Writeup PDF", "url": "https://example.com/ebs-writeup.pdf" }
+      {
+        "label": "HTB Challenge",
+        "url": "https://www.hackthebox.com/challenge/ebs"
+      },
+      {
+        "label": "Writeup PDF",
+        "url": "https://example.com/ebs-writeup.pdf"
+      }
     ]
   },
   {
@@ -17,7 +23,10 @@
     "type": "writeup",
     "image": "/src/assets/writeupImages/image.png",
     "links": [
-      { "label": "HTB Forums", "url": "https://www.hackthebox.com/forums/volnaya" }
+      {
+        "label": "HTB Forums",
+        "url": "https://www.hackthebox.com/forums/volnaya"
+      }
     ]
   },
   {
@@ -27,7 +36,10 @@
     "type": "writeup",
     "image": "/src/assets/writeupImages/image.png",
     "links": [
-      { "label": "Dashboarded Info", "url": "https://www.hackthebox.com/dashboarded" }
+      {
+        "label": "Dashboarded Info",
+        "url": "https://www.hackthebox.com/dashboarded"
+      }
     ]
   },
   {
@@ -37,7 +49,14 @@
     "type": "writeup",
     "image": "https://labs.hackthebox.com/storage/avatars/b8f3d660af2d3ed0929eb119e33526cf.png",
     "links": [
-      { "label": "HTB Chemistry", "url": "https://www.hackthebox.com/machines/chemistry" }
+      {
+        "label": "HTB Chemistry",
+        "url": "https://www.hackthebox.com/machines/chemistry"
+      },
+      {
+        "label": "Whare1",
+        "url": "https://www.hackthebox.com/machines/chemistry"
+      }
     ]
   }
-] 
+]

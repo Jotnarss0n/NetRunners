@@ -54,6 +54,24 @@ input.theme-checkbox:checked{
   padding: 2px;
 }
 
+/* input autofill theme */
+
+input.theme-input:-webkit-autofill,
+input.theme-input:-webkit-autofill:hover,
+input.theme-input:-webkit-autofill:focus,
+input.theme-input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px var(--theme-card) inset !important;
+  -webkit-text-fill-color: var(--theme-card-text) !important;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+/* tab active theme */
+.tabActive{
+  background: var(--theme-text);
+  color: var(--theme-card);
+  border-color: var(--theme-text);
+}
+
  /* themes */
 :root {
   --theme-bg: #18181b;
