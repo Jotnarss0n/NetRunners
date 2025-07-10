@@ -82,11 +82,11 @@ input.theme-input:-webkit-autofill:active {
 }
 
 .theme-default {
-  --theme-bg: #18181b;
-  --theme-text: #f5f5f5;
-  --theme-border: #3f3f46;
-  --theme-card: #23232b;
-  --theme-card-text: #f5f5f5;
+  --theme-bg: #000000;
+  --theme-text: #ffffff;
+  --theme-border: #ffffff;
+  --theme-card: #000000;
+  --theme-card-text: #ffffff;
 }
 .theme-matrix {
   --theme-bg: #0d0208;
