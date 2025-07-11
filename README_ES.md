@@ -35,7 +35,6 @@ NetRunners Toolkit es un set de herramientas ligero y modular para **pentesting*
 
 * Comandos automatizados para fases de reconocimiento, explotación y post-explotación.
 * Plantillas de scripts personalizables.
-* Integración con [lostsec.xyz](https://lostsec.xyz/) y flujos de trabajo de bug bounty.
 * Estructura modular para añadir o eliminar herramientas fácilmente.
 
 ---
