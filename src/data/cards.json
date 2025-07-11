@@ -47,6 +47,7 @@
     "description": "Chemistry is an easy difficulty machine on HackTheBox that takes you through a series of steps involving network enumeration, web application testing, and...",
     "date": "2025-03-08",
     "type": "easy",
+    "type": "easy",
     "image": "https://labs.hackthebox.com/storage/avatars/b8f3d660af2d3ed0929eb119e33526cf.png",
     "links": [
       {
