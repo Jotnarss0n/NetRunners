@@ -1,10 +1,10 @@
 [
   {
-    "title": "EBS HTB Bussines CTF 2025",
-    "description": "Objective: The Volnaya Emergency Broadcast System (EBS) is a critical platform for disseminating urgent public communications. The public-facing portal...",
-    "date": "2025-05-28",
-    "type": "hard",
-    "image": "/images/writeups/image.png",
+    "title": "Voleur HTB Medium",
+    "description": "HackTheBox's active Windows machine focused on Active Directory enumeration and privilege escalation, protected by NTLM hash encryption to prevent spoilers and ensure only those who complete the machine can fully access its details.",
+    "date": "2025-07-05",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/voleur.png",
     "links": [
       {
         "label": "Whare1's solution",
@@ -13,11 +13,11 @@
     ]
   },
   {
-    "title": "Volnaya Forums HTB Bussines CTF 2025",
-    "description": "Objective: The Volnaya Forums stand as a sprawling network where citizens compete to outdo each other in public displays of loyalty...",
-    "date": "2025-05-27",
-    "type": "medium",
-    "image": "/images/writeups/image.png",
+    "title": "Rustykey HTB Hard",
+    "description": "HackTheBox's active Windows hard machine focused on Active Directory enumeration and privilege escalation, protected by NTLM hash encryption to prevent spoilers and ensure only those who complete the machine can fully access its details.",
+    "date": "2025-06-28",
+    "type": "hard",
+    "image": "https://whare1.netrunners.in/assets/images/rustykey.png",
     "links": [
       {
         "label": "Whare1's solution",
@@ -29,8 +29,8 @@
     "title": "Dashboarded HTB Bussines CTF 2025",
     "description": "Objective: The goal is to infiltrate Volnaya's cloud-based Industrial Control System (ICS) monitoring network, locate sensitive data, and enable the Task...",
     "date": "2025-05-27",
-    "type": "insane",
-    "image": "/images/writeups/image.png",
+    "type": "easy",
+    "image": "https://whare1.netrunners.in/assets/images/aws2.png",
     "links": [
       {
         "label": "Whare1's solution",
@@ -40,11 +40,10 @@
   },
   {
     "title": "Volnaya Forums HTB Bussines CTF 2025",
-    "description": "Chemistry is an easy difficulty machine on HackTheBox that takes you through a series of steps involving network enumeration, web application testing, and...",
+    "description": "This walkthrough details the exploitation of a web application in a white-box CTF scenario, where we have access to the source code. The goal is to retrieve the flag stored in /flag.txt, accessible via the /api/auth endpoint for the admin user. The application contains vulnerabilities including Insecure Direct Object Reference (IDOR), Broken Access Control, and Cross-Site Scripting (XSS), compounded by CORS restrictions that necessitate a webhook for data exfiltration. We combine these with a bot-based report system to achieve our objective.",
     "date": "2025-03-08",
     "type": "easy",
-    "type": "easy",
-    "image": "https://labs.hackthebox.com/storage/avatars/b8f3d660af2d3ed0929eb119e33526cf.png",
+    "image": "https://whare1.netrunners.in/assets/images/vol_forum.png",
     "links": [
       {
         "label": "Whare1's solution",
