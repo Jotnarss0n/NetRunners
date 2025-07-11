@@ -9,14 +9,14 @@
 
 ## 📚 Table of Contents
 
-1. [Overview](#-overview)
-2. [Features](#-features)
-3. [Web Demo](#-web-demo)
-4. [Local Installation](#-local-installation)
-5. [How It Works](#-how-it-works)
-6. [Contributing](#-contributing)
-7. [Authors](#-authors)
-8. [📝 License](#-license)
+1. [Overview](#overview)
+2. [Features](#features)
+3. [Web Demo](#web-demo)
+4. [Local Installation](#local-installation)
+5. [How It Works](#how-it-works)
+6. [Contributing](#contributing)
+7. [Authors](#authors)
+8. [📝 License](#license)
 
 ---
 
