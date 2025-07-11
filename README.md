@@ -1,3 +1,7 @@
+## Usage
+
+It is possible to use Netrunner's Web Toolkit <a href="https://www.netrunners.in/" >here </a> or by locally deploying the project following the instructions provided below.
+
 ## About Netrunners Toolkit
 
 Netrunners Toolkit is designed to streamline the pentesting process and support learning along the way. It’s a versatile toolset, useful both in CTFs and real-world scenarios. However, note that many commands are optimized for CTF environments and may include flags or options not recommended for use in production systems.
@@ -14,7 +18,7 @@ One day, our sysadmin <a href="https://github.com/dos4s"> 2as </a> created a qui
 
 ## Deployment instructions
 
-Astro Javascript Framework is required, as it is the main gear of the project. In order to properly install it refer to the official documentation [here]([url](https://docs.astro.build/en/install-and-setup/))
+Astro Javascript Framework is required, as it is the main gear of the project. In order to properly install it refer to the official documentation <a href="https://docs.astro.build/en/install-and-setup/"> here </a>
 
 ```
 git clone https://https://github.com/NetRunners-Toolkits/NetRunners.git
