@@ -99,9 +99,9 @@ npm run dev
 
 ## 🧑‍💻 Autores
 
+* **R1nzler** – Desarrollo full-stack – [GitHub](https://github.com/Marcejr117)
 * **Whare** – Idea y comandos iniciales – [GitHub](https://github.com/whare1)
 * **2as** – Demo JavaScript – [GitHub](https://github.com/dos4s)
-* **Rinzler** – Desarrollo full-stack – [GitHub](https://github.com/Marcejr117)
 
 ---
 
