@@ -76,7 +76,7 @@ npm run dev
 1. **Origins**
 
    - Inspired by [Whare](https://github.com/whare1) automating commands just before the *PUPPY* machine launch on Hack The Box.
-   - Initial JavaScript demo by [2as](https://github.com/dos4s), later evolved under the leadership of [Rinzler](https://github.com/Marcejr117).
+   - Initial JavaScript demo by [2as](https://github.com/dos4s), later evolved under the leadership of [R1nzler](https://github.com/Marcejr117).
 
 2. **Workflow**
 
