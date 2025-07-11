@@ -3,7 +3,7 @@
     "title": "Voleur HTB",
     "description": "An Active Windows machine where you perform Active Directory enumeration with BloodHound and LDAP queries, exploit Kerberoasting to crack service account hashes, abuse NTLM relay attacks, and escalate privileges via AD ACL misconfigurations.",
     "date": "2025-07-06",
-    "type": "medium",
+    "type": "hard",
     "image": "https://whare1.netrunners.in/assets/images/voleur.png",
     "links": [
       {
@@ -55,7 +55,7 @@
     "title": "Active HTB",
     "description": "A Windows AD machine where you gather domain information via BloodHound, perform LDAP query enumeration, crack Kerberoastable SPNs, relay NTLM authentication, and exploit insecure group policies to escalate to DA.",
     "date": "2018-07-28",
-    "type": "medium",
+    "type": "easy",
     "image": "https://labs.hackthebox.com/storage/avatars/5837ac5e28291146a9f2a8a015540c28.png",
     "links": [
       {
@@ -234,6 +234,97 @@
     ]
   },
   {
+    "title": "Forest HTB",
+    "description": "A Windows AD domain controller where you enumerate users via LDAP, perform ASREPRoast attacks to crack user hashes, exploit Kerberoasting for service account credentials, and abuse DCSync to dump all domain hashes.",
+    "date": "2019-03-09",
+    "type": "easy",
+    "image": "https://labs.hackthebox.com/storage/avatars/7dedecb452597150647e73c2dd6c24c7.png",
+    "links": [
+      {
+        "label": "R1nzler's solution",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Forest"
+      }
+    ]
+  },
+  {
+    "title": "GoodGames HTB",
+    "description": "A web application challenge featuring SQL injection, JWT token manipulation, and SSRF exploitation to bypass authentication, access admin panels, and execute server-side requests for internal service enumeration.",
+    "date": "2022-08-20",
+    "type": "easy",
+    "image": "https://labs.hackthebox.com/storage/avatars/f49b988a9f7df99dba3d7644f55021fd.png",
+    "links": [
+      {
+        "label": "R1nzler's solution",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/GoodGames"
+      }
+    ]
+  },
+  {
+    "title": "GreenHorn HTB",
+    "description": "A Linux machine featuring web enumeration, directory traversal, file inclusion vulnerabilities, and privilege escalation through cron job manipulation and kernel exploitation techniques.",
+    "date": "2022-10-15",
+    "type": "easy",
+    "image": "https://labs.hackthebox.com/storage/avatars/b7d9a9b075fd49c8509866fe24f58dbb.png",
+    "links": [
+      {
+        "label": "R1nzler's solution",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/GreenHorn"
+      }
+    ]
+  },
+  {
+    "title": "Headless HTB",
+    "description": "A web application challenge involving API enumeration, JWT token forgery, and server-side request forgery (SSRF) to access internal services and exploit misconfigured webhooks for remote code execution.",
+    "date": "2023-01-14",
+    "type": "easy",
+    "image": "https://labs.hackthebox.com/storage/avatars/26e076db204a74b99390e586d7ebcf8c.png",
+    "links": [
+      {
+        "label": "R1nzler's solution",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Headless"
+      }
+    ]
+  },
+  {
+    "title": "Heal HTB",
+    "description": "A Windows machine featuring web enumeration, SQL injection, file upload vulnerabilities, and privilege escalation through service misconfigurations and token manipulation techniques.",
+    "date": "2023-03-25",
+    "type": "easy",
+    "image": "https://labs.hackthebox.com/storage/avatars/dcd5ef09ab764228c64385374ac744c1.png",
+    "links": [
+      {
+        "label": "R1nzler's solution",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Heal"
+      }
+    ]
+  },
+  {
+    "title": "Inject HTB",
+    "description": "A Linux machine featuring web enumeration, SQL injection, file inclusion vulnerabilities, and privilege escalation through cron job manipulation and kernel exploitation techniques.",
+    "date": "2023-05-06",
+    "type": "easy",
+    "image": "https://labs.hackthebox.com/storage/avatars/285ba8819710b6ae1f67bc0e5914ffd9.png",
+    "links": [
+      {
+        "label": "R1nzler's solution",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Inject"
+      }
+    ]
+  },
+  {
+    "title": "Intentions HTB",
+    "description": "A web application challenge involving API enumeration, JWT token manipulation, and server-side request forgery (SSRF) to access internal services and exploit misconfigured webhooks for remote code execution.",
+    "date": "2023-07-18",
+    "type": "easy",
+    "image": "https://labs.hackthebox.com/storage/avatars/f51a05c5eceb08937686766c1b7de0cc.png",
+    "links": [
+      {
+        "label": "R1nzler's solution",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Intentions"
+      }
+    ]
+  },
+  {
     "title": "Jerry HTB",
     "description": "A Linux box abusing cron‑based symlink vulnerabilities: identify a root cron job, craft a symlink to overwrite /etc/shadow, and escalate to root via passwordless login.",
     "date": "2018-06-30",
@@ -256,6 +347,214 @@
       {
         "label": "R1nzler's solution",
         "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/LinkVortex"
+      }
+    ]
+  },
+  {
+    "title": "OpenSource HTB",
+    "description": "A web application challenge featuring source code analysis, API enumeration, JWT token manipulation, and server-side request forgery (SSRF) to access internal services and exploit misconfigured webhooks.",
+    "date": "2023-09-30",
+    "type": "easy",
+    "image": "https://labs.hackthebox.com/storage/avatars/789e24a78e57e307944d8dbbde67cc32.png",
+    "links": [
+      {
+        "label": "R1nzler's solution",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/OpenSource"
+      }
+    ]
+  },
+  {
+    "title": "PermX HTB",
+    "description": "A Linux machine featuring web enumeration, file inclusion vulnerabilities, and privilege escalation through cron job manipulation and kernel exploitation techniques.",
+    "date": "2023-11-12",
+    "type": "easy",
+    "image": "https://labs.hackthebox.com/storage/avatars/3ec233f1bf70b096a66f8a452e7cd52f.png",
+    "links": [
+      {
+        "label": "R1nzler's solution",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/PermX"
+      }
+    ]
+  },
+  {
+    "title": "Pilgrimage HTB",
+    "description": "A web application challenge involving image processing vulnerabilities, server-side request forgery (SSRF), and privilege escalation through file upload restrictions bypass and command injection techniques.",
+    "date": "2024-01-24",
+    "type": "easy",
+    "image": "https://labs.hackthebox.com/storage/avatars/33632db6c1f4323a58452d8fcfc7eee0.png",
+    "links": [
+      {
+        "label": "R1nzler's solution",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Pilgrimage"
+      }
+    ]
+  },
+  {
+    "title": "Sau HTB",
+    "description": "A Linux machine featuring web enumeration, server-side request forgery (SSRF), and privilege escalation through cron job manipulation and kernel exploitation techniques.",
+    "date": "2024-03-16",
+    "type": "easy",
+    "image": "https://labs.hackthebox.com/storage/avatars/1ea2980b9dc2d11cf6a3f82f10ba8702.png",
+    "links": [
+      {
+        "label": "R1nzler's solution",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Sau"
+      }
+    ]
+  },
+  {
+    "title": "Sauna HTB",
+    "description": "A Windows AD machine where you enumerate users via LDAP, perform ASREPRoast attacks to crack user hashes, exploit Kerberoasting for service account credentials, and abuse DCSync to dump all domain hashes.",
+    "date": "2020-01-25",
+    "type": "easy",
+    "image": "https://labs.hackthebox.com/storage/avatars/f31d5d0264fadc267e7f38a9d7729d14.png",
+    "links": [
+      {
+        "label": "R1nzler's solution",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Sauna"
+      }
+    ]
+  },
+  {
+    "title": "Sea HTB",
+    "description": "A web application challenge featuring source code analysis, API enumeration, JWT token manipulation, and server-side request forgery (SSRF) to access internal services and exploit misconfigured webhooks.",
+    "date": "2024-05-08",
+    "type": "easy",
+    "image": "https://labs.hackthebox.com/storage/avatars/0011f6725aed869f8683589cb08c90d0.png",
+    "links": [
+      {
+        "label": "R1nzler's solution",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Sea"
+      }
+    ]
+  },
+  {
+    "title": "Singtless HTB",
+    "description": "A Linux machine featuring web enumeration, file inclusion vulnerabilities, and privilege escalation through cron job manipulation and kernel exploitation techniques.",
+    "date": "2024-07-20",
+    "type": "easy",
+    "image": "https://labs.hackthebox.com/storage/avatars/f96160a20e9cf0138885238444b47404.png",
+    "links": [
+      {
+        "label": "R1nzler's solution",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Singtless"
+      }
+    ]
+  },
+  {
+    "title": "Support HTB",
+    "description": "A Windows machine featuring web enumeration, SQL injection, file upload vulnerabilities, and privilege escalation through service misconfigurations and token manipulation techniques.",
+    "date": "2024-09-12",
+    "type": "easy",
+    "image": "https://labs.hackthebox.com/storage/avatars/833a3b1f7f96b5708d19b6de084c3201.png",
+    "links": [
+      {
+        "label": "R1nzler's solution",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Support"
+      }
+    ]
+  },
+  {
+    "title": "TimeLapse HTB",
+    "description": "A Windows machine featuring web enumeration, SQL injection, file upload vulnerabilities, and privilege escalation through service misconfigurations and token manipulation techniques.",
+    "date": "2024-11-04",
+    "type": "easy",
+    "image": "https://labs.hackthebox.com/storage/avatars/bae443f73a706fc8eebc6fb740128295.png",
+    "links": [
+      {
+        "label": "R1nzler's solution",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/TimeLapse"
+      }
+    ]
+  },
+  {
+    "title": "Titanic HTB",
+    "description": "A web application challenge involving API enumeration, JWT token manipulation, and server-side request forgery (SSRF) to access internal services and exploit misconfigured webhooks for remote code execution.",
+    "date": "2024-12-26",
+    "type": "easy",
+    "image": "https://labs.hackthebox.com/storage/avatars/eb5942ec56dd9b6feb06dcf8af8aefc6.png",
+    "links": [
+      {
+        "label": "R1nzler's solution",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Titanic"
+      }
+    ]
+  },
+  {
+    "title": "Topology HTB",
+    "description": "A Linux machine featuring web enumeration, file inclusion vulnerabilities, and privilege escalation through cron job manipulation and kernel exploitation techniques.",
+    "date": "2025-01-17",
+    "type": "easy",
+    "image": "https://labs.hackthebox.com/storage/avatars/cbfa26b4a4044677e93779a44bbd458f.png",
+    "links": [
+      {
+        "label": "R1nzler's solution",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Topology"
+      }
+    ]
+  },
+  {
+    "title": "TwoMillions HTB",
+    "description": "A web application challenge featuring source code analysis, API enumeration, JWT token manipulation, and server-side request forgery (SSRF) to access internal services and exploit misconfigured webhooks.",
+    "date": "2025-02-28",
+    "type": "easy",
+    "image": "https://labs.hackthebox.com/storage/avatars/d7bc2758fb7589dfa046bee9ce4d75cb.png",
+    "links": [
+      {
+        "label": "R1nzler's solution",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/TwoMillions"
+      }
+    ]
+  },
+  {
+    "title": "UnderPass HTB",
+    "description": "A Linux machine featuring web enumeration, file inclusion vulnerabilities, and privilege escalation through cron job manipulation and kernel exploitation techniques.",
+    "date": "2025-04-10",
+    "type": "easy",
+    "image": "https://labs.hackthebox.com/storage/avatars/456a4d2e52f182847fb0a2dba0420a44.png",
+    "links": [
+      {
+        "label": "R1nzler's solution",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/UnderPass"
+      }
+    ]
+  },
+  {
+    "title": "Usage HTB",
+    "description": "A web application challenge involving API enumeration, JWT token manipulation, and server-side request forgery (SSRF) to access internal services and exploit misconfigured webhooks for remote code execution.",
+    "date": "2025-05-22",
+    "type": "easy",
+    "image": "https://labs.hackthebox.com/storage/avatars/23e804513a47e8f20bc865d0419946e1.png",
+    "links": [
+      {
+        "label": "R1nzler's solution",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Usage"
+      }
+    ]
+  },
+  {
+    "title": "Wifinetic HTB",
+    "description": "A Linux machine featuring web enumeration, file inclusion vulnerabilities, and privilege escalation through cron job manipulation and kernel exploitation techniques.",
+    "date": "2025-06-14",
+    "type": "easy",
+    "image": "https://labs.hackthebox.com/storage/avatars/4aaf2ad33bea830079d74497f8e7fefc.png",
+    "links": [
+      {
+        "label": "R1nzler's solution",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Wifinetic"
+      }
+    ]
+  },
+  {
+    "title": "chemistary HTB",
+    "description": "A web application challenge featuring source code analysis, API enumeration, JWT token manipulation, and server-side request forgery (SSRF) to access internal services and exploit misconfigured webhooks.",
+    "date": "2025-07-26",
+    "type": "easy",
+    "image": "https://labs.hackthebox.com/storage/avatars/b8f3d660af2d3ed0929eb119e33526cf.png",
+    "links": [
+      {
+        "label": "R1nzler's solution",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/chemistary"
       }
     ]
   }
