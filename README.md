@@ -100,7 +100,7 @@ We welcome your ideas and improvements! 🙌
 
 ## Authors
 
-- **Rinzler** – Full-stack development – [GitHub](https://github.com/Marcejr117)
+- **R1nzler** – Full-stack development – [GitHub](https://github.com/Marcejr117)
 - **Whare** – Initial idea and commands – [GitHub](https://github.com/whare1)
 - **2as** – JavaScript demo – [GitHub](https://github.com/dos4s)
 
