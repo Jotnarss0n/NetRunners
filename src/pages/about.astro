@@ -2,10 +2,156 @@
 // Import global styles and components
 import "../styles/global.css";
 import Layout from "../layouts/Layout.astro";
-import CommandBox from "../components/CommandBox.astro";
-import InputBox from "../components/InputBox.astro";
 ---
 
 <Layout>
-    a
+  <div class="h-full overflow-y-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+    <div class="max-w-4xl mx-auto space-y-8 sm:space-y-12">
+      
+      <!-- Main Title -->
+      <div class="text-center mb-8 sm:mb-12">
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-wider mb-4" style="color: var(--theme-text);">
+          About Netrunners
+        </h1>
+        <div class="w-24 h-1 mx-auto rounded-full" style="background: var(--theme-border);"></div>
+      </div>
+
+      <!-- Main Description -->
+      <div class="space-y-6 text-base sm:text-lg leading-relaxed" style="color: var(--theme-card-text);">
+        <p class="opacity-90">
+          We're a tight‑knit crew of friends who hop onto Discord every day to dive into everything from cybersecurity and technology to hardware hacking, programming, cryptography, and plenty of other tech‑adjacent rabbit holes.
+        </p>
+        <p class="opacity-90">
+          As an inside joke, we role‑play as a full‑blown corporation—complete with "executive" ranks, formal memos, and mock corporate rituals. The twist? Our determination and drive could make some real companies jealous. It's all in good fun and has become a beloved tradition that keeps our community lively and laughing.
+        </p>
+      </div>
+
+      <!-- Who We Are Section -->
+      <div class="mt-12 sm:mt-16">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 tracking-wide" style="color: var(--theme-text);">
+          Who We Are
+        </h2>
+        
+        <div class="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <!-- Team Member Cards -->
+          <div class="p-6 rounded-xl border-2 transition-all duration-300 hover:shadow-lg hover:scale-105" style="background: var(--theme-card); color: var(--theme-card-text); border-color: var(--theme-border);">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-3 h-3 rounded-full" style="background: var(--theme-text);"></div>
+              <h3 class="font-semibold text-lg">Developer/ Pentester</h3>
+            </div>
+            <h4 class="text-xl font-bold mb-2" style="color: var(--theme-text);">Rinzler</h4>
+            <p class="text-sm opacity-80 leading-relaxed">
+              The mastermind behind our codebases — from front-end magic to back-end wizardry, with a keen eye for pentesting and security.
+            </p>
+            <a href="#" class="inline-block mt-3 text-sm underline opacity-70 hover:opacity-100 transition-opacity">Blog →</a>
+          </div>
+
+          <div class="p-6 rounded-xl border-2 transition-all duration-300 hover:shadow-lg hover:scale-105" style="background: var(--theme-card); color: var(--theme-card-text); border-color: var(--theme-border);">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-3 h-3 rounded-full" style="background: var(--theme-text);"></div>
+              <h3 class="font-semibold text-lg">Project Manager / Pentester</h3>
+            </div>
+            <h4 class="text-xl font-bold mb-2" style="color: var(--theme-text);">Whare</h4>
+            <p class="text-sm opacity-80 leading-relaxed">
+              Keeps the team on track, conducts authorized pentests for companies and public institutions, and actively plays CTFs.
+            </p>
+            <a href="#" class="inline-block mt-3 text-sm underline opacity-70 hover:opacity-100 transition-opacity">Blog →</a>
+          </div>
+
+          <div class="p-6 rounded-xl border-2 transition-all duration-300 hover:shadow-lg hover:scale-105" style="background: var(--theme-card); color: var(--theme-card-text); border-color: var(--theme-border);">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-3 h-3 rounded-full" style="background: var(--theme-text);"></div>
+              <h3 class="font-semibold text-lg">System Administrator</h3>
+            </div>
+            <h4 class="text-xl font-bold mb-2" style="color: var(--theme-text);">2as</h4>
+            <p class="text-sm opacity-80 leading-relaxed">
+              Our infrastructure guru — if it runs on Linux, he's already optimized, audited, and secured it.
+            </p>
+            <a href="#" class="inline-block mt-3 text-sm underline opacity-70 hover:opacity-100 transition-opacity">Blog →</a>
+          </div>
+
+          <div class="p-6 rounded-xl border-2 transition-all duration-300 hover:shadow-lg hover:scale-105" style="background: var(--theme-card); color: var(--theme-card-text); border-color: var(--theme-border);">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-3 h-3 rounded-full" style="background: var(--theme-text);"></div>
+              <h3 class="font-semibold text-lg">Pentester 1</h3>
+            </div>
+            <h4 class="text-xl font-bold mb-2" style="color: var(--theme-text);">ShatCode</h4>
+            <p class="text-sm opacity-80 leading-relaxed">
+              Specialized in finding vulnerabilities, even in things that were never supposed to be vulnerable, and also working as a military cybersecurity specialist.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-xl border-2 transition-all duration-300 hover:shadow-lg hover:scale-105" style="background: var(--theme-card); color: var(--theme-card-text); border-color: var(--theme-border);">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-3 h-3 rounded-full" style="background: var(--theme-text);"></div>
+              <h3 class="font-semibold text-lg">Pentester 2</h3>
+            </div>
+            <h4 class="text-xl font-bold mb-2" style="color: var(--theme-text);">DLL</h4>
+            <p class="text-sm opacity-80 leading-relaxed">
+              Methodical, precise, and always two steps ahead — especially impressive considering he's our youngest member at just 17 years old.
+            </p>
+            <a href="#" class="inline-block mt-3 text-sm underline opacity-70 hover:opacity-100 transition-opacity">Blog →</a>
+          </div>
+
+          <div class="p-6 rounded-xl border-2 transition-all duration-300 hover:shadow-lg hover:scale-105" style="background: var(--theme-card); color: var(--theme-card-text); border-color: var(--theme-border);">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-3 h-3 rounded-full" style="background: var(--theme-text);"></div>
+              <h3 class="font-semibold text-lg">Junior Pentester 3</h3>
+            </div>
+            <h4 class="text-xl font-bold mb-2" style="color: var(--theme-text);">Jordi</h4>
+            <p class="text-sm opacity-80 leading-relaxed">
+              Our up-and-coming hacker — hungry to learn, eager to break stuff, and already making waves.
+            </p>
+            <a href="#" class="inline-block mt-3 text-sm underline opacity-70 hover:opacity-100 transition-opacity">Blog →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toolkit Section -->
+      <div class="mt-12 sm:mt-16">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 tracking-wide" style="color: var(--theme-text);">
+          About Netrunners Toolkit
+        </h2>
+        
+        <div class="p-6 sm:p-8 rounded-xl border-2 transition-all duration-300 hover:shadow-lg" style="background: var(--theme-card); color: var(--theme-card-text); border-color: var(--theme-border);">
+          <div class="space-y-4 text-base sm:text-lg leading-relaxed">
+            <p class="opacity-90">
+              Netrunners Toolkit is designed to streamline the pentesting process and support learning along the way. It's a versatile toolset, useful both in CTFs and real-world scenarios. However, note that many commands are optimized for CTF environments and may include flags or options not recommended for use in production systems.
+            </p>
+            <p class="opacity-90">
+              Our goal is to continue improving the toolkit by adding new tools, better documentation, and expanded functionality. We welcome contributions, suggestions, or ideas from the community!
+            </p>
+            <div class="mt-6">
+              <a href="https://github.com/netrunners" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 hover:scale-105" style="background: var(--theme-border); color: var(--theme-text);">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                View on GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Origins Section -->
+      <div class="mt-12 sm:mt-16">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 tracking-wide" style="color: var(--theme-text);">
+          Origins
+        </h2>
+        
+        <div class="space-y-6 text-base sm:text-lg leading-relaxed" style="color: var(--theme-card-text);">
+          <p class="opacity-90">
+            It all started when <strong style="color: var(--theme-text);">Whare</strong>, about 30 minutes before the release of the <em>PUPPY</em> machine on Hack The Box, was preparing a list of all the commands he'd need based on the provided credentials. That's when the idea hit: <em>why not find a way to automate this process</em>, similar to how automation is used in bug bounty hunting (inspired by projects like <a href="https://lostsec.xyz/" target="_blank" rel="noopener noreferrer" class="underline opacity-80 hover:opacity-100 transition-opacity">lostsec.xyz</a>)?
+          </p>
+          <p class="opacity-90">
+            The idea was pitched to the group <strong style="color: var(--theme-text);">NETRUNNERS</strong>. After researching existing tools and not finding one that fully met our needs, we decided to build it ourselves.
+          </p>
+          <p class="opacity-90">
+            One day, our sysadmin <strong style="color: var(--theme-text);">2as</strong> created a quick and dirty JavaScript demo, trying hard to make things work. That "raw" aesthetic and lack of scalability lit a spark in our full-stack developer <strong style="color: var(--theme-text);">Rinzler</strong>, who immediately stepped in and took the lead on developing the project into something serious.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </Layout>
