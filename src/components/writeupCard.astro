@@ -3,9 +3,11 @@ const { id, title, description, date, type, image, links = [] } = Astro.props;
 ---
  <!-- Writeup card content -->
 <div
-  class="writeup-card rounded-xl p-4 flex items-center gap-4 hover:scale-105 shadow-md border mb-4 cursor-pointer hover:ring-2 transition"
+  class="writeup-card rounded-xl p-4 flex items-center gap-4 hover:scale-105 shadow-md border mb-4 cursor-pointer hover:ring-2 transition-all duration-300"
   style="background: var(--theme-card); color: var(--theme-card-text); border-color: var(--theme-border);"
   data-dialog-id={"dialog-" + id}
+  data-title={title.toLowerCase()}
+  data-date={date}
 >
   <div class="flex-1">
     <h2 class="text-lg font-semibold mb-1">{title}</h2>
