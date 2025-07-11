@@ -8,6 +8,7 @@ const { id, title, description, date, type, image, links = [] } = Astro.props;
   data-dialog-id={"dialog-" + id}
   data-title={title.toLowerCase()}
   data-date={date}
+  data-difficulty={type}
 >
   <div class="flex-1">
     <h2 class="text-lg font-semibold mb-1">{title}</h2>

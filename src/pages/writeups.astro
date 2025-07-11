@@ -23,6 +23,17 @@ import cards from "../data/cards.json";
         />
       </div>
       <select
+        id="difficulty-filter"
+        class="theme-input px-4 py-2 rounded border border-inherit shadow focus:outline-none focus:ring-2 transition-all duration-300 whitespace-nowrap hover:shadow-lg focus:shadow-xl"
+        style="background: var(--theme-card); color: var(--theme-card-text); border-color: var(--theme-border);"
+      >
+        <option value="all">All difficulties</option>
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+        <option value="insane">Insane</option>
+      </select>
+      <select
         id="sort-selector"
         class="theme-input px-4 py-2 rounded border border-inherit shadow focus:outline-none focus:ring-2 transition-all duration-300 whitespace-nowrap hover:shadow-lg focus:shadow-xl"
         style="background: var(--theme-card); color: var(--theme-card-text); border-color: var(--theme-border);"
@@ -52,20 +63,27 @@ import cards from "../data/cards.json";
       const list = document.getElementById('writeup-list');
       const noResults = document.getElementById('no-results');
       const sortSelector = document.getElementById('sort-selector') as HTMLSelectElement;
+      const difficultyFilter = document.getElementById('difficulty-filter') as HTMLSelectElement;
       
-      if (!input || !list || !noResults || !sortSelector) return;
+      if (!input || !list || !noResults || !sortSelector || !difficultyFilter) return;
       
       const cards = list.querySelectorAll('.writeup-card');
       
-      input.addEventListener('input', function() {
-        const value = input.value.trim().toLowerCase();
+      // Function to filter and display cards
+      function filterCards() {
+        const searchValue = input.value.trim().toLowerCase();
+        const difficultyValue = difficultyFilter.value;
         let visibleCount = 0;
         
         cards.forEach((card, index) => {
           const element = card as HTMLElement;
           const title = element.getAttribute('data-title') || '';
+          const difficulty = element.getAttribute('data-difficulty') || '';
           
-          if (title.includes(value)) {
+          const matchesSearch = title.includes(searchValue);
+          const matchesDifficulty = difficultyValue === 'all' || difficulty === difficultyValue;
+          
+          if (matchesSearch && matchesDifficulty) {
             element.style.display = '';
             // Staggered animation for visible cards
             setTimeout(() => {
@@ -78,7 +96,7 @@ import cards from "../data/cards.json";
             element.style.transform = 'scale(0.95) translateY(-10px)';
             // Hide after animation completes
             setTimeout(() => {
-              if (!title.includes(value)) {
+              if (!title.includes(searchValue) || (difficultyValue !== 'all' && difficulty !== difficultyValue)) {
                 element.style.display = 'none';
               }
             }, 200);
@@ -87,20 +105,31 @@ import cards from "../data/cards.json";
         
         // Smooth transition for no results message
         if (visibleCount === 0) {
-          noResults.style.opacity = '0';
-          setTimeout(() => {
-            noResults.classList.remove('hidden');
-            noResults.style.opacity = '1';
-            noResults.style.transform = 'scale(1)';
-          }, 300);
+          if (noResults) {
+            noResults.style.opacity = '0';
+            setTimeout(() => {
+              if (noResults) {
+                noResults.classList.remove('hidden');
+                noResults.style.opacity = '1';
+                noResults.style.transform = 'scale(1)';
+              }
+            }, 300);
+          }
         } else {
-          noResults.style.opacity = '0';
-          noResults.style.transform = 'scale(0.95)';
-          setTimeout(() => {
-            noResults.classList.add('hidden');
-          }, 200);
+          if (noResults) {
+            noResults.style.opacity = '0';
+            noResults.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+              if (noResults) {
+                noResults.classList.add('hidden');
+              }
+            }, 200);
+          }
         }
-      });
+      }
+
+      input.addEventListener('input', filterCards);
+      difficultyFilter.addEventListener('change', filterCards);
 
       sortSelector.addEventListener('change', function() {
         const selectedValue = sortSelector.value;
