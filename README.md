@@ -36,7 +36,6 @@ NetRunners Toolkit is a lightweight, modular toolkit for **pentesting** and **CT
 
 - Automated commands for reconnaissance, exploitation, and post-exploitation phases.
 - Customizable script templates.
-- Integration with [lostsec.xyz](https://lostsec.xyz/) and bug bounty workflows.
 - Modular structure to easily add or remove tools.
 
 ---
