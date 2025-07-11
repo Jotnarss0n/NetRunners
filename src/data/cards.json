@@ -3,7 +3,7 @@
     "title": "EBS HTB Bussines CTF 2025",
     "description": "Objective: The Volnaya Emergency Broadcast System (EBS) is a critical platform for disseminating urgent public communications. The public-facing portal...",
     "date": "2025-05-28",
-    "type": "writeup",
+    "type": "hard",
     "image": "../../src/assets/writeupImages/image.png",
     "links": [
       {
@@ -20,7 +20,7 @@
     "title": "Volnaya Forums HTB Bussines CTF 2025",
     "description": "Objective: The Volnaya Forums stand as a sprawling network where citizens compete to outdo each other in public displays of loyalty...",
     "date": "2025-05-27",
-    "type": "writeup",
+    "type": "medium",
     "image": "../../src/assets/writeupImages/image.png",
     "links": [
       {
@@ -33,7 +33,7 @@
     "title": "Dashboarded HTB Bussines CTF 2025",
     "description": "Objective: The goal is to infiltrate Volnaya's cloud-based Industrial Control System (ICS) monitoring network, locate sensitive data, and enable the Task...",
     "date": "2025-05-27",
-    "type": "writeup",
+    "type": "insane",
     "image": "../../src/assets/writeupImages/image.png",
     "links": [
       {
@@ -46,7 +46,7 @@
     "title": "Chemistry Write Up HTB",
     "description": "Chemistry is an easy difficulty machine on HackTheBox that takes you through a series of steps involving network enumeration, web application testing, and...",
     "date": "2025-03-08",
-    "type": "writeup",
+    "type": "easy",
     "image": "https://labs.hackthebox.com/storage/avatars/b8f3d660af2d3ed0929eb119e33526cf.png",
     "links": [
       {
