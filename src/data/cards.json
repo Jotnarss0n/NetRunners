@@ -7,12 +7,8 @@
     "image": "/images/writeups/image.png",
     "links": [
       {
-        "label": "HTB Challenge",
-        "url": "https://www.hackthebox.com/challenge/ebs"
-      },
-      {
-        "label": "Writeup PDF",
-        "url": "https://example.com/ebs-writeup.pdf"
+        "label": "Whare1's solution",
+        "url": "https://whare1.netrunners.in/posts/Voleur-Writeup"
       }
     ]
   },
@@ -24,8 +20,8 @@
     "image": "/images/writeups/image.png",
     "links": [
       {
-        "label": "HTB Forums",
-        "url": "https://www.hackthebox.com/forums/volnaya"
+        "label": "Whare1's solution",
+        "url": "https://whare1.netrunners.in/posts/RustyKey-Writeup"
       }
     ]
   },
@@ -37,13 +33,13 @@
     "image": "/images/writeups/image.png",
     "links": [
       {
-        "label": "Dashboarded Info",
-        "url": "https://www.hackthebox.com/dashboarded"
+        "label": "Whare1's solution",
+        "url": "https://whare1.netrunners.in/posts/EBS"
       }
     ]
   },
   {
-    "title": "Chemistry Write Up HTB",
+    "title": "Volnaya Forums HTB Bussines CTF 2025",
     "description": "Chemistry is an easy difficulty machine on HackTheBox that takes you through a series of steps involving network enumeration, web application testing, and...",
     "date": "2025-03-08",
     "type": "easy",
@@ -51,12 +47,8 @@
     "image": "https://labs.hackthebox.com/storage/avatars/b8f3d660af2d3ed0929eb119e33526cf.png",
     "links": [
       {
-        "label": "HTB Chemistry",
-        "url": "https://www.hackthebox.com/machines/chemistry"
-      },
-      {
-        "label": "Whare1",
-        "url": "https://www.hackthebox.com/machines/chemistry"
+        "label": "Whare1's solution",
+        "url": "https://whare1.netrunners.in/posts/Volanaya's_forums"
       }
     ]
   }
