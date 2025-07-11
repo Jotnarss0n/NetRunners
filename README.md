@@ -1,33 +1,116 @@
-## Usage
+# 🚀 NetRunners Toolkit
 
-It is possible to use Netrunner's Web Toolkit <a href="https://www.netrunners.in/" >here </a> or by locally deploying the project following the instructions provided below.
+**Automatización y aprendizaje en pentesting**
 
-## About Netrunners Toolkit
+[![GitHub Release](https://img.shields.io/github/v/release/NetRunners-Toolkits/NetRunners)](https://github.com/NetRunners-Toolkits/NetRunners/releases)
+[![License](https://img.shields.io/github/license/NetRunners-Toolkits/NetRunners)](https://github.com/NetRunners-Toolkits/NetRunners/blob/main/LICENSE)
 
-Netrunners Toolkit is designed to streamline the pentesting process and support learning along the way. It’s a versatile toolset, useful both in CTFs and real-world scenarios. However, note that many commands are optimized for CTF environments and may include flags or options not recommended for use in production systems.
+---
 
-Our goal is to continue improving the toolkit by adding new tools, better documentation, and expanded functionality. We welcome contributions, suggestions, or ideas from the community! (añadir link github)
+## 📚 Índice
 
-## Origins
+1. [Descripción](#-descripción)
+2. [Características](#-características)
+3. [Demo Web](#-demo-web)
+4. [Instalación Local](#-instalación-local)
+5. [Cómo Funciona](#-cómo-funciona)
+6. [Contribuciones](#-contribuciones)
+7. [Autores](#-autores)
+8. [📝 Licencia](#-licencia)
 
-It all started when <a href="https://github.com/whare1"> Whare </a>, about 30 minutes before the release of the _PUPPY_ machine on Hack The Box, was preparing a list of all the commands he’d need based on the provided credentials. That’s when the idea hit: _why not find a way to automate this process_, similar to how automation is used in bug bounty hunting (inspired by projects like [lostsec.xyz](https://lostsec.xyz/))?
+---
 
-The idea was pitched to the group **NETRUNNERS**. After researching existing tools and not finding one that fully met our needs, we decided to build it ourselves.
+## ✨ Descripción
 
-One day, our sysadmin <a href="https://github.com/dos4s"> 2as </a> created a quick and dirty JavaScript demo, trying hard to make things work. That “raw” aesthetic and lack of scalability lit a spark in our full-stack developer  <a href="https://github.com/Marcejr117"> Rinzler </a>, who immediately stepped in and took the lead on developing the project into something serious.
+NetRunners Toolkit es un set de herramientas ligero y modular para **pentesting** y **CTFs**, con comandos predefinidos y scripts que automatizan tareas comunes. Ideal para:
 
-## Deployment instructions
+* 🚩 **CTFs**: comandos optimizados para entornos de prueba.
+* 🛡️ **Pentesting**: scripts reutilizables y adaptables.
 
-Astro Javascript Framework is required, as it is the main gear of the project. In order to properly install it refer to the official documentation <a href="https://docs.astro.build/en/install-and-setup/"> here </a>
+> ⚠️ Algunos flags y opciones están pensados para CTFs; revisa antes de usar en producción.
 
-```
-git clone https://https://github.com/NetRunners-Toolkits/NetRunners.git
+---
+
+## ⚙️ Características
+
+* Comandos automatizados para fases de reconocimiento, explotación y post-explotación.
+* Plantillas de scripts personalizables.
+* Integración con [lostsec.xyz](https://lostsec.xyz/) y flujos de trabajo de bug bounty.
+* Estructura modular para añadir o eliminar herramientas fácilmente.
+
+---
+
+## 🌐 Demo Web
+
+Prueba la versión online de la Toolkit:
+
+👉 [https://www.netrunners.in](https://www.netrunners.in)
+
+---
+
+## 🛠️ Instalación Local
+
+**Requisitos:**
+
+* Node.js ≥14
+* npm o yarn
+* [Astro](https://docs.astro.build/en/install-and-setup/)
+
+```bash
+# Clonar repo
+git clone https://github.com/NetRunners-Toolkits/NetRunners.git
 cd NetRunners
+
+# Instalar dependencias
+npm install
+
+# Iniciar servidor de desarrollo
 npm run dev
 ```
 
+---
 
-<div align="center">
-  <h3> Enjoy our masterpiece! </h3>
-  <img src="https://whare1.netrunners.in/assets/images/netrunner.gif">
-</div>
+## 🔍 Cómo Funciona
+
+1. **Orígenes**
+
+   * Inspirado en la necesidad de [Whare](https://github.com/whare1) de automatizar comandos antes de la máquina *PUPPY* en Hack The Box.
+   * Demo inicial de [2as](https://github.com/dos4s) y evolución a un proyecto liderado por [Rinzler](https://github.com/Marcejr117).
+
+2. **Flujo**
+
+   * Selección de módulo (recon, exploit, post-exploit).
+   * Ejecución de comandos con parámetros preconfigurados.
+   * Revisión y personalización de resultados.
+
+---
+
+## 🤝 Contribuciones
+
+1. Forkea el repositorio
+2. Crea tu branch (`git checkout -b feature/nueva-herramienta`)
+3. Commit de tus cambios (`git commit -m 'Agrega nueva herramienta'`)
+4. Push al branch (`git push origin feature/nueva-herramienta`)
+5. Abre un Pull Request
+
+¡Esperamos tus ideas y mejoras! 🙌
+
+---
+
+## 🧑‍💻 Autores
+
+* **Whare** – Idea y comandos iniciales – [GitHub](https://github.com/whare1)
+* **2as** – Demo JavaScript – [GitHub](https://github.com/dos4s)
+* **Rinzler** – Desarrollo full-stack – [GitHub](https://github.com/Marcejr117)
+
+---
+
+## 📝 Licencia
+
+Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
+
+---
+
+<p align="center">
+  <img src="https://whare1.netrunners.in/assets/images/netrunner.gif" alt="NetRunners GIF" width="300">
+</p>
