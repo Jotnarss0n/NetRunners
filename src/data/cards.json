@@ -1,6 +1,6 @@
 [
   {
-    "title": "Voleur HTB Medium",
+    "title": "Voleur HTB",
     "description": "HackTheBox's active Windows machine focused on Active Directory enumeration and privilege escalation, protected by NTLM hash encryption to prevent spoilers and ensure only those who complete the machine can fully access its details.",
     "date": "2025-07-05",
     "type": "medium",
@@ -13,7 +13,7 @@
     ]
   },
   {
-    "title": "Rustykey HTB Hard",
+    "title": "Rustykey HTB",
     "description": "HackTheBox's active Windows hard machine focused on Active Directory enumeration and privilege escalation, protected by NTLM hash encryption to prevent spoilers and ensure only those who complete the machine can fully access its details.",
     "date": "2025-06-28",
     "type": "hard",
@@ -48,6 +48,513 @@
       {
         "label": "Whare1's solution",
         "url": "https://whare1.netrunners.in/posts/Volanaya's_forums"
+      }
+    ]
+  },
+  {
+    "title": "Active HTB",
+    "description": "Writeup de la máquina Active de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2025-01-12",
+    "type": "medium",
+    "image": "https://labs.hackthebox.com/storage/avatars/5837ac5e28291146a9f2a8a015540c28.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Active"
+      }
+    ]
+  },
+  {
+    "title": "Alert HTB",
+    "description": "Writeup de la máquina Alert de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2025-02-03",
+    "type": "medium",
+    "image": "https://labs.hackthebox.com/storage/avatars/6f4647030d6aadc676b8d8a459de344f.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Alert"
+      }
+    ]
+  },
+  {
+    "title": "Analytics HTB",
+    "description": "Writeup de la máquina Analytics de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2025-03-15",
+    "type": "medium",
+    "image": "https://labs.hackthebox.com/storage/avatars/f86fcf4c1cfcc690b43f43e100f89718.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Analytics"
+      }
+    ]
+  },
+  {
+    "title": "BoardLight HTB",
+    "description": "Writeup de la máquina BoardLight de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2025-04-21",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/BoardLight"
+      }
+    ]
+  },
+  {
+    "title": "Broker HTB",
+    "description": "Writeup de la máquina Broker de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2025-05-10",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Broker"
+      }
+    ]
+  },
+  {
+    "title": "Buff HTB",
+    "description": "Writeup de la máquina Buff de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2025-06-02",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Buff"
+      }
+    ]
+  },
+  {
+    "title": "Cap HTB",
+    "description": "Writeup de la máquina Cap de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2025-06-18",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Cap"
+      }
+    ]
+  },
+  {
+    "title": "Cicada HTB",
+    "description": "Writeup de la máquina Cicada de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2025-07-01",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Cicada"
+      }
+    ]
+  },
+  {
+    "title": "Codify HTB",
+    "description": "Writeup de la máquina Codify de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2025-07-13",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Codify"
+      }
+    ]
+  },
+  {
+    "title": "CozyHosting HTB",
+    "description": "Writeup de la máquina CozyHosting de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2025-07-25",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/CozyHosting"
+      }
+    ]
+  },
+  {
+    "title": "Devvortex HTB",
+    "description": "Writeup de la máquina Devvortex de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2025-08-09",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Devvortex"
+      }
+    ]
+  },
+  {
+    "title": "Dog HTB",
+    "description": "Writeup de la máquina Dog de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2025-08-21",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Dog"
+      }
+    ]
+  },
+  {
+    "title": "Editorial HTB",
+    "description": "Writeup de la máquina Editorial de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2025-09-05",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Editorial"
+      }
+    ]
+  },
+  {
+    "title": "EscapeTwo HTB",
+    "description": "Writeup de la máquina EscapeTwo de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2025-09-17",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/EscapeTwo"
+      }
+    ]
+  },
+  {
+    "title": "Forest HTB",
+    "description": "Writeup de la máquina Forest de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2025-10-01",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Forest"
+      }
+    ]
+  },
+  {
+    "title": "GoodGames HTB",
+    "description": "Writeup de la máquina GoodGames de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2025-10-13",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/GoodGames"
+      }
+    ]
+  },
+  {
+    "title": "GreenHorn HTB",
+    "description": "Writeup de la máquina GreenHorn de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2025-10-25",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/GreenHorn"
+      }
+    ]
+  },
+  {
+    "title": "Headless HTB",
+    "description": "Writeup de la máquina Headless de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2025-11-06",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Headless"
+      }
+    ]
+  },
+  {
+    "title": "Heal HTB",
+    "description": "Writeup de la máquina Heal de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2025-11-18",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Heal"
+      }
+    ]
+  },
+  {
+    "title": "Inject HTB",
+    "description": "Writeup de la máquina Inject de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2025-12-01",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Inject"
+      }
+    ]
+  },
+  {
+    "title": "Intentions HTB",
+    "description": "Writeup de la máquina Intentions de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2025-12-13",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Intentions"
+      }
+    ]
+  },
+  {
+    "title": "Jerry HTB",
+    "description": "Writeup de la máquina Jerry de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2025-12-25",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Jerry"
+      }
+    ]
+  },
+  {
+    "title": "LinkVortex HTB",
+    "description": "Writeup de la máquina LinkVortex de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2026-01-06",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/LinkVortex"
+      }
+    ]
+  },
+  {
+    "title": "OpenSource HTB",
+    "description": "Writeup de la máquina OpenSource de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2026-01-18",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/OpenSource"
+      }
+    ]
+  },
+  {
+    "title": "PermX HTB",
+    "description": "Writeup de la máquina PermX de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2026-01-30",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/PermX"
+      }
+    ]
+  },
+  {
+    "title": "Pilgrimage HTB",
+    "description": "Writeup de la máquina Pilgrimage de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2026-02-11",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Pilgrimage"
+      }
+    ]
+  },
+  {
+    "title": "Sau HTB",
+    "description": "Writeup de la máquina Sau de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2026-02-23",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Sau"
+      }
+    ]
+  },
+  {
+    "title": "Sauna HTB",
+    "description": "Writeup de la máquina Sauna de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2026-03-06",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Sauna"
+      }
+    ]
+  },
+  {
+    "title": "Sea HTB",
+    "description": "Writeup de la máquina Sea de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2026-03-18",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Sea"
+      }
+    ]
+  },
+  {
+    "title": "Singtless HTB",
+    "description": "Writeup de la máquina Singtless de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2026-03-30",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Singtless"
+      }
+    ]
+  },
+  {
+    "title": "Support HTB",
+    "description": "Writeup de la máquina Support de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2026-04-11",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Support"
+      }
+    ]
+  },
+  {
+    "title": "TimeLapse HTB",
+    "description": "Writeup de la máquina TimeLapse de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2026-04-23",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/TimeLapse"
+      }
+    ]
+  },
+  {
+    "title": "Titanic HTB",
+    "description": "Writeup de la máquina Titanic de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2026-05-05",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Titanic"
+      }
+    ]
+  },
+  {
+    "title": "Topology HTB",
+    "description": "Writeup de la máquina Topology de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2026-05-17",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Topology"
+      }
+    ]
+  },
+  {
+    "title": "TwoMillions HTB",
+    "description": "Writeup de la máquina TwoMillions de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2026-05-29",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/TwoMillions"
+      }
+    ]
+  },
+  {
+    "title": "UnderPass HTB",
+    "description": "Writeup de la máquina UnderPass de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2026-06-10",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/UnderPass"
+      }
+    ]
+  },
+  {
+    "title": "Usage HTB",
+    "description": "Writeup de la máquina Usage de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2026-06-22",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Usage"
+      }
+    ]
+  },
+  {
+    "title": "Wifinetic HTB",
+    "description": "Writeup de la máquina Wifinetic de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2026-07-04",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/Wifinetic"
+      }
+    ]
+  },
+  {
+    "title": "chemistary HTB",
+    "description": "Writeup de la máquina chemistary de HackTheBox, con técnicas de enumeración y escalada de privilegios.",
+    "date": "2026-07-16",
+    "type": "medium",
+    "image": "https://whare1.netrunners.in/assets/images/placeholder.png",
+    "links": [
+      {
+        "label": "Walkthrough en R1nzler",
+        "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/chemistary"
       }
     ]
   }
