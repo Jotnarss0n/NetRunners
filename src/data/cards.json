@@ -4,7 +4,7 @@
     "description": "Objective: The Volnaya Emergency Broadcast System (EBS) is a critical platform for disseminating urgent public communications. The public-facing portal...",
     "date": "2025-05-28",
     "type": "hard",
-    "image": "../../src/assets/writeupImages/image.png",
+    "image": "/images/writeups/image.png",
     "links": [
       {
         "label": "HTB Challenge",
@@ -21,7 +21,7 @@
     "description": "Objective: The Volnaya Forums stand as a sprawling network where citizens compete to outdo each other in public displays of loyalty...",
     "date": "2025-05-27",
     "type": "medium",
-    "image": "../../src/assets/writeupImages/image.png",
+    "image": "/images/writeups/image.png",
     "links": [
       {
         "label": "HTB Forums",
@@ -34,7 +34,7 @@
     "description": "Objective: The goal is to infiltrate Volnaya's cloud-based Industrial Control System (ICS) monitoring network, locate sensitive data, and enable the Task...",
     "date": "2025-05-27",
     "type": "insane",
-    "image": "../../src/assets/writeupImages/image.png",
+    "image": "/images/writeups/image.png",
     "links": [
       {
         "label": "Dashboarded Info",
