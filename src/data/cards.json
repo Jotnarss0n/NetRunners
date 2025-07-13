@@ -559,7 +559,7 @@
     ]
   },
   {
-    "title": "chemistary HTB",
+    "title": "Chemistary HTB",
     "description": "A web application challenge featuring source code analysis, API enumeration, JWT token manipulation, and server-side request forgery (SSRF) to access internal services and exploit misconfigured webhooks.",
     "date": "2025-07-26",
     "type": "easy",
@@ -568,6 +568,123 @@
       {
         "label": "R1nzler's solution",
         "url": "https://r1nzler.netrunners.in/Walkthrough/HTB/Machines/chemistary"
+      }
+    ]
+  },
+  {
+    "title": "Cat HTB",
+    "description": "A Linux machine featuring a custom PHP application vulnerable to XSS for cookie hijacking, SQLite SQL injection leading to remote code execution, and privilege escalation via log analysis and exploitation of an XSS flaw in an internally hosted Gitea instance.",
+    "date": "2025-02-01",
+    "type": "medium",
+    "image": "https://ddl00p.netrunners.in/assets/cat/cat.png",
+    "links": [
+      {
+        "label": "DLL's solution",
+        "url": "https://ddl00p.netrunners.in/posts/Cat-Writeup/"
+      }
+    ]
+  },
+  {
+    "title": "Vintage HTB",
+    "description": "A Windows machine featuring Active Directory enumeration, certificate services misconfigurations, and privilege escalation through DPAPI abuse and TGT ticket manipulation using Impacket.",
+    "date": "2024-11-30",
+    "type": "hard",
+    "image": "https://ddl00p.netrunners.in/assets/vintage/vintage.png",
+    "links": [
+      {
+        "label": "DLL's solution",
+        "url": "https://ddl00p.netrunners.in/posts/Vintage-Writeup/"
+      }
+    ]
+  },
+  {
+    "title": "Administrator HTB",
+    "description": "A Windows machine featuring Active Directory enumeration, certificate services misconfigurations, and privilege escalation through Kerberoasting to retrieve the administrator's ticket.",
+    "date": "2024-11-09",
+    "type": "medium",
+    "image": "https://ddl00p.netrunners.in/assets/administrator/administrator.png",
+    "links": [
+      {
+        "label": "DLL's solution",
+        "url": "https://ddl00p.netrunners.in/posts/Administrator-Writeup/"
+      }
+    ]
+  },
+  {
+    "title": "Certified HTB",
+    "description": "A Windows machine featuring Active Directory enumeration, certificate services misconfigurations, and privilege escalation via certificate-based authentication abuse using Certipy to impersonate privileged users.",
+    "date": "2024-11-02",
+    "type": "medium",
+    "image": "https://ddl00p.netrunners.in/assets/certified/certified.png",
+    "links": [
+      {
+        "label": "DLL's solution",
+        "url": "https://ddl00p.netrunners.in/posts/Certified-Writeup/"
+      }
+    ]
+  },
+  {
+    "title": "Instant HTB",
+    "description": "A Linux machine featuring mobile app reverse engineering, API endpoint exploitation, and privilege escalation by decrypting session data from Solar-PuTTY.",
+    "date": "2024-10-12",
+    "type": "medium",
+    "image": "https://ddl00p.netrunners.in/assets/instant/instant.png",
+    "links": [
+      {
+        "label": "DLL's solution",
+        "url": "https://ddl00p.netrunners.in/posts/Instant-Writeup/"
+      }
+    ]
+  },
+  {
+    "title": "MonitorsTwo HTB",
+    "description": "A Linux machine featuring command injection in a Cacti-based web application, credential-based privilege escalation via MySQL, and Docker container escape to gain root access.",
+    "date": "2023-04-29",
+    "type": "easy",
+    "image": "https://ddl00p.netrunners.in/assets/monitorstwo/monitorstwo.png",
+    "links": [
+      {
+        "label": "DLL's solution",
+        "url": "https://ddl00p.netrunners.in/posts/MonitorsTwo-Writeup/"
+      }
+    ]
+  },
+  {
+    "title": "Perfection HTB",
+    "description": "A Linux machine featuring Server-Side Template Injection (SSTI) with regex bypass, password hash extraction, and privilege escalation through password cracking to gain root access.",
+    "date": "2024-03-02",
+    "type": "easy",
+    "image": "https://ddl00p.netrunners.in/assets/perfection/perfection.png",
+    "links": [
+      {
+        "label": "DLL's solution",
+        "url": "https://ddl00p.netrunners.in/posts/Perfection-Writeup/"
+      }
+    ]
+  },
+  {
+    "title": "Precious HTB",
+    "description": "A Linux machine featuring remote code execution via a Ruby on Rails vulnerability and privilege escalation through insecure third-party dependencies.",
+    "date": "2022-11-26",
+    "type": "easy",
+    "image": "https://ddl00p.netrunners.in/assets/precious/precious.png",
+    "links": [
+      {
+        "label": "DLL's solution",
+        "url": "https://ddl00p.netrunners.in/posts/Precious-Writeup/"
+      }
+    ]
+  },
+  {
+    "title": "Antique HTB",
+    "description": "A Linux machine featuring remote code execution via a vulnerable ProFTPD server and privilege escalation through system misconfigurations.",
+    "date": "2021-09-27",
+    "type": "easy",
+    "image": "https://ddl00p.netrunners.in/assets/antique/antique.png",
+    "links": [
+      {
+        "label": "DLL's solution",
+        "url": "https://ddl00p.netrunners.in/posts/Antique-Writeup/"
       }
     ]
   }
