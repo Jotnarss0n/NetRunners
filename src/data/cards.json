@@ -687,5 +687,44 @@
         "url": "https://ddl00p.netrunners.in/posts/Antique-Writeup/"
       }
     ]
+  },
+  {
+    "title": "Scepter HTB",
+    "description": "A HackTheBox active Hard Windows machine focused on Active Directory enumeration and privilege escalation, protected by NTLM hash encryption to prevent spoilers and ensure only those who complete the machine can fully access its details.",
+    "date": "2025-04-19",
+    "type": "hard",
+    "image": "https://ddl00p.netrunners.in/assets/scepter/scepter.png",
+    "links": [
+      {
+        "label": "DLL's solution",
+        "url": "https://ddl00p.netrunners.in/posts/Scepter-Writeup/"
+      }
+    ]
+  },
+  {
+    "title": "Certificate HTB",
+    "description": "A HackTheBox active Hard Windows machine focused on Active Directory enumeration and privilege escalation, protected by NTLM hash encryption to prevent spoilers and ensure only those who complete the machine can fully access its details.",
+    "date": "2025-05-31",
+    "type": "hard",
+    "image": "https://ddl00p.netrunners.in/assets/certificate/certificate.png",
+    "links": [
+      {
+        "label": "DLL's solution",
+        "url": "https://ddl00p.netrunners.in/posts/Certificate-Writeup/"
+      }
+    ]
+  },
+  {
+    "title": "Nocturnal HTB",
+    "description": "A HackTheBox active Easy Linux machine focused on web enumeration and privilege escalation, protected by Root's Shadow Hash to prevent spoilers and ensure only those who complete the machine can fully access its details.",
+    "date": "2025-04-12",
+    "type": "easy",
+    "image": "https://ddl00p.netrunners.in/assets/nocturnal/nocturnal.png",
+    "links": [
+      {
+        "label": "DLL's solution",
+        "url": "https://ddl00p.netrunners.in/posts/Nocturnal-Writeup/"
+      }
+    ]
   }
 ]
