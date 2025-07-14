@@ -41,7 +41,7 @@ const categories = Array.from(
     <!-- Main grid: left for input fields, right for commands/tabs/filters -->
 			<div class="grid grid-cols-4 gap-4 flex-grow overflow-hidden" style=" color: var(--theme-text);">
 				<!-- Input fields for command placeholders (URL, IP, etc.) -->
-				<div class="space-y-7 pt-3" id="input-form">
+				<div class="space-y-7 pt-3 pr-2 overflow-y-auto max-h-[80vh] scroll-hover" id="input-form">
 					<InputBox label="URL" />
 					<InputBox label="IP" />
 					<InputBox label="PORT" />
@@ -167,11 +167,41 @@ const categories = Array.from(
 
 					applyCategoryFilter?.();
 					animateVisibleCommandBoxes(); // Animate on tab switch
+					attachCopyListeners();
 				});
 			});
 
 			// Select all input elements inside the container with ID "input-form"
 			const inputs = document.querySelectorAll("#input-form input");
+
+			// Helper: create or update error message below an input
+			function setInputError(input: HTMLInputElement, message: string | null) {
+				let errorEl = input.parentElement?.querySelector('.input-error') as HTMLDivElement | null;
+				if (!errorEl && message) {
+					errorEl = document.createElement('div');
+					errorEl.className = 'input-error text-xs mt-1';
+					errorEl.style.color = 'var(--theme-text)';
+					errorEl.style.background = 'var(--theme-bg)';
+					errorEl.style.padding = '2px 6px';
+					errorEl.style.borderRadius = '4px';
+					errorEl.style.border = '1px solid var(--theme-border)';
+					input.parentElement?.appendChild(errorEl);
+				}
+				if (errorEl) {
+					errorEl.textContent = message || '';
+					errorEl.style.display = message ? 'block' : 'none';
+				}
+			}
+
+			// Validation functions
+			function isValidIPv4(ip: string): boolean {
+				// Simple IPv4 regex
+				return /^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ip);
+			}
+			function isValidPort(port: string): boolean {
+				const n = Number(port);
+				return /^\d+$/.test(port) && n >= 1 && n <= 65535;
+			}
 
 			// Function to update placeholders (like {{IP}}, {{PORT}}, etc.) in command spans
 			const updateCommands = () => {
@@ -187,6 +217,24 @@ const categories = Array.from(
 					);
 					// Get the label text, trim whitespace, and convert to uppercase (e.g., "IP")
 					const labelText = label?.textContent?.trim().toUpperCase();
+
+					// Validate IP and PORT
+					if (labelText === 'IP') {
+						if (htmlInput.value && !isValidIPv4(htmlInput.value)) {
+							setInputError(htmlInput, 'Invalid IPv4 address');
+							return; // skip propagating invalid value
+						} else {
+							setInputError(htmlInput, null);
+						}
+					}
+					if (labelText === 'PORT') {
+						if (htmlInput.value && !isValidPort(htmlInput.value)) {
+							setInputError(htmlInput, 'Invalid port (1-65535)');
+							return;
+						} else {
+							setInputError(htmlInput, null);
+						}
+					}
 
 					// Store the value if a matching label is found
 					if (labelText) values[labelText] = htmlInput.value;
@@ -271,6 +319,7 @@ const categories = Array.from(
 							});
 					});
 				animateVisibleCommandBoxes(); // Animate on filter change
+				attachCopyListeners();
 			};
 
 			document.querySelectorAll(".category-filter").forEach((cb) => {
@@ -373,6 +422,9 @@ const categories = Array.from(
 					hideSearchResults();
 				});
 			}
+
+			// Attach copy listeners on initial load
+			attachCopyListeners();
 		</script>
 
 </Layout>
