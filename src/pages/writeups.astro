@@ -6,6 +6,33 @@ import WriteupCard from "../components/writeupCard.astro";
 import cards from "../data/cards.json";
 ---
 
+<!-- JSON-LD Article for each writeup -->
+{cards.map(card => (
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": card.title,
+      "description": card.description,
+      "image": card.image,
+      "author": {
+        "@type": "Organization",
+        "name": "NetRunners Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "NetRunners",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://netrunners.in/favicon.svg"
+        }
+      },
+      "datePublished": card.date,
+      "mainEntityOfPage": `https://netrunners.in/writeups#${encodeURIComponent(card.title.replace(/\s+/g, '-'))}`
+    })}
+  </script>
+))}
+
 <Layout>
   <div class="py-8 h-[80vh] overflow-x-visible overflow-y-auto px-16 scroll-hover" style="color: var(--theme-text);">
     <div class="mb-6 flex flex-col lg:flex-row justify-center items-center gap-4">
@@ -150,19 +177,18 @@ import cards from "../data/cards.json";
           }
         });
 
-        // Smooth reordering with staggered animations
+        // Faster, more synchronized reordering
         sortedCards.forEach((card, index) => {
           const element = card as HTMLElement;
           element.style.opacity = '0';
-          element.style.transform = 'scale(0.95) translateY(-20px)';
-          
+          element.style.transform = 'scale(0.97) translateY(-10px)';
           setTimeout(() => {
             list.appendChild(element);
             setTimeout(() => {
               element.style.opacity = '1';
               element.style.transform = 'scale(1) translateY(0)';
-            }, 50);
-          }, index * 100);
+            }, 10); // minimal delay for smoother sync
+          }, index * 20); // much faster stagger
         });
       });
       

@@ -119,7 +119,7 @@ const categories = Array.from(
 					</div>
 				</div>
 			</div>
-	
+		
 
 		<!-- Interactive scripts for tabs, inputs, and filters -->
 		<script>
@@ -277,26 +277,26 @@ const categories = Array.from(
 			function attachCopyListeners(container: Document | HTMLElement = document) {
 				const copyButtons = container.querySelectorAll('button');
 				copyButtons.forEach((button) => {
-					if (button.textContent?.trim() === "COPY") {
+				if (button.textContent?.trim() === "COPY") {
 						// Remove any previous click listeners by replacing with a clone
 						const newButton = button.cloneNode(true) as HTMLButtonElement;
 						if (button.parentNode) {
 							button.parentNode.replaceChild(newButton, button);
 							newButton.addEventListener('click', function () {
 								const span = newButton.parentElement?.querySelector('span');
-								if (!span) return;
-								const command = span.textContent;
-								if (!command) return;
-								navigator.clipboard.writeText(command).then(() => {
+						if (!span) return;
+						const command = span.textContent;
+						if (!command) return;
+						navigator.clipboard.writeText(command).then(() => {
 									newButton.textContent = "COPIED!";
-									setTimeout(() => {
+							setTimeout(() => {
 										newButton.textContent = "COPY";
-									}, 1000);
-								});
-							});
+							}, 1000);
+						});
+					});
 						}
-					}
-				});
+				}
+			});
 			}
 
 			// Category filter logic (checkboxes)
@@ -426,5 +426,5 @@ const categories = Array.from(
 			// Attach copy listeners on initial load
 			attachCopyListeners();
 		</script>
-
+	
 </Layout>
