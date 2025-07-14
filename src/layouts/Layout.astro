@@ -9,19 +9,76 @@ const themeNames = Object.keys(themes);
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>NetRunners</title>
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <!-- OpenGraph meta tags -->
-        <meta property="og:title" content="NetRunners" />
-        <meta property="og:description" content="A curated collection of hacking commands, writeups, and resources for pentesters and CTF players." />
-        <meta property="og:image" content="/favicon.svg" />
-        <meta property="og:url" content="https://netrunners.in/" />
-        <meta property="og:type" content="website" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+		<title>NetRunners - Pentesting Commands, Writeups & Resources</title>
+        <meta name="description" content="NetRunners is a curated collection of hacking commands, writeups, and resources for pentesters, CTF players, and cybersecurity enthusiasts." />
+        <meta name="keywords" content="pentesting, hacking, CTF, cybersecurity, commands, writeups, hacking resources, netrunners, infosec, security tools" />
+        <meta name="author" content="NetRunners Team" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://netrunners.in/" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="application-name" content="NetRunners" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="format-detection" content="telephone=no,address=no,email=no" />
+        <meta name="referrer" content="no-referrer-when-downgrade" />
+        <meta name="copyright" content="NetRunners Team" />
+        <meta property="og:site_name" content="NetRunners" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:image:alt" content="NetRunners logo" />
+        <meta property="og:image:width" content="512" />
+        <meta property="og:image:height" content="512" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="NetRunners" />
         <meta name="twitter:description" content="A curated collection of hacking commands, writeups, and resources for pentesters and CTF players." />
         <meta name="twitter:image" content="/favicon.svg" />
+        <meta name="twitter:image:alt" content="NetRunners logo" />
+        <!-- Optional: <meta name="twitter:site" content="@netrunners" /> -->
+        <!-- Optional: <meta name="twitter:creator" content="@netrunners" /> -->
+        <!-- Windows tile color/image -->
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="msapplication-TileImage" content="/favicon.svg" />
+        <!-- Favicon fallback for legacy browsers -->
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/png" href="/favicon.png" sizes="512x512" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
+        <!-- JSON-LD structured data for organization/site -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "NetRunners",
+          "url": "https://netrunners.in/",
+          "logo": "https://netrunners.in/favicon.svg",
+          "description": "A curated collection of hacking commands, writeups, and resources for pentesters, CTF players, and cybersecurity enthusiasts.",
+          "sameAs": [
+            "https://github.com/netrunners", 
+            "https://twitter.com/netrunners"
+          ]
+        }
+        </script>
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "NetRunners",
+          "url": "https://netrunners.in/",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://netrunners.in/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }
+        </script>
+        <!--
+        # SEO SUGERENCIAS PARA EL FUTURO:
+        # 1. Genera un sitemap.xml y robots.txt en la raíz del proyecto.
+        # 2. Usa imágenes de portada de al menos 1200x630px para mejor preview en redes.
+        # 3. Añade alt y title descriptivos a todas las imágenes.
+        # 4. Si tienes artículos/writeups, usa JSON-LD tipo Article para cada uno.
+        # 5. Si tienes Search Console, agrega la meta google-site-verification.
+        # 6. Mejora la accesibilidad (a11y) y el performance (Lighthouse).
+        -->
 		<!-- prevent FOUC by applying theme class before paint -->
 		<style>html{visibility:hidden}</style>
 		<script is:inline>
