@@ -226,23 +226,30 @@ const categories = Array.from(
 			);
 
 			// Clipboard copy functionality for command boxes
-			document.querySelectorAll("button").forEach((button) => {
-				if (button.textContent?.trim() === "COPY") {
-					button.addEventListener("click", () => {
-						const span =
-							button.parentElement?.querySelector("span");
-						if (!span) return;
-						const command = span.textContent;
-						if (!command) return;
-						navigator.clipboard.writeText(command).then(() => {
-							button.textContent = "COPIED!";
-							setTimeout(() => {
-								button.textContent = "COPY";
-							}, 1000);
-						});
-					});
-				}
-			});
+			function attachCopyListeners(container: Document | HTMLElement = document) {
+				const copyButtons = container.querySelectorAll('button');
+				copyButtons.forEach((button) => {
+					if (button.textContent?.trim() === "COPY") {
+						// Remove any previous click listeners by replacing with a clone
+						const newButton = button.cloneNode(true) as HTMLButtonElement;
+						if (button.parentNode) {
+							button.parentNode.replaceChild(newButton, button);
+							newButton.addEventListener('click', function () {
+								const span = newButton.parentElement?.querySelector('span');
+								if (!span) return;
+								const command = span.textContent;
+								if (!command) return;
+								navigator.clipboard.writeText(command).then(() => {
+									newButton.textContent = "COPIED!";
+									setTimeout(() => {
+										newButton.textContent = "COPY";
+									}, 1000);
+								});
+							});
+						}
+					}
+				});
+			}
 
 			// Category filter logic (checkboxes)
 			const applyCategoryFilter = () => {
@@ -321,6 +328,7 @@ const categories = Array.from(
 					node.classList.add('fade-in-slide');
 					searchResultsContainer!.appendChild(node);
 				});
+				attachCopyListeners(searchResultsContainer!);
 			};
 
 			// Hide search results and remove container
