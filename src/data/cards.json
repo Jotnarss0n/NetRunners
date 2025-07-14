@@ -1,5 +1,5 @@
 [
-    {
+  {
     "title": "Outbound HTB",
     "description": "A HackTheBox active easy Linux machine focused on web enumeration and privilege escalation, protected by Root’s hash encryption to prevent spoilers and ensure only those who complete the machine can fully access its details.",
     "date": "2025-07-12",
@@ -51,7 +51,7 @@
       }
     ]
   },
-      {
+  {
     "title": "Scepter HTB",
     "description": "A HackTheBox active Hard Windows machine focused on Active Directory enumeration and privilege escalation, protected by NTLM hash encryption to prevent spoilers and ensure only those who complete the machine can fully access its details.",
     "date": "2025-04-19",
@@ -77,7 +77,7 @@
       }
     ]
   },
-    {
+  {
     "title": "Dashboarded HTB Business CTF 2025",
     "description": "In this cloud‑based ICS challenge you enumerate AWS IAM roles, exploit misconfigured S3 buckets to harvest credentials, perform SSRF via the monitoring dashboard, enumerate CloudTrail to locate sensitive logs, and escalate privileges through EC2 instance metadata abuse.",
     "date": "2025-05-27",
@@ -600,7 +600,7 @@
   {
     "title": "Chemistary HTB",
     "description": "A web application challenge featuring source code analysis, API enumeration, JWT token manipulation, and server-side request forgery (SSRF) to access internal services and exploit misconfigured webhooks.",
-    "date": "2024-08-19",
+    "date": "2024-10-19",
     "type": "easy",
     "image": "https://labs.hackthebox.com/storage/avatars/b8f3d660af2d3ed0929eb119e33526cf.png",
     "links": [
