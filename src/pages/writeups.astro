@@ -96,34 +96,48 @@ import cards from "../data/cards.json";
       
       if (!input || !list || !noResults || !sortSelector || !difficultyFilter) return;
       
-      const cards = list.querySelectorAll('.writeup-card');
-      
-      // Function to filter and display cards
-      function filterCards() {
+      const cards = list ? Array.from(list.querySelectorAll('.writeup-card')) : [];
+
+      // Function to sort and filter cards, then update DOM
+      function updateCards() {
+        if (!list) return;
         const searchValue = input.value.trim().toLowerCase();
         const difficultyValue = difficultyFilter.value;
+        const sortValue = sortSelector.value;
+
+        // Sort all cards (regardless of visibility)
+        cards.sort((a, b) => {
+          const dateA = new Date((a as HTMLElement).getAttribute('data-date') || '').getTime();
+          const dateB = new Date((b as HTMLElement).getAttribute('data-date') || '').getTime();
+          if (sortValue === 'newest') {
+            return dateB - dateA;
+          } else {
+            return dateA - dateB;
+          }
+        });
+
+        // Remove all cards from DOM, then re-append in sorted order
+        cards.forEach(card => list.removeChild(card));
+        cards.forEach(card => list.appendChild(card));
+
+        // Filter and animate
         let visibleCount = 0;
-        
         cards.forEach((card, index) => {
           const element = card as HTMLElement;
           const title = element.getAttribute('data-title') || '';
           const difficulty = element.getAttribute('data-difficulty') || '';
-          
           const matchesSearch = title.includes(searchValue);
           const matchesDifficulty = difficultyValue === 'all' || difficulty === difficultyValue;
-          
           if (matchesSearch && matchesDifficulty) {
             element.style.display = '';
-            // Staggered animation for visible cards
             setTimeout(() => {
               element.style.opacity = '1';
               element.style.transform = 'scale(1) translateY(0)';
-            }, index * 50);
+            }, index * 20);
             visibleCount++;
           } else {
             element.style.opacity = '0';
             element.style.transform = 'scale(0.95) translateY(-10px)';
-            // Hide after animation completes
             setTimeout(() => {
               if (!title.includes(searchValue) || (difficultyValue !== 'all' && difficulty !== difficultyValue)) {
                 element.style.display = 'none';
@@ -131,8 +145,8 @@ import cards from "../data/cards.json";
             }, 200);
           }
         });
-        
-        // Smooth transition for no results message
+
+        // Show/hide no results message
         if (visibleCount === 0) {
           if (noResults) {
             noResults.style.opacity = '0';
@@ -157,43 +171,14 @@ import cards from "../data/cards.json";
         }
       }
 
-      input.addEventListener('input', filterCards);
-      difficultyFilter.addEventListener('change', filterCards);
+      input.addEventListener('input', updateCards);
+      difficultyFilter.addEventListener('change', updateCards);
+      sortSelector.addEventListener('change', updateCards);
 
-      sortSelector.addEventListener('change', function() {
-        const selectedValue = sortSelector.value;
-        const visibleCards = Array.from(cards).filter(card => 
-          (card as HTMLElement).style.display !== 'none'
-        );
-        
-        const sortedCards = visibleCards.sort((a, b) => {
-          const dateA = new Date((a as HTMLElement).getAttribute('data-date') || '').getTime();
-          const dateB = new Date((b as HTMLElement).getAttribute('data-date') || '').getTime();
-
-          if (selectedValue === 'newest') {
-            return dateB - dateA; // Newest first
-          } else {
-            return dateA - dateB; // Oldest first
-          }
-        });
-
-        // Faster, more synchronized reordering
-        sortedCards.forEach((card, index) => {
-          const element = card as HTMLElement;
-          element.style.opacity = '0';
-          element.style.transform = 'scale(0.97) translateY(-10px)';
-          setTimeout(() => {
-            list.appendChild(element);
-            setTimeout(() => {
-              element.style.opacity = '1';
-              element.style.transform = 'scale(1) translateY(0)';
-            }, 10); // minimal delay for smoother sync
-          }, index * 20); // much faster stagger
-        });
-      });
-      
       // Focus en el input al cargar la página
       input.focus();
+      // Inicializa el orden y filtro al cargar
+      updateCards();
     });
   </script>
 </Layout>
