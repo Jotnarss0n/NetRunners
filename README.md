@@ -3,7 +3,7 @@
 **Automation and learning for pentesting**
 
 [![GitHub Release](https://img.shields.io/github/v/release/NetRunners-Toolkits/NetRunners)](https://github.com/NetRunners-Toolkits/NetRunners/releases)
-[![License](https://img.shields.io/github/license/NetRunners-Toolkits/NetRunners)](https://github.com/NetRunners-Toolkits/NetRunners/blob/main/LICENSE)
+[![License](https://img.shields.io/github/license/NetRunners-Toolkits/NetRunners)](https://github.com/NetRunners-Toolkits/NetRunners/blob/master/LICENSE)
 &#x20;
 
 ---
