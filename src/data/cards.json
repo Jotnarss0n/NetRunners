@@ -4,11 +4,11 @@
     "description": "A HackTheBox active easy Linux machine focused on web enumeration and privilege escalation, protected by Root’s hash encryption to prevent spoilers and ensure only those who complete the machine can fully access its details.",
     "date": "2025-07-13",
     "type": "easy",
-    "image": "https://whare1.netrunners.in/assets/images/outbound.png",
+    "image": "https://whare1.netrunners.in/assets/img/posts/outbound.png",
     "links": [
       {
         "label": "Whare1's solution",
-        "url": "https://whare1.netrunners.in/posts/Outbound-Writeup/"
+        "url": "https://whare1.netrunners.in/writeups/hackthebox/outbound#/"
       }
     ]
   },
@@ -17,11 +17,11 @@
     "description": "Voleur A HackTheBox active Medium Windows machine focused on Active Directory enumeration and privilege escalation, protected by NTLM hash encryption to prevent spoilers and ensure only those who complete the machine can fully access its details.",
     "date": "2025-07-06",
     "type": "medium",
-    "image": "https://whare1.netrunners.in/assets/images/voleur.png",
+    "image": "https://whare1.netrunners.in/assets/img/posts/voleur.png",
     "links": [
       {
         "label": "Whare1's solution",
-        "url": "https://whare1.netrunners.in/posts/Voleur-Writeup"
+        "url": "https://whare1.netrunners.in/writeups/hackthebox/voleur#/"
       }
     ]
   },
@@ -30,11 +30,11 @@
     "description": "RustyKey A HackTheBox active Hard Windows machine focused on Active Directory enumeration and privilege escalation, protected by NTLM hash encryption to prevent spoilers and ensure only those who complete the machine can fully access its details.",
     "date": "2025-06-28",
     "type": "hard",
-    "image": "https://whare1.netrunners.in/assets/images/rustykey.png",
+    "image": "https://whare1.netrunners.in/assets/img/posts/rustykey.png",
     "links": [
       {
         "label": "Whare1's solution",
-        "url": "https://whare1.netrunners.in/posts/RustyKey-Writeup"
+        "url": "https://whare1.netrunners.in/writeups/hackthebox/rustykey#/"
       }
     ]
   },
@@ -82,11 +82,11 @@
     "description": "In this cloud‑based ICS challenge you enumerate AWS IAM roles, exploit misconfigured S3 buckets to harvest credentials, perform SSRF via the monitoring dashboard, enumerate CloudTrail to locate sensitive logs, and escalate privileges through EC2 instance metadata abuse.",
     "date": "2025-05-27",
     "type": "easy",
-    "image": "https://whare1.netrunners.in/assets/images/aws2.png",
+    "image": "https://whare1.netrunners.in/assets/img/posts/aws.png",
     "links": [
       {
         "label": "Whare1's solution",
-        "url": "https://whare1.netrunners.in/posts/EBS"
+        "url": "https://whare1.netrunners.in/writeups/hackthebox/dashboarded#/"
       }
     ]
   },
@@ -95,11 +95,11 @@
     "description": "A white‑box web CTF where you analyze source code, exploit an IDOR to access /flag.txt, chain broken access control with cross‑site scripting to inject a webhook for exfiltration under CORS restrictions, and abuse a bot‑based report system to execute code as admin.",
     "date": "2025-03-08",
     "type": "easy",
-    "image": "https://whare1.netrunners.in/assets/images/vol_forum.png",
+    "image": "https://whare1.netrunners.in/assets/img/posts/vol_forum.png",
     "links": [
       {
         "label": "Whare1's solution",
-        "url": "https://whare1.netrunners.in/posts/Volanaya's_forums"
+        "url": "https://whare1.netrunners.in/writeups/hackthebox/volnaya_forums#/"
       }
     ]
   },
