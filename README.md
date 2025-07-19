@@ -105,6 +105,11 @@ We welcome your ideas and improvements! 🙌
 
 ---
 
+## Contributors
+![Alt](https://repobeats.axiom.co/api/embed/1a17ffae4c2f07c112dace0f1c81be6ab23f36fe.svg "Repobeats analytics image")
+
+---
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
