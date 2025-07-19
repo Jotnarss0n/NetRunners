@@ -18,8 +18,30 @@ const categories = Array.from(
 ---
 
 <Layout>
+    <!-- Global search bar for commands, with clear button -->
+    <div class="mb-4 flex items-center gap-2">
+        <input
+            id="global-search"
+            type="text"
+            placeholder="Search command..."
+            class="theme-input px-3 py-2 rounded border border-inherit w-full"
+            style="background: var(--theme-card); color: var(--theme-card-text); border-color: var(--theme-border);"
+            autocomplete="off"
+        />
+        <button
+            id="clear-search-btn"
+            type="button"
+            class="ml-2 px-2 py-1 rounded border border-inherit text-sm transition-colors hidden"
+            style="background: var(--theme-card); color: var(--theme-card-text); border-color: var(--theme-border);"
+            aria-label="Clear search"
+        >
+            &#10005;
+        </button>
+    </div>
+    <!-- Main grid: left for input fields, right for commands/tabs/filters -->
 			<div class="grid grid-cols-4 gap-4 flex-grow overflow-hidden" style=" color: var(--theme-text);">
-				<div class="space-y-7 pt-3" id="input-form">
+				<!-- Input fields for command placeholders (URL, IP, etc.) -->
+				<div class="space-y-7 pt-3 pr-2 overflow-y-auto max-h-[80vh] scroll-hover" id="input-form">
 					<InputBox label="URL" />
 					<InputBox label="IP" />
 					<InputBox label="PORT" />
@@ -28,7 +50,9 @@ const categories = Array.from(
 					<InputBox label="DOMAIN" />
 					<InputBox label="DC.DOMAIN" />
 				</div>
+				<!-- Commands section: tabs, category filters, and command list -->
 				<div class="col-span-3 flex flex-col overflow-hidden">
+					<!-- Tabs for command groups (Active Directory, Kerberos, etc.) -->
 					<div class="flex space-x-2 border-b pb-2 mb-2 border-inherit" style="border-color: var(--theme-border);">
 						{
 							tabs.map((tab, index) => (
@@ -41,6 +65,7 @@ const categories = Array.from(
 							))
 						}
 					</div>
+					<!-- Category filters (checkboxes) -->
 					<div class="mb-3">
 						<div class="flex flex-wrap gap-2">
 							{
@@ -60,6 +85,7 @@ const categories = Array.from(
 							}
 						</div>
 					</div>
+					<!-- Command list: each tab shows its categories and commands -->
 					<div
 						class="space-y-2 border-2 overflow-hidden p-1 rounded-xl border-inherit"
 						style="border-color: var(--theme-border);"
@@ -97,21 +123,34 @@ const categories = Array.from(
 
 		<!-- Interactive scripts for tabs, inputs, and filters -->
 		<script>
+			// Function to animate visible CommandBoxes (fade-in-slide)
+			function animateVisibleCommandBoxes() {
+				// Only animate those that are visible (not hidden)
+				document.querySelectorAll('[data-tab-content]:not(.hidden) [data-category] > div:not(.hidden)')
+					.forEach(box => {
+						box.classList.remove('fade-in-slide'); // reset if already present
+						// Force reflow to restart animation if needed
+						void (box as HTMLElement).offsetWidth;
+						box.classList.add('fade-in-slide');
+					});
+			}
+
 			// Tab switching logic compatible with themed styles
 			const tabButtons = document.querySelectorAll(".tab-btn");
 			const tabContents = document.querySelectorAll("[data-tab-content]");
 
-			let activeTab = null;
+			let activeTab: string | null = null;
 			if(tabButtons.length){
 				(tabButtons[0] as HTMLElement).classList.add('tabActive');
 			}
 
+			// Handle tab switching
 			tabButtons.forEach((btn) => {
 				const button = btn as HTMLElement;
 
 				button.addEventListener("click", () => {
 					const target = button.dataset.tab;
-					activeTab = target;
+					activeTab = target ?? null;
 
 					tabButtons.forEach((b) => {
 						(b as HTMLElement).classList.remove("tabActive");
@@ -127,11 +166,42 @@ const categories = Array.from(
 					});
 
 					applyCategoryFilter?.();
+					animateVisibleCommandBoxes(); // Animate on tab switch
+					attachCopyListeners();
 				});
 			});
 
 			// Select all input elements inside the container with ID "input-form"
 			const inputs = document.querySelectorAll("#input-form input");
+
+			// Helper: create or update error message below an input
+			function setInputError(input: HTMLInputElement, message: string | null) {
+				let errorEl = input.parentElement?.querySelector('.input-error') as HTMLDivElement | null;
+				if (!errorEl && message) {
+					errorEl = document.createElement('div');
+					errorEl.className = 'input-error text-xs mt-1';
+					errorEl.style.color = 'var(--theme-text)';
+					errorEl.style.background = 'var(--theme-bg)';
+					errorEl.style.padding = '2px 6px';
+					errorEl.style.borderRadius = '4px';
+					errorEl.style.border = '1px solid var(--theme-border)';
+					input.parentElement?.appendChild(errorEl);
+				}
+				if (errorEl) {
+					errorEl.textContent = message || '';
+					errorEl.style.display = message ? 'block' : 'none';
+				}
+			}
+
+			// Validation functions
+			function isValidIPv4(ip: string): boolean {
+				// Simple IPv4 regex
+				return /^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ip);
+			}
+			function isValidPort(port: string): boolean {
+				const n = Number(port);
+				return /^\d+$/.test(port) && n >= 1 && n <= 65535;
+			}
 
 			// Function to update placeholders (like {{IP}}, {{PORT}}, etc.) in command spans
 			const updateCommands = () => {
@@ -148,30 +218,54 @@ const categories = Array.from(
 					// Get the label text, trim whitespace, and convert to uppercase (e.g., "IP")
 					const labelText = label?.textContent?.trim().toUpperCase();
 
+					// Validate IP and PORT
+					if (labelText === 'IP') {
+						if (htmlInput.value && !isValidIPv4(htmlInput.value)) {
+							setInputError(htmlInput, 'Invalid IPv4 address');
+							return; // skip propagating invalid value
+						} else {
+							setInputError(htmlInput, null);
+						}
+					}
+					if (labelText === 'PORT') {
+						if (htmlInput.value && !isValidPort(htmlInput.value)) {
+							setInputError(htmlInput, 'Invalid port (1-65535)');
+							return;
+						} else {
+							setInputError(htmlInput, null);
+						}
+					}
+
 					// Store the value if a matching label is found
 					if (labelText) values[labelText] = htmlInput.value;
 				});
 
-				// Find all spans inside elements that have the "data-tab-content" attribute
+				// Update spans in the normal view
 				document
 					.querySelectorAll("[data-tab-content] span")
 					.forEach((span) => {
 						const el = span as HTMLSpanElement;
-
-						// Use the original text content (or a stored raw version) for replacement
 						let raw = el.dataset.raw || el.textContent || "";
-
-						// Save the original text to the dataset (so we don't lose it after replacements)
 						el.dataset.raw = raw;
-
-						// Replace placeholders like {{IP}}, {{PORT}}, etc. with the corresponding input values
 						Object.entries(values).forEach(([key, value]) => {
 							raw = raw.replaceAll(`{{${key}}}`, value);
 						});
-
-						// Update the text content of the span with the replaced version
 						el.textContent = raw;
 					});
+
+				// Update spans in search results (if present)
+				const searchResultsContainer = document.getElementById("search-results-container");
+				if (searchResultsContainer) {
+					searchResultsContainer.querySelectorAll("span[data-raw]").forEach((span) => {
+						const el = span as HTMLSpanElement;
+						let raw = el.dataset.raw || el.textContent || "";
+						el.dataset.raw = raw;
+						Object.entries(values).forEach(([key, value]) => {
+							raw = raw.replaceAll(`{{${key}}}`, value);
+						});
+						el.textContent = raw;
+					});
+				}
 			};
 
 			// Attach the update function to each input's "input" event (fires on every keystroke)
@@ -179,28 +273,33 @@ const categories = Array.from(
 				input.addEventListener("input", updateCommands),
 			);
 
-			// Clipboard copy functionality
-			document.querySelectorAll("button").forEach((button) => {
+			// Clipboard copy functionality for command boxes
+			function attachCopyListeners(container: Document | HTMLElement = document) {
+				const copyButtons = container.querySelectorAll('button');
+				copyButtons.forEach((button) => {
 				if (button.textContent?.trim() === "COPY") {
-					button.addEventListener("click", () => {
-						const span =
-							button.parentElement?.querySelector("span");
+						// Remove any previous click listeners by replacing with a clone
+						const newButton = button.cloneNode(true) as HTMLButtonElement;
+						if (button.parentNode) {
+							button.parentNode.replaceChild(newButton, button);
+							newButton.addEventListener('click', function () {
+								const span = newButton.parentElement?.querySelector('span');
 						if (!span) return;
 						const command = span.textContent;
 						if (!command) return;
 						navigator.clipboard.writeText(command).then(() => {
-							button.textContent = "COPIED!";
-							// button.classList.add("bg-green-600");
+									newButton.textContent = "COPIED!";
 							setTimeout(() => {
-								button.textContent = "COPY";
-								// button.classList.remove("bg-green-600");
+										newButton.textContent = "COPY";
 							}, 1000);
 						});
 					});
+						}
 				}
 			});
+			}
 
-			// Category filter logic
+			// Category filter logic (checkboxes)
 			const applyCategoryFilter = () => {
 				const checked = Array.from(
 					document.querySelectorAll(".category-filter:checked"),
@@ -219,11 +318,113 @@ const categories = Array.from(
 								);
 							});
 					});
+				animateVisibleCommandBoxes(); // Animate on filter change
+				attachCopyListeners();
 			};
 
 			document.querySelectorAll(".category-filter").forEach((cb) => {
 				cb.addEventListener("change", applyCategoryFilter);
 			});
+
+			// Global search logic for commands
+			const globalSearch = document.getElementById("global-search") as HTMLInputElement | null;
+			const tabSection = document.querySelector(".col-span-3") as HTMLElement | null;
+			const tabHeader = tabSection?.querySelector(":scope > div.flex") as HTMLElement | null;
+			const categoryFilters = tabSection?.querySelector(":scope > .mb-3") as HTMLElement | null;
+			const tabContentWrapper = tabSection?.querySelector(":scope > .space-y-2") as HTMLElement | null;
+
+			// Show all tabs and filters (restore normal view)
+			const showAllTabsAndFilters = () => {
+				tabHeader?.classList.remove("hidden");
+				categoryFilters?.classList.remove("hidden");
+				tabContentWrapper?.classList.remove("hidden");
+				// Restore visibility of all tab-content and categories
+				document.querySelectorAll("[data-tab-content]").forEach(tab => {
+					const tabEl = tab as HTMLElement;
+					tabEl.classList.toggle("hidden", tabEl.dataset.tabContent !== activeTab && activeTab !== null);
+					tabEl.querySelectorAll("[data-category]").forEach(el => {
+						(el as HTMLElement).classList.remove("hidden");
+					});
+				});
+			};
+
+			// Hide all tabs and filters (show only search results)
+			const hideTabsAndFilters = () => {
+				tabHeader?.classList.add("hidden");
+				categoryFilters?.classList.add("hidden");
+				tabContentWrapper?.classList.add("hidden");
+			};
+
+			let searchResultsContainer: HTMLElement | null = null;
+
+			// Show search results (CommandBoxes matching the search)
+			const showSearchResults = (results: HTMLElement[]) => {
+				if (!tabSection) return;
+				if (!searchResultsContainer) {
+					searchResultsContainer = document.createElement("div");
+					searchResultsContainer.id = "search-results-container";
+					searchResultsContainer.className = "space-y-2 border-2 overflow-hidden p-1 rounded-xl border-inherit";
+					searchResultsContainer.style.borderColor = "var(--theme-border)";
+					tabSection.appendChild(searchResultsContainer);
+				}
+				searchResultsContainer.innerHTML = "";
+				if (results.length === 0) {
+					searchResultsContainer.innerHTML = '<div class="text-center text-sm opacity-60">No commands found.</div>';
+					return;
+				}
+				results.forEach((cmdBox) => {
+					const node = cmdBox.cloneNode(true) as HTMLElement;
+					node.classList.add('fade-in-slide');
+					searchResultsContainer!.appendChild(node);
+				});
+				attachCopyListeners(searchResultsContainer!);
+			};
+
+			// Hide search results and remove container
+			const hideSearchResults = () => {
+				if (searchResultsContainer) {
+					searchResultsContainer.remove();
+					searchResultsContainer = null;
+				}
+			};
+
+			// Handle input in global search bar
+			globalSearch?.addEventListener("input", (e) => {
+				const target = e.target as HTMLInputElement | null;
+				const value = target?.value.trim().toLowerCase() ?? "";
+				if (value === "") {
+					// Restore normal view
+					showAllTabsAndFilters();
+					hideSearchResults();
+					return;
+				}
+				// Hide tabs and filters
+				hideTabsAndFilters();
+				// Find all CommandBoxes
+				const allCmdBoxes = Array.from(document.querySelectorAll("[data-tab-content] [data-category] > div")) as HTMLElement[];
+				const matching = allCmdBoxes.filter(box => {
+					const span = box.querySelector("span[data-raw]") as HTMLSpanElement | null;
+					return span && (span.dataset.raw?.toLowerCase().includes(value));
+				});
+				showSearchResults(matching);
+			});
+
+			// Clear search button logic
+			const clearSearchBtn = document.getElementById("clear-search-btn") as HTMLButtonElement | null;
+			if (globalSearch && clearSearchBtn) {
+				globalSearch.addEventListener("input", () => {
+					clearSearchBtn.classList.toggle("hidden", globalSearch.value.trim() === "");
+				});
+				clearSearchBtn.addEventListener("click", () => {
+					globalSearch.value = "";
+					clearSearchBtn.classList.add("hidden");
+					showAllTabsAndFilters();
+					hideSearchResults();
+				});
+			}
+
+			// Attach copy listeners on initial load
+			attachCopyListeners();
 		</script>
 	
 </Layout>

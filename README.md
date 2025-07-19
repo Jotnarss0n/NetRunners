@@ -3,7 +3,7 @@
 **Automation and learning for pentesting**
 
 [![GitHub Release](https://img.shields.io/github/v/release/NetRunners-Toolkits/NetRunners)](https://github.com/NetRunners-Toolkits/NetRunners/releases)
-[![License](https://img.shields.io/github/license/NetRunners-Toolkits/NetRunners)](https://github.com/NetRunners-Toolkits/NetRunners/blob/main/LICENSE)
+[![License](https://img.shields.io/github/license/NetRunners-Toolkits/NetRunners)](https://github.com/NetRunners-Toolkits/NetRunners/blob/master/LICENSE)
 &#x20;
 
 ---
@@ -102,6 +102,11 @@ We welcome your ideas and improvements! 🙌
 - **R1nzler** – Full-stack development – [GitHub](https://github.com/Marcejr117)
 - **Whare** – Initial idea and commands – [GitHub](https://github.com/whare1)
 - **2as** – JavaScript demo – [GitHub](https://github.com/dos4s)
+
+---
+
+## Contributors
+![Alt](https://repobeats.axiom.co/api/embed/1a17ffae4c2f07c112dace0f1c81be6ab23f36fe.svg "Repobeats analytics image")
 
 ---
 
