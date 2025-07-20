@@ -1,4 +1,17 @@
 [
+    {
+    "title": "Mirage HTB",
+    "description": "A HackTheBox active Hard Windows machine focused on Active Directory enumeration and privilege escalation, protected by NTLM hash encryption to prevent spoilers and ensure only those who complete the machine can fully access its details.",
+    "date": "2025-07-20",
+    "type": "hard",
+    "image": "https://whare1.netrunners.in/assets/img/posts/mirage.png",
+    "links": [
+      {
+        "label": "Whare1's solution",
+        "url": "https://whare1.netrunners.in/writeups/hackthebox/mirage#/"
+      }
+    ]
+  },
   {
     "title": "Outbound HTB",
     "description": "A HackTheBox active easy Linux machine focused on web enumeration and privilege escalation, protected by Root’s hash encryption to prevent spoilers and ensure only those who complete the machine can fully access its details.",
