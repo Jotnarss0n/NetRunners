@@ -641,11 +641,11 @@
     "description": "A Linux machine featuring a custom PHP application vulnerable to XSS for cookie hijacking, SQLite SQL injection leading to remote code execution, and privilege escalation via log analysis and exploitation of an XSS flaw in an internally hosted Gitea instance.",
     "date": "2025-02-01",
     "type": "medium",
-    "image": "https://ddl00p.netrunners.in/assets/cat/cat.png",
+    "image": "https://dll00p.netrunners.in/assets/cat/cat.png",
     "links": [
       {
         "label": "DLL's solution",
-        "url": "https://ddl00p.netrunners.in/posts/Cat-Writeup/"
+        "url": "https://dll00p.netrunners.in/writeups/hackthebox/cat#/"
       }
     ]
   },
@@ -654,11 +654,11 @@
     "description": "A Windows machine featuring Active Directory enumeration, certificate services misconfigurations, and privilege escalation through DPAPI abuse and TGT ticket manipulation using Impacket.",
     "date": "2024-11-30",
     "type": "hard",
-    "image": "https://ddl00p.netrunners.in/assets/vintage/vintage.png",
+    "image": "https://dll00p.netrunners.in/assets/vintage/vintage.png",
     "links": [
       {
         "label": "DLL's solution",
-        "url": "https://ddl00p.netrunners.in/posts/Vintage-Writeup/"
+        "url": "https://dll00p.netrunners.in/writeups/hackthebox/vintage#/"
       }
     ]
   },
@@ -667,11 +667,11 @@
     "description": "A Windows machine featuring Active Directory enumeration, certificate services misconfigurations, and privilege escalation through Kerberoasting to retrieve the administrator's ticket.",
     "date": "2024-11-09",
     "type": "medium",
-    "image": "https://ddl00p.netrunners.in/assets/administrator/administrator.png",
+    "image": "https://dll00p.netrunners.in/assets/administrator/administrator.png",
     "links": [
       {
         "label": "DLL's solution",
-        "url": "https://ddl00p.netrunners.in/posts/Administrator-Writeup/"
+        "url": "https://dll00p.netrunners.in/writeups/hackthebox/administrator#/"
       }
     ]
   },
@@ -680,11 +680,11 @@
     "description": "A Windows machine featuring Active Directory enumeration, certificate services misconfigurations, and privilege escalation via certificate-based authentication abuse using Certipy to impersonate privileged users.",
     "date": "2024-11-02",
     "type": "medium",
-    "image": "https://ddl00p.netrunners.in/assets/certified/certified.png",
+    "image": "https://dll00p.netrunners.in/assets/certified/certified.png",
     "links": [
       {
         "label": "DLL's solution",
-        "url": "https://ddl00p.netrunners.in/posts/Certified-Writeup/"
+        "url": "https://dll00p.netrunners.in/writeups/hackthebox/certified#/"
       }
     ]
   },
@@ -693,11 +693,11 @@
     "description": "A Linux machine featuring mobile app reverse engineering, API endpoint exploitation, and privilege escalation by decrypting session data from Solar-PuTTY.",
     "date": "2024-10-12",
     "type": "medium",
-    "image": "https://ddl00p.netrunners.in/assets/instant/instant.png",
+    "image": "https://dll00p.netrunners.in/assets/instant/instant.png",
     "links": [
       {
         "label": "DLL's solution",
-        "url": "https://ddl00p.netrunners.in/posts/Instant-Writeup/"
+        "url": "https://dll00p.netrunners.in/writeups/hackthebox/instant#/"
       }
     ]
   },
@@ -706,11 +706,11 @@
     "description": "A Linux machine featuring command injection in a Cacti-based web application, credential-based privilege escalation via MySQL, and Docker container escape to gain root access.",
     "date": "2023-04-29",
     "type": "easy",
-    "image": "https://ddl00p.netrunners.in/assets/monitorstwo/monitorstwo.png",
+    "image": "https://dll00p.netrunners.in/assets/monitorstwo/monitorstwo.png",
     "links": [
       {
         "label": "DLL's solution",
-        "url": "https://ddl00p.netrunners.in/posts/MonitorsTwo-Writeup/"
+        "url": "https://dll00p.netrunners.in/writeups/hackthebox/monitorstwo#/"
       }
     ]
   },
@@ -719,11 +719,11 @@
     "description": "A Linux machine featuring Server-Side Template Injection (SSTI) with regex bypass, password hash extraction, and privilege escalation through password cracking to gain root access.",
     "date": "2024-03-02",
     "type": "easy",
-    "image": "https://ddl00p.netrunners.in/assets/perfection/perfection.png",
+    "image": "https://dll00p.netrunners.in/assets/perfection/perfection.png",
     "links": [
       {
         "label": "DLL's solution",
-        "url": "https://ddl00p.netrunners.in/posts/Perfection-Writeup/"
+        "url": "https://dll00p.netrunners.in/writeups/hackthebox/perfection#/"
       }
     ]
   },
@@ -732,11 +732,11 @@
     "description": "A Linux machine featuring remote code execution via a Ruby on Rails vulnerability and privilege escalation through insecure third-party dependencies.",
     "date": "2022-11-26",
     "type": "easy",
-    "image": "https://ddl00p.netrunners.in/assets/precious/precious.png",
+    "image": "https://dll00p.netrunners.in/assets/precious/precious.png",
     "links": [
       {
         "label": "DLL's solution",
-        "url": "https://ddl00p.netrunners.in/posts/Precious-Writeup/"
+        "url": "https://dll00p.netrunners.in/writeups/hackthebox/precious#/"
       }
     ]
   },
@@ -745,11 +745,50 @@
     "description": "A Linux machine featuring remote code execution via a vulnerable ProFTPD server and privilege escalation through system misconfigurations.",
     "date": "2021-09-27",
     "type": "easy",
-    "image": "https://ddl00p.netrunners.in/assets/antique/antique.png",
+    "image": "https://dll00p.netrunners.in/assets/antique/antique.png",
     "links": [
       {
         "label": "DLL's solution",
-        "url": "https://ddl00p.netrunners.in/posts/Antique-Writeup/"
+        "url": "https://dll00p.netrunners.in/writeups/hackthebox/antique#/"
+      }
+    ]
+  },
+  {
+    "title": "Scepter HTB",
+    "description": "A HackTheBox active Hard Windows machine focused on Active Directory enumeration and privilege escalation, protected by NTLM hash encryption to prevent spoilers and ensure only those who complete the machine can fully access its details.",
+    "date": "2025-04-19",
+    "type": "hard",
+    "image": "https://dll00p.netrunners.in/assets/scepter/scepter.png",
+    "links": [
+      {
+        "label": "DLL's solution",
+        "url": "https://dll00p.netrunners.in/writeups/hackthebox/scepter#/"
+      }
+    ]
+  },
+  {
+    "title": "Certificate HTB",
+    "description": "A HackTheBox active Hard Windows machine focused on Active Directory enumeration and privilege escalation, protected by NTLM hash encryption to prevent spoilers and ensure only those who complete the machine can fully access its details.",
+    "date": "2025-05-31",
+    "type": "hard",
+    "image": "https://dll00p.netrunners.in/assets/certificate/certificate.png",
+    "links": [
+      {
+        "label": "DLL's solution",
+        "url": "https://dll00p.netrunners.in/writeups/hackthebox/certificate#/"
+      }
+    ]
+  },
+  {
+    "title": "Nocturnal HTB",
+    "description": "A HackTheBox active Easy Linux machine focused on web enumeration and privilege escalation, protected by Root's Shadow Hash to prevent spoilers and ensure only those who complete the machine can fully access its details.",
+    "date": "2025-04-12",
+    "type": "easy",
+    "image": "https://dll00p.netrunners.in/assets/nocturnal/nocturnal.png",
+    "links": [
+      {
+        "label": "DLL's solution",
+        "url": "https://dll00p.netrunners.in/writeups/hackthebox/nocturnal#/"
       }
     ]
   }
