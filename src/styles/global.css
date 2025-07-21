@@ -151,3 +151,18 @@ input.theme-input:-webkit-autofill:active {
   --theme-card: #111111;
   --theme-card-text: #ff4444;
 }
+
+/* Animación para aparición suave de comandos */
+@keyframes fade-in-slide {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-in-slide {
+  animation: fade-in-slide 0.45s cubic-bezier(0.33,1,0.68,1) both;
+}

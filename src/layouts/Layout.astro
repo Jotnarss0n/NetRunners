@@ -7,121 +7,249 @@ const themeNames = Object.keys(themes);
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>NetRunners</title>
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<!-- prevent FOUC by applying theme class before paint -->
-		<style>html{visibility:hidden}</style>
-		<script is:inline>
-		(function(){
-		  try{
-		    const saved = localStorage.getItem('selectedTheme') || 'default';
-		    document.documentElement.classList.add(`theme-${saved}`);
-		    document.body.classList.add(`theme-${saved}`);
-		  }catch(_){/* ignore */}
-		  document.documentElement.style.visibility='visible';
-		})();
-		</script>
-	</head>
-	<body style="background: var(--theme-bg); color: var(--theme-text);">
-		<!-- Dropdown to select a theme -->
-		<div class="fixed top-1 right-1 z-50">
-			<select
-				id="theme-selector"
-				class="px-2 py-1 rounded-xl transition-colors duration-300 border-2 border-inherit"
-				style="background: var(--theme-card); color: var(--theme-card-text); border-color: var(--theme-border);"
-			>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E4ZVVMYHCY"
+  ></script>
+  <script is:inline>
+    // Google Analytics 4 base
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-E4ZVVMYHCY");
+  </script>
+  <script is:inline>
+    // Track clicks on all <a> and <button> elements
+    document.addEventListener("DOMContentLoaded", function () {
+      // Track link clicks
+      document.body.addEventListener(
+        "click",
+        function (e) {
+          let target = e.target;
+          // Traverse up if click is on child of <a> or <button>
+          while (target && target !== document.body) {
+            if (target.tagName === "A" && target.href) {
+              gtag("event", "click", {
+                event_category: "link",
+                event_label: target.href,
+                transport_type: "beacon",
+              });
+              break;
+            }
+            if (target.tagName === "BUTTON") {
+              gtag("event", "click", {
+                event_category: "button",
+                event_label: target.innerText || target.id || "button",
+                transport_type: "beacon",
+              });
+              break;
+            }
+            target = target.parentElement;
+          }
+        },
+        true
+      );
+    });
+    // Puedes personalizar más eventos aquí si lo deseas
+  </script>
 
-			</select>
-		</div>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  />
+  <title>NetRunners - Pentesting Commands, Writeups & Resources</title>
+  <meta
+    name="description"
+    content="NetRunners is a curated collection of hacking commands, writeups, and resources for pentesters, CTF players, and cybersecurity enthusiasts."
+  />
+  <meta
+    name="keywords"
+    content="pentesting, hacking, CTF, cybersecurity, commands, writeups, hacking resources, netrunners, infosec, security tools"
+  />
+  <meta name="author" content="NetRunners Team" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://netrunners.in/" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="application-name" content="NetRunners" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+  />
+  <meta name="format-detection" content="telephone=no,address=no,email=no" />
+  <meta name="referrer" content="no-referrer-when-downgrade" />
+  <meta name="copyright" content="NetRunners Team" />
+  <meta property="og:site_name" content="NetRunners" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://netrunners.in/og-image.png" />
+  <meta
+    property="og:image:alt"
+    content="NetRunners logo and hacking resources"
+  />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NetRunners" />
+  <meta
+    name="twitter:description"
+    content="A curated collection of hacking commands, writeups, and resources for pentesters and CTF players."
+  />
+  <meta name="twitter:image" content="https://netrunners.in/og-image.png" />
+  <meta
+    name="twitter:image:alt"
+    content="NetRunners logo and hacking resources"
+  />
+  <!-- Optional: <meta name="twitter:site" content="@netrunners" /> -->
+  <!-- Optional: <meta name="twitter:creator" content="@netrunners" /> -->
+  <!-- Windows tile color/image -->
+  <meta name="msapplication-TileColor" content="#000000" />
+  <meta name="msapplication-TileImage" content="/favicon.svg" />
+  <!-- Favicon fallback for legacy browsers -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" href="/favicon.png" sizes="512x512" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
+  <!-- JSON-LD structured data for organization/site -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "NetRunners",
+      "url": "https://netrunners.in/",
+      "logo": "https://netrunners.in/favicon.svg",
+      "description": "A curated collection of hacking commands, writeups, and resources for pentesters, CTF players, and cybersecurity enthusiasts.",
+      "sameAs": [
+        "https://github.com/netrunners",
+        "https://twitter.com/netrunners"
+      ]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "NetRunners",
+      "url": "https://netrunners.in/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://netrunners.in/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
+  <!-- prevent FOUC by applying theme class before paint -->
+  <style>
+    html {
+      visibility: hidden;
+    }
+  </style>
+  <script is:inline>
+    (function () {
+      try {
+        const saved = localStorage.getItem("selectedTheme") || "default";
+        document.documentElement.classList.add(`theme-${saved}`);
+        document.body.classList.add(`theme-${saved}`);
+      } catch (_) {
+        /* ignore */
+      }
+      document.documentElement.style.visibility = "visible";
+    })();
+  </script>
 
-		<!-- Main content area where the theme is applied -->
-		<div
-			id="theme-wrapper"
-			class="min-h-screen transition-colors duration-300"
-			style="background: var(--theme-bg); color: var(--theme-text);"
-		>
-			<main class="h-screen font-mono p-4 overflow-hidden">
-					<div
-						class="h-full max-w-screen-2xl mx-auto border-2 p-4 rounded-xl flex flex-col border-inherit"
-						id="theme-panel"
-						style="background: var(--theme-card); color: var(--theme-card-text); border-color: var(--theme-border);"
-					>
-						<div
-							class="flex justify-between items-center mb-4 border-b pb-2 border-inherit"
-							id="theme-header"
-							style="border-color: var(--theme-border);"
-						>
-							<div class="text-xl font-bold tracking-wider">NETRUNNERS</div>
-							<nav class="space-x-4">
-								<a href="/">
-									<button class="hover:underline">COMMANDS</button>
-								</a>
-								<a href="/writeups">
-									<button class="hover:underline">WRITEUPS</button>
-								</a>
-								<a href="/support">
-									<button class="hover:underline">SUPPORT</button>
-								</a>
-								<a href="/about">
-									<button class="hover:underline">ABOUT</button>
-								</a>
-							</nav>
-						</div>
-					<slot />
-				</div>
-			</main>
-		</div>
+  <body style="background: var(--theme-bg); color: var(--theme-text);">
+    <!-- Dropdown to select a theme -->
+    <div class="fixed top-1 right-1 z-50">
+      <select
+        id="theme-selector"
+        class="px-2 py-1 rounded-xl transition-colors duration-300 border-2 border-inherit"
+        style="background: var(--theme-card); color: var(--theme-card-text); border-color: var(--theme-border);"
+      >
+      </select>
+    </div>
 
-		<script type="module">
-			// get references to HTML elements
-			const selector = document.getElementById("theme-selector");
-			const body = document.body;
-			const tabs = document.querySelectorAll(".theme-tab");
-			const commandsBoxes = document.querySelectorAll(".commandsBG");
-			const commandsBoxText =
-				document.querySelectorAll(".commandsTextColor");
+    <!-- Main content area where the theme is applied -->
+    <div
+      id="theme-wrapper"
+      class="min-h-screen transition-colors duration-300"
+      style="background: var(--theme-bg); color: var(--theme-text);"
+    >
+      <main class="h-screen font-mono p-4 overflow-hidden">
+        <div
+          class="h-full max-w-screen-2xl mx-auto border-2 p-4 rounded-xl flex flex-col border-inherit"
+          id="theme-panel"
+          style="background: var(--theme-card); color: var(--theme-card-text); border-color: var(--theme-border);"
+        >
+          <div
+            class="flex justify-between items-center mb-4 border-b pb-2 border-inherit"
+            id="theme-header"
+            style="border-color: var(--theme-border);"
+          >
+            <div class="text-xl font-bold tracking-wider">NETRUNNERS</div>
+            <nav class="space-x-4">
+              <a href="/">
+                <button class="hover:underline">COMMANDS</button>
+              </a>
+              <a href="/writeups">
+                <button class="hover:underline">WRITEUPS</button>
+              </a>
+              <a href="/support">
+                <button class="hover:underline">SUPPORT</button>
+              </a>
+              <a href="/about">
+                <button class="hover:underline">ABOUT</button>
+              </a>
+            </nav>
+          </div>
+          <slot />
+        </div>
+      </main>
+    </div>
 
-			// fetch theme data from JSON file and handle theme switching
-			fetch("themes.json")
-				.then((response) => response.json())
-				.then((themeData) => {
-					const themeNames = Object.keys(themeData);
-					// Poblar el selector si no se hace en el template
-					if (selector.options.length === 0) {
-						themeNames.forEach((name) => {
-							const option = document.createElement('option');
-							option.value = name;
-							option.textContent = name.toUpperCase();
-							selector.appendChild(option);
-						});
-					}
-					// function to apply the selected theme
-					const applyTheme = (themeName) => {
-						themeNames.forEach((name) => {
-							body.classList.remove(`theme-${name}`);
-						});
-						body.classList.add(`theme-${themeName}`);
-						localStorage.setItem("selectedTheme", themeName);
-					};
+    <script type="module">
+      // get references to HTML elements
+      const selector = document.getElementById("theme-selector");
+      const body = document.body;
+      const tabs = document.querySelectorAll(".theme-tab");
+      const commandsBoxes = document.querySelectorAll(".commandsBG");
+      const commandsBoxText = document.querySelectorAll(".commandsTextColor");
 
-					// listen for theme change events
-					selector.addEventListener("change", (e) => {
-						const themeName = e.target.value;
-						applyTheme(themeName);
-					});
+      // fetch theme data from JSON file and handle theme switching
+      fetch("themes.json")
+        .then((response) => response.json())
+        .then((themeData) => {
+          const themeNames = Object.keys(themeData);
+          // Poblar el selector si no se hace en el template
+          if (selector.options.length === 0) {
+            themeNames.forEach((name) => {
+              const option = document.createElement("option");
+              option.value = name;
+              option.textContent = name.toUpperCase();
+              selector.appendChild(option);
+            });
+          }
+          // function to apply the selected theme
+          const applyTheme = (themeName) => {
+            themeNames.forEach((name) => {
+              body.classList.remove(`theme-${name}`);
+            });
+            body.classList.add(`theme-${themeName}`);
+            localStorage.setItem("selectedTheme", themeName);
+          };
 
-					// apply saved theme from localStorage or use default
-					const savedTheme =
-						localStorage.getItem("selectedTheme") || "default";
-					selector.value = savedTheme;
-					applyTheme(savedTheme);
-				})
-				.catch((err) => {
-					console.error("Error loading themes.json:", err);
-				});
-		</script>
-	</body>
+          // listen for theme change events
+          selector.addEventListener("change", (e) => {
+            const themeName = e.target.value;
+            applyTheme(themeName);
+          });
+
+          // apply saved theme from localStorage or use default
+          const savedTheme = localStorage.getItem("selectedTheme") || "default";
+          selector.value = savedTheme;
+          applyTheme(savedTheme);
+        })
+        .catch((err) => {
+          console.error("Error loading themes.json:", err);
+        });
+    </script>
+  </body>
 </html>
